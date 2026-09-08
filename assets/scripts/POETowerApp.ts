@@ -51,6 +51,8 @@ interface EnemyRuntime {
     affix: string;
     shield: number;
     shieldMax: number;
+    shieldRechargeDelay: number;
+    shieldRechargeRate: number;
     lastHitAt: number;
     enemyId: string;
     phase: number;
@@ -67,6 +69,11 @@ interface EnemyRuntime {
     wasTaunted: boolean;
     miasmaSpeedUntil: number;
     miasmaResistUntil: number;
+    shockUntil: number;
+    stunBuildup: number;
+    chilledUntil: number;
+    targetPriority: number;
+    lightningResistance: number;
 }
 
 interface AffixInstance { affixId: string; tierId: string; rolledValue: number; }
@@ -106,11 +113,11 @@ interface RunCheckpoint {
 }
 
 const TOWERS: TowerDef[] = [
-    { id: 'needle', name: '静电针塔', role: '快速叠加感电', cost: 80, damage: 2, interval: .5, range: 280, color: new Color(67, 190, 235) },
-    { id: 'arc', name: '电弧塔', role: '连锁清杂', cost: 100, damage: 8, interval: 1.2, range: 330, color: new Color(137, 143, 255) },
-    { id: 'storm', name: '雷暴塔', role: '范围爆发', cost: 120, damage: 25, interval: 3, range: 300, color: new Color(171, 91, 242) },
-    { id: 'aura', name: '电势光环', role: '强化邻近塔', cost: 140, damage: 0, interval: 1, range: 170, color: new Color(77, 224, 210) },
-    { id: 'frost', name: '冰障塔', role: '冰缓控场', cost: 130, damage: 1, interval: 2.4, range: 230, color: new Color(116, 205, 255) },
+    { id: 'needle', name: '静电针塔', role: '快速叠加感电', cost: 80, damage: 2, interval: .5, range: 550, color: new Color(67, 190, 235) },
+    { id: 'arc', name: '电弧塔', role: '连锁清杂', cost: 100, damage: 8, interval: 1.2, range: 650, color: new Color(137, 143, 255) },
+    { id: 'storm', name: '雷暴塔', role: '范围爆发', cost: 120, damage: 25, interval: 3, range: 550, color: new Color(171, 91, 242) },
+    { id: 'aura', name: '电势光环', role: '强化邻近塔', cost: 140, damage: 0, interval: 1, range: 225, color: new Color(77, 224, 210) },
+    { id: 'frost', name: '冰障塔', role: '冰缓控场', cost: 130, damage: 0, interval: 18, range: 400, color: new Color(116, 205, 255) },
     { id: 'totem', name: '嘲讽图腾', role: '拖延敌群', cost: 120, damage: 0, interval: 6, range: 150, color: new Color(244, 142, 82) },
 ];
 
@@ -162,18 +169,20 @@ const VILLAGE_WAVES: WaveConfig[] = [
     { name: '沉水村落 7 · 腐潮母体', targetGold: 120, groups: [{ enemyId: 'enemy_rot_tide_matriarch', count: 1, path: 0 }] },
 ];
 
-const PATH = [
-    new Vec3(-410, 650), new Vec3(-210, 560), new Vec3(-330, 420),
-    new Vec3(-80, 300), new Vec3(235, 370), new Vec3(350, 210),
-    new Vec3(150, 70), new Vec3(-110, 120), new Vec3(-250, -35),
-    new Vec3(-35, -180), new Vec3(0, -315),
-];
-const PATH_ALT = [
-    new Vec3(410, 650), new Vec3(210, 560), new Vec3(330, 420),
-    new Vec3(80, 300), new Vec3(-235, 370), new Vec3(-350, 210),
-    new Vec3(-150, 70), new Vec3(110, 120), new Vec3(250, -35),
-    new Vec3(35, -180), new Vec3(0, -315),
-];
+const gridRoute = (cells: number[][]) => cells.map(([x, y]) => new Vec3(-375 + x * 150, 775 - y * 110));
+const DEMO_PATH = gridRoute([[1,0],[1,1],[2,1],[2,2],[2,3],[2,4],[2,5],[3,5],[3,6],[3,7]]);
+const DEMO_PATH_ALT = gridRoute([[4,0],[4,1],[4,2],[4,3],[3,3],[3,4],[3,5],[3,6],[3,7]]);
+const VILLAGE_PATH = gridRoute([[0,0],[1,0],[1,1],[2,1],[2,2],[3,2],[3,3],[3,4],[3,5],[3,6],[3,7]]);
+const VILLAGE_PATH_ALT = gridRoute([[5,0],[4,0],[4,1],[3,1],[3,2],[3,3],[3,4],[3,5],[3,6],[3,7]]);
+const WIRED_SUPPORT_EFFECTS: Record<string, Set<string>> = {
+    support_rapid_cycle: new Set(['speed', 'damage_more']), support_deep_conduction: new Set(['shock']), support_long_range: new Set(['range', 'damage_more']),
+    support_ground_pin: new Set(['damage_more']), support_extra_chain: new Set(['chain']), support_arc_speed: new Set(['speed', 'damage_more']),
+    support_equalized_arc: new Set(['damage_more']), support_wide_storm: new Set(['radius', 'damage_more']), support_lingering_field: new Set(['duration']),
+    support_fast_storm: new Set(['speed', 'damage_more']), support_concentrated_storm: new Set(['radius', 'damage_more']), support_delayed_thunder: new Set(['damage_more']),
+    support_wall_duration: new Set(['duration']), support_wall_cooldown: new Set(['cooldown_recovery', 'duration_more']), support_short_wall: new Set(['duration_more', 'cooldown_recovery']),
+    support_chilled_ground_duration: new Set(['duration']), support_chilled_ground_slow: new Set(['duration_more']), support_taunt_radius: new Set(['range']),
+    support_taunt_duration: new Set(['duration']), support_taunt_pulse: new Set(['speed', 'duration_more']),
+};
 
 @ccclass('POETowerApp')
 export class POETowerApp extends Component {
@@ -604,8 +613,8 @@ export class POETowerApp extends Component {
         const panel = this.makeNode('TowerActions'); panel.addComponent(UITransform).setContentSize(780, 150); this.overlay.addChild(panel); panel.setPosition(0, -610);
         const def = this.def(tower.kind);
         this.panel(panel, 0, 0, 900, 165, new Color(10, 30, 31, 248));
-        this.text(panel, `${def.name} Lv.${tower.level}  伤害 ${(def.damage * (1 + .25 * (tower.level - 1))).toFixed(1)}`, -120, 38, 22, def.color, 500);
-        const cost = 55 + tower.level * 35;
+        this.text(panel, `${def.name} Lv.${tower.level}  伤害 ${(def.damage * (1 + .2 * (tower.level - 1))).toFixed(1)}`, -120, 38, 22, def.color, 500);
+        const cost = [80, 140, 220, 320][tower.level - 1] || 0;
         this.button(panel, `升级 ${cost}`, 300, -38, 180, 55, () => {
             if (tower.level >= 5) { this.hint.string = '已达最高等级'; return; }
             if (this.gold < cost) { this.hint.string = '金币不足'; return; }
@@ -632,7 +641,7 @@ export class POETowerApp extends Component {
             const col = i % 2, row = Math.floor(i / 2); const x = col ? 235 : -235, y = 365 - row * 175;
             const level = tower.supports[support.id] || 0; const full = Object.keys(tower.supports).length >= 5 && level === 0;
             const cost = level === 0 ? [40, 60, 90, 130, 180][Object.keys(tower.supports).length] : [90, 160][level - 1] || 0;
-            this.button(panel, `${level ? '◆ ' : ''}${this.supportName(support.id)} ${level ? `Lv.${level}` : ''}\n${support.effectText}\n${level >= 3 ? '已满级' : full ? '槽位已满' : `${cost} 金币`}`, x, y, 430, 145, () => {
+            this.button(panel, `${level ? '◆ ' : ''}${this.supportName(support.id)} ${level ? `Lv.${level}` : ''}\n${this.supportEffectText(support)}\n${level >= 3 ? '已满级' : full ? '槽位已满' : `${cost} 金币`}`, x, y, 430, 145, () => {
                 if (level >= 3 || full || this.gold < cost) return;
                 this.gold -= cost; tower.invested += cost; tower.supports[support.id] = level + 1; this.refreshHud(); this.showSupportPanel(tower);
             }, level ? new Color(54, 70, 130) : full ? new Color(40, 43, 46) : new Color(43, 61, 75), 18);
@@ -655,6 +664,12 @@ export class POETowerApp extends Component {
     }
 
     private supportName(id: string): string { return id.replace('support_', '').replace(/_/g, ' '); }
+    private supportEffectText(support: { id: string; effectText: string }): string {
+        const configuredKeys = Object.keys(this.supportEffects[support.id] || {});
+        const wired = WIRED_SUPPORT_EFFECTS[support.id];
+        if (!wired) return `${support.effectText}（意图，未接线）`;
+        return configuredKeys.some(key => !wired.has(key)) ? `${support.effectText}（部分未接线）` : support.effectText;
+    }
     private fallbackSupports(towerId: string): { id: string; towerId: string; effectText: string }[] {
         return Array.from({ length: 10 }, (_, i) => ({ id: `support_${towerId}_${i + 1}`, towerId, effectText: i % 2 ? '强化射程与持续' : '强化伤害与速度' }));
     }
@@ -662,9 +677,26 @@ export class POETowerApp extends Component {
     private supportValue(tower: TowerRuntime, key: string): number {
         let total = 0;
         Object.keys(tower.supports).forEach(id => {
+            if (!WIRED_SUPPORT_EFFECTS[id]?.has(key)) return;
             const level = String(tower.supports[id]); const entry = this.supportEffects[id]?.[key]?.[level]; if (entry) total += Number(entry.value) || 0;
         });
         return total;
+    }
+
+    private supportEffect(tower: TowerRuntime, id: string, key: string): number {
+        if (!WIRED_SUPPORT_EFFECTS[id]?.has(key)) return 0;
+        const level = String(tower.supports[id] || 0);
+        return Number(this.supportEffects[id]?.[key]?.[level]?.value) || 0;
+    }
+
+    private supportMultiplier(tower: TowerRuntime, key: string): number {
+        let multiplier = 1;
+        Object.keys(tower.supports).forEach(id => {
+            if (!WIRED_SUPPORT_EFFECTS[id]?.has(key)) return;
+            const level = String(tower.supports[id]); const entry = this.supportEffects[id]?.[key]?.[level];
+            if (entry) multiplier *= 1 + (Number(entry.value) || 0);
+        });
+        return multiplier;
     }
 
     private supportCopyCost(source: TowerRuntime): number {
@@ -682,6 +714,15 @@ export class POETowerApp extends Component {
             }
         }
         return total;
+    }
+
+    private addStunBuildup(enemy: EnemyRuntime, amount: number) {
+        if (amount <= 0) return;
+        enemy.stunBuildup += amount;
+        if (enemy.stunBuildup < 100) return;
+        enemy.stunBuildup = 0;
+        const duration = enemy.boss ? .2 : enemy.rarity === 'Normal' ? 1 : .5;
+        enemy.disabledUntil = Math.max(enemy.disabledUntil, this.battleTime + duration);
     }
 
     private enterIceWallMode(tower: TowerRuntime) {
@@ -706,8 +747,12 @@ export class POETowerApp extends Component {
         const wall = this.makeNode('IceWall'); wall.addComponent(UITransform).setContentSize(110, 32); this.page.addChild(wall); wall.setPosition(x, y);
         const g = wall.addComponent(Graphics); g.fillColor = new Color(115, 215, 255, 220); g.strokeColor = new Color(223, 251, 255); g.lineWidth = 3; g.roundRect(-52, -14, 104, 28, 7); g.fill(); g.stroke();
         this.overlay.setSiblingIndex(this.page.children.length - 1);
-        const duration = 6 * (this.profile.talents.indexOf('talent_icewall') >= 0 ? 1.15 : 1) * (1 + this.supportValue(tower, 'duration'));
-        tower.iceWallReadyAt = this.battleTime + 18 / Math.max(.2, 1 + this.supportValue(tower, 'cooldown_recovery'));
+        const duration = 6 * (this.profile.talents.indexOf('talent_icewall') >= 0 ? 1.15 : 1)
+            * (1 + this.supportEffect(tower, 'support_wall_duration', 'duration'))
+            * (1 + this.supportEffect(tower, 'support_wall_cooldown', 'duration_more'))
+            * (1 + this.supportEffect(tower, 'support_short_wall', 'duration_more'));
+        const cooldownRecovery = this.supportEffect(tower, 'support_wall_cooldown', 'cooldown_recovery') + this.supportEffect(tower, 'support_short_wall', 'cooldown_recovery');
+        tower.iceWallReadyAt = this.battleTime + 18 / Math.max(.2, 1 + cooldownRecovery);
         this.iceWalls.push({ node: wall, endAt: this.battleTime + duration, cell });
         this.hint.string = `冰墙已部署，持续 ${duration.toFixed(1)}s，导航场已重算`;
     }
@@ -752,7 +797,7 @@ export class POETowerApp extends Component {
 
     private spawnEnemy(group: WaveGroup) {
         this.spawned++;
-        const route = group.path === 1 ? PATH_ALT : PATH;
+        const routes = this.paths(); const route = group.path === 1 ? routes[1] : routes[0];
         const node = this.makeNode('Enemy'); node.addComponent(UITransform).setContentSize(54, 62); this.page.addChild(node); node.setPosition(route[0]);
         this.overlay.setSiblingIndex(this.page.children.length - 1);
         const enemyId = group.enemyId;
@@ -761,17 +806,21 @@ export class POETowerApp extends Component {
         const g = node.addComponent(Graphics); this.drawEnemy(g, boss, magic);
         const bars = this.addEnemyBars(node);
         const configured = this.content.get<any>('enemy', enemyId) || this.enemyFallback(enemyId);
-        const maxHp = Number(configured.maxHealth) * (magic ? 1.5 : 1);
         const magicAffixes = ['elite_hardened', 'elite_swift', 'elite_waterveil', 'elite_sporebrood'];
         const affix = magic ? (group.affix || magicAffixes[this.spawned % magicAffixes.length]) : '';
         const hardened = affix.indexOf('elite_hardened') >= 0;
         const shieldMax = enemyId === 'enemy_waterveil_acolyte' ? 35 : affix.indexOf('elite_waterveil') >= 0 ? 25 : 0;
+        const shieldRechargeDelay = enemyId === 'enemy_waterveil_acolyte' ? 2.5 : affix.indexOf('elite_waterveil') >= 0 ? 3 : 0;
+        const shieldRechargeRate = enemyId === 'enemy_waterveil_acolyte' ? 14 : affix.indexOf('elite_waterveil') >= 0 ? 10 : 0;
         const swift = affix.indexOf('elite_swift') >= 0;
-        this.enemies.push({ node, hp: maxHp, maxHp, speed: Number(configured.moveSpeedPixelsPerSecond) * (swift ? 1.12 : 1), reward: Number(configured.goldReward), damage: Number(configured.wallDamage), pathIndex: 1, shock: 0, boss, alive: true,
+        const maxHp = Number(configured.maxHealth) * (1 + (hardened ? .6 : 0) - (swift ? .1 : 0));
+        const moveSpeed = Number(configured.moveSpeedPixelsPerSecond) * (1 - (hardened ? .1 : 0) + (swift ? .25 : 0));
+        this.enemies.push({ node, hp: maxHp, maxHp, speed: moveSpeed, reward: Number(configured.goldReward), damage: Number(configured.wallDamage), pathIndex: 1, shock: 0, boss, alive: true,
             stableId: `enemy_${this.waveIndex}_${this.spawned}`, rarity: boss ? 'Boss' : group.rarity || 'Normal', affix,
-            shield: shieldMax, shieldMax, lastHitAt: -999,
+            shield: shieldMax, shieldMax, shieldRechargeDelay, shieldRechargeRate, lastHitAt: -999,
             enemyId, phase: 1, mechanicClock: enemyId === 'enemy_rot_tide_matriarch' ? 8 : enemyId === 'enemy_miasma_priest' ? .9 : 0, path: route, lastWallCell: '', disabledUntil: 0, freezeBuildup: 0, tauntedUntil: 0,
-            cystsCreated: 0, wasTaunted: false, miasmaSpeedUntil: 0, miasmaResistUntil: 0, ...bars });
+            cystsCreated: 0, wasTaunted: false, miasmaSpeedUntil: 0, miasmaResistUntil: 0, shockUntil: 0, stunBuildup: 0, chilledUntil: 0,
+            targetPriority: Number(configured.targetPriority) || 0, lightningResistance: Number(configured.lightningResistance) || 0, ...bars });
         const created = this.enemies[this.enemies.length - 1];
         if (boss || magic || enemyId === 'enemy_miasma_priest' || enemyId === 'enemy_waterveil_acolyte') this.feedback.play('SpecialMonster');
         node.on(Node.EventType.TOUCH_END, () => { this.hint.string = this.enemyDetails(created); });
@@ -786,7 +835,7 @@ export class POETowerApp extends Component {
                 if (e.mechanicClock <= 0) { for (let i = 0; i < 2; i++) this.spawnChild(e, 'enemy_bile_corpse', 50, 70, 5, 5); e.alive = false; e.node.destroy(); }
                 continue;
             }
-            if (e.shieldMax > 0 && this.battleTime - e.lastHitAt >= 2.5) e.shield = Math.min(e.shieldMax, e.shield + 14 * dt);
+            if (e.shieldRechargeRate > 0 && this.battleTime - e.lastHitAt >= e.shieldRechargeDelay) e.shield = Math.min(e.shieldMax, e.shield + e.shieldRechargeRate * dt);
             if (e.enemyId === 'enemy_miasma_priest') {
                 e.mechanicClock -= dt;
                 if (e.mechanicClock <= 0) {
@@ -805,7 +854,7 @@ export class POETowerApp extends Component {
                 e.wasTaunted = taunted; e.mechanicClock -= dt;
                 if (e.mechanicClock <= 0 && e.phase === 1) {
                     const live = this.enemies.filter(child => child.alive && child.enemyId === 'enemy_swamp_larva').length;
-                    for (let i = 0; i < Math.min(6, 24 - live); i++) this.spawnChild(e, 'enemy_swamp_larva', 18, 92, 2, 2);
+                    for (let i = 0; i < Math.min(6, 24 - live); i++) this.spawnChild(e, 'enemy_swamp_larva', 15, 85, 2, 2);
                     e.mechanicClock += 8;
                 } else if (e.mechanicClock <= 0 && e.phase === 2) {
                     const liveCysts = this.enemies.filter(child => child.alive && child.enemyId === 'enemy_rot_tide_cyst').length;
@@ -819,13 +868,12 @@ export class POETowerApp extends Component {
             if (e.disabledUntil > this.battleTime) { e.freezeBuildup = Math.max(0, e.freezeBuildup - dt * 8); continue; }
             const target = e.path[e.pathIndex]; const p = e.node.position;
             const dx = target.x - p.x, dy = target.y - p.y; const dist = Math.hypot(dx, dy);
-            let slow = e.shock >= 100 ? .92 : 1;
-            if (e.tauntedUntil > this.battleTime) slow *= .78;
-            if (this.groundEffects.some(effect => effect.kind === 'Chilled' && Vec3.distance(effect.position, e.node.position) <= effect.radius)) slow *= this.profile.talents.indexOf('talent_chilled_ground') >= 0 ? .75 : .8;
+            const onChilledGround = this.groundEffects.some(effect => effect.kind === 'Chilled' && Vec3.distance(effect.position, e.node.position) <= effect.radius);
+            let slow = e.tauntedUntil > this.battleTime ? 0 : onChilledGround || e.chilledUntil > this.battleTime ? .8 : 1;
             const blockingWall = this.iceWalls.find(wall => Vec3.distance(wall.node.position, e.node.position) <= 85);
             if (blockingWall) {
                 slow *= .35;
-                if (e.pathIndex < 7 && e.lastWallCell !== blockingWall.cell) { e.path = e.path === PATH ? PATH_ALT : PATH; e.lastWallCell = blockingWall.cell; }
+                if (e.pathIndex < 7 && e.lastWallCell !== blockingWall.cell) { const routes = this.paths(); e.path = e.path === routes[0] ? routes[1] : routes[0]; e.lastWallCell = blockingWall.cell; }
             }
             const priestBoost = e.miasmaSpeedUntil > this.battleTime ? 1.15 : 1;
             const move = e.speed * priestBoost * dt * slow;
@@ -833,62 +881,98 @@ export class POETowerApp extends Component {
                 e.node.setPosition(target); e.pathIndex++;
                 if (e.pathIndex >= e.path.length) { this.breach(e); }
             } else e.node.setPosition(p.x + dx / dist * move, p.y + dy / dist * move);
-            e.shock = Math.max(0, e.shock - dt * 4);
         }
+    }
+
+    private findTarget(origin: Vec3, range: number, excluded: Set<string> = new Set()): EnemyRuntime | undefined {
+        return this.enemies.filter(enemy => enemy.alive && !excluded.has(enemy.stableId) && Vec3.distance(origin, enemy.node.worldPosition) <= range)
+            .sort((a, b) => b.targetPriority - a.targetPriority || Vec3.distance(origin, a.node.worldPosition) - Vec3.distance(origin, b.node.worldPosition) || a.stableId.localeCompare(b.stableId))[0];
     }
 
     private updateTowers(dt: number) {
         for (const tower of this.towers) {
-            tower.cooldown -= dt; if (tower.cooldown > 0) continue;
+            tower.cooldown -= dt;
+            if (tower.cooldown > 0 || tower.kind === 'aura') continue;
             const def = this.def(tower.kind);
-            const auraBoost = this.towers.some(a => a !== tower && a.kind === 'aura' && Vec3.distance(a.node.worldPosition, tower.node.worldPosition) < this.def('aura').range) ? .92 : 1;
-            tower.cooldown += def.interval * auraBoost / Math.max(.2, 1 + this.supportValue(tower, 'speed'));
+            const auraBoost = this.towers.some(a => a !== tower && a.kind === 'aura' && Vec3.distance(a.node.worldPosition, tower.node.worldPosition) < this.def('aura').range);
             const range = def.range * Math.max(.35, 1 + this.supportValue(tower, 'range'));
-            const targets = this.enemies.filter(e => e.alive && Vec3.distance(tower.node.worldPosition, e.node.worldPosition) <= range).sort((a, b) => b.pathIndex - a.pathIndex);
-            if (!targets.length) continue;
+            const primary = this.findTarget(tower.node.worldPosition, range);
+            if (!primary) continue;
+            tower.cooldown += def.interval / Math.max(.2, (1 + this.supportValue(tower, 'speed')) * (auraBoost ? 1.08 : 1));
+
             if (tower.kind === 'totem') {
-                const duration = (1.2 + this.supportValue(tower, 'duration')) * (this.profile.talents.indexOf('talent_taunt') >= 0 ? 1.12 : 1);
+                const duration = 2 * (1 + this.supportEffect(tower, 'support_taunt_duration', 'duration')) * (1 + this.supportEffect(tower, 'support_taunt_pulse', 'duration_more'));
+                const targets = this.enemies.filter(enemy => enemy.alive && Vec3.distance(primary.node.worldPosition, enemy.node.worldPosition) <= range);
                 for (const enemy of targets) {
-                    enemy.tauntedUntil = Math.max(enemy.tauntedUntil, this.battleTime + (enemy.boss ? Math.min(.8, duration) : duration));
-                    const stun = this.supportValue(tower, 'stun'); if (stun > 0) enemy.disabledUntil = Math.max(enemy.disabledUntil, this.battleTime + (enemy.boss ? stun * .35 : stun));
-                    tower.controlSeconds += duration;
+                    const appliedDuration = enemy.enemyId === 'enemy_bog_colossus' ? .5 : duration;
+                    enemy.tauntedUntil = Math.max(enemy.tauntedUntil, this.battleTime + appliedDuration);
+                    this.addStunBuildup(enemy, this.supportValue(tower, 'stun'));
+                    tower.controlSeconds += appliedDuration;
                 }
                 continue;
             }
-            if (def.damage <= 0 && tower.kind !== 'frost') continue;
-            const extraTargets = Math.max(0, Math.round(this.supportValue(tower, tower.kind === 'arc' ? 'chain' : 'target_count')));
-            const count = tower.kind === 'arc' ? Math.min(4 + extraTargets, targets.length) : tower.kind === 'storm' ? Math.min(6 + extraTargets, targets.length) : Math.min(1 + extraTargets, targets.length);
-            for (let i = 0; i < count; i++) {
-                let damage = def.damage * (1 + .25 * (tower.level - 1));
-                damage *= Math.max(.1, 1 + this.supportValue(tower, 'damage_more') + this.supportValue(tower, 'damage'));
-                if (['needle', 'arc', 'storm'].indexOf(tower.kind) >= 0) {
-                    if (this.profile.talents.indexOf('talent_lightning_damage') >= 0) damage *= 1.12;
-                    damage *= this.equipmentLightningMultiplier;
-                }
-                if (tower.kind === 'arc' && targets[i].shock >= 100 && this.profile.talents.indexOf('talent_arc') >= 0) damage *= 1.15;
-                if (tower.kind === 'storm' && targets[i].shock >= 100) { damage *= 1.8; targets[i].shock = 0; }
-                if (tower.kind === 'needle') targets[i].shock += (16 + tower.level * 3) * (this.profile.talents.indexOf('talent_shock_buildup') >= 0 ? 1.15 : 1) * Math.max(.2, 1 + this.supportValue(tower, 'shock') + this.supportValue(tower, 'shock_more'));
-                const stun = this.supportValue(tower, 'stun'); if (stun > 0) targets[i].disabledUntil = Math.max(targets[i].disabledUntil, this.battleTime + (targets[i].boss ? stun * .35 : stun));
-                if (tower.kind === 'frost') {
-                    targets[i].freezeBuildup += Math.max(5, this.supportValue(tower, 'freeze_per_second'));
-                    if (targets[i].freezeBuildup >= 100) { targets[i].freezeBuildup = 0; targets[i].disabledUntil = Math.max(targets[i].disabledUntil, this.battleTime + (targets[i].boss ? .35 : .9)); }
-                }
-                this.hitEnemy(targets[i], damage, def.color, tower.node.worldPosition, tower);
+
+            let baseDamage = def.damage * (1 + .2 * (tower.level - 1)) * this.supportMultiplier(tower, 'damage_more');
+            if (['needle', 'arc', 'storm'].indexOf(tower.kind) >= 0) {
+                if (this.profile.talents.indexOf('talent_lightning_damage') >= 0) baseDamage *= 1.12;
+                baseDamage *= this.equipmentLightningMultiplier;
             }
+
+            if (tower.kind === 'arc') {
+                const chain: EnemyRuntime[] = [primary]; const excluded = new Set<string>([primary.stableId]);
+                const maxTargets = 4 + Math.max(0, Math.round(this.supportEffect(tower, 'support_extra_chain', 'chain'))) + (primary.shockUntil > this.battleTime ? 1 : 0);
+                while (chain.length < maxTargets) {
+                    const next = this.findTarget(chain[chain.length - 1].node.worldPosition, def.range * .65, excluded);
+                    if (!next) break; chain.push(next); excluded.add(next.stableId);
+                }
+                chain.forEach((enemy, index) => {
+                    let damage = baseDamage * Math.pow(.9, index);
+                    this.addStunBuildup(enemy, this.supportValue(tower, 'stun'));
+                    this.hitEnemy(enemy, damage, def.color, index ? chain[index - 1].node.worldPosition : tower.node.worldPosition, tower);
+                });
+                continue;
+            }
+
             if (tower.kind === 'storm') {
-                const duration = 4 * (this.profile.talents.indexOf('talent_storm_ground') >= 0 ? 1.2 : 1) * (1 + this.supportValue(tower, 'duration'));
-                this.createGroundEffect('Shocked', targets[0].node.worldPosition, duration, 105 * (1 + this.supportValue(tower, 'radius')));
+                const consumedShock = primary.shockUntil > this.battleTime;
+                if (consumedShock) { primary.shockUntil = 0; primary.shock = 0; }
+                const damage = baseDamage * (consumedShock ? 1.5 : 1);
+                const radius = 125 * Math.max(.1, 1 + this.supportEffect(tower, 'support_wide_storm', 'radius') + this.supportEffect(tower, 'support_concentrated_storm', 'radius'));
+                const targets = this.enemies.filter(enemy => enemy.alive && Vec3.distance(primary.node.worldPosition, enemy.node.worldPosition) <= radius);
+                for (const enemy of targets) { this.addStunBuildup(enemy, this.supportValue(tower, 'stun')); this.hitEnemy(enemy, damage, def.color, tower.node.worldPosition, tower); }
+                const duration = 4 * (1 + this.supportEffect(tower, 'support_lingering_field', 'duration'));
+                this.createGroundEffect('Shocked', primary.node.worldPosition, duration, radius);
+                continue;
             }
-            if (tower.kind === 'frost') this.createGroundEffect('Chilled', targets[0].node.worldPosition, 5 * (1 + this.supportValue(tower, 'duration')), 90);
+
+            if (tower.kind === 'frost') {
+                const radius = 90;
+                const targets = this.enemies.filter(enemy => enemy.alive && Vec3.distance(primary.node.worldPosition, enemy.node.worldPosition) <= radius);
+                for (const enemy of targets) {
+                    enemy.chilledUntil = Math.max(enemy.chilledUntil, this.battleTime + 5);
+                }
+                this.createGroundEffect('Chilled', primary.node.worldPosition,
+                    5 * (1 + this.supportEffect(tower, 'support_chilled_ground_duration', 'duration')) * (1 + this.supportEffect(tower, 'support_chilled_ground_slow', 'duration_more')), radius);
+                continue;
+            }
+
+            let buildup = 12 * (this.profile.talents.indexOf('talent_shock_buildup') >= 0 ? 1.15 : 1) * (auraBoost ? 1.15 : 1) * Math.max(.2, 1 + this.supportEffect(tower, 'support_deep_conduction', 'shock'));
+            if (this.groundEffects.some(effect => effect.kind === 'Shocked' && Vec3.distance(effect.position, primary.node.position) <= effect.radius)) buildup *= 1.25;
+            primary.shock += buildup;
+            if (primary.shock >= 100) { primary.shock = 0; primary.shockUntil = this.battleTime + 6; }
+            this.addStunBuildup(primary, this.supportValue(tower, 'stun'));
+            this.hitEnemy(primary, baseDamage, def.color, tower.node.worldPosition, tower);
         }
     }
 
     private hitEnemy(enemy: EnemyRuntime, damage: number, color: Color, from: Vec3, source: TowerRuntime) {
-        if (this.groundEffects.some(effect => effect.kind === 'Shocked' && Vec3.distance(effect.position, enemy.node.position) <= effect.radius)) damage *= 1.1;
-        if (enemy.miasmaResistUntil > this.battleTime && ['needle', 'arc', 'storm'].indexOf(source.kind) >= 0) damage *= .85;
+        const lightning = ['needle', 'arc', 'storm'].indexOf(source.kind) >= 0;
+        if (lightning && enemy.shockUntil <= this.battleTime && this.groundEffects.some(effect => effect.kind === 'Shocked' && Vec3.distance(effect.position, enemy.node.position) <= effect.radius)) damage *= 1.1;
+        if (lightning && enemy.shockUntil > this.battleTime) damage *= 1.2;
+        if (lightning) damage *= 1 - Math.min(.75, enemy.lightningResistance + (enemy.miasmaResistUntil > this.battleTime ? .15 : 0));
         enemy.lastHitAt = this.battleTime;
         if (enemy.shield > 0) { const absorbed = Math.min(enemy.shield, damage); enemy.shield -= absorbed; damage -= absorbed; }
-        if (enemy.affix.indexOf('elite_hardened') >= 0 || enemy.enemyId === 'enemy_mud_armored_guard') damage = Math.max(damage * .2, damage - 1.5);
+        if (enemy.enemyId === 'enemy_mud_armored_guard') damage = Math.max(damage * .2, damage - 1.5);
         const applied = Math.min(Math.max(0, damage), Math.max(0, enemy.hp)); enemy.hp -= damage; source.damageDone += applied;
         const fx = this.makeNode('Bolt'); fx.addComponent(UITransform).setContentSize(1080, 1920); this.overlay.addChild(fx);
         const g = fx.addComponent(Graphics); const a = this.overlay.getComponent(UITransform)!.convertToNodeSpaceAR(from); const b = this.overlay.getComponent(UITransform)!.convertToNodeSpaceAR(enemy.node.worldPosition);
@@ -900,8 +984,8 @@ export class POETowerApp extends Component {
     private kill(enemy: EnemyRuntime) {
         if (!enemy.alive) return; enemy.alive = false; this.gold += enemy.reward; this.kills++;
         this.rollLoot(enemy);
-        if (enemy.enemyId === 'enemy_bile_corpse') for (let i = 0; i < 2; i++) this.spawnChild(enemy, 'enemy_bile_spore', 12, 98, 0, 2);
-        if (enemy.affix.indexOf('elite_sporebrood') >= 0) this.spawnChild(enemy, 'enemy_sporebrood_child', 9, 95, 0, 1);
+        if (enemy.enemyId === 'enemy_bile_corpse') for (let i = 0; i < 2; i++) this.spawnChild(enemy, 'enemy_bile_spore', 10, 95, 0, 2);
+        if (enemy.affix.indexOf('elite_sporebrood') >= 0) this.spawnChild(enemy, 'enemy_sporebrood_child', 8, 90, 0, 1);
         const n = enemy.node; tween(n).to(.12, { scale: new Vec3(1.45, 1.45, 1) }).to(.14, { scale: new Vec3(.05, .05, 1) }).call(() => n.destroy()).start();
         this.refreshHud();
     }
@@ -910,9 +994,10 @@ export class POETowerApp extends Component {
         const node = this.makeNode('EnemyChild'); node.addComponent(UITransform).setContentSize(42, 48); this.page.addChild(node);
         node.setPosition(parent.node.position.x + (this.enemies.length % 3 - 1) * 22, parent.node.position.y + (this.enemies.length % 2 ? 16 : -16));
         this.drawEnemy(node.addComponent(Graphics), false, false); const bars = this.addEnemyBars(node); this.overlay.setSiblingIndex(this.page.children.length - 1);
-        this.enemies.push({ node, hp, maxHp: hp, speed, reward, damage, pathIndex: Math.min(parent.pathIndex, PATH.length - 1), shock: 0, boss: false, alive: true,
-            stableId: `${parent.stableId}_child_${this.enemies.length}`, rarity: 'Normal', affix: '', shield: 0, shieldMax: 0, lastHitAt: -999, enemyId, phase: 1, mechanicClock: enemyId === 'enemy_rot_tide_cyst' ? 8 : 0, path: parent.path, lastWallCell: '', disabledUntil: 0, freezeBuildup: 0, tauntedUntil: 0,
-            cystsCreated: 0, wasTaunted: false, miasmaSpeedUntil: 0, miasmaResistUntil: 0, ...bars });
+        this.enemies.push({ node, hp, maxHp: hp, speed, reward, damage, pathIndex: Math.min(parent.pathIndex, parent.path.length - 1), shock: 0, boss: false, alive: true,
+            stableId: `${parent.stableId}_child_${this.enemies.length}`, rarity: 'Normal', affix: '', shield: 0, shieldMax: 0, shieldRechargeDelay: 0, shieldRechargeRate: 0, lastHitAt: -999, enemyId, phase: 1, mechanicClock: enemyId === 'enemy_rot_tide_cyst' ? 8 : 0, path: parent.path, lastWallCell: '', disabledUntil: 0, freezeBuildup: 0, tauntedUntil: 0,
+            cystsCreated: 0, wasTaunted: false, miasmaSpeedUntil: 0, miasmaResistUntil: 0, shockUntil: 0, stunBuildup: 0, chilledUntil: 0,
+            targetPriority: 0, lightningResistance: 0, ...bars });
     }
 
     private breach(enemy: EnemyRuntime) {
@@ -999,7 +1084,7 @@ export class POETowerApp extends Component {
     private drawPath() {
         const n = this.makeNode('PathGuide'); n.addComponent(UITransform).setContentSize(1080, 1920); this.page.addChild(n);
         const g = n.addComponent(Graphics);
-        [PATH, PATH_ALT].forEach(path => {
+        this.paths().forEach(path => {
             g.strokeColor = new Color(84, 221, 205, 70); g.lineWidth = 18; g.moveTo(path[0].x, path[0].y); path.slice(1).forEach(p => g.lineTo(p.x, p.y)); g.stroke();
             g.strokeColor = new Color(188, 255, 234, 95); g.lineWidth = 3; g.moveTo(path[0].x, path[0].y); path.slice(1).forEach(p => g.lineTo(p.x, p.y)); g.stroke();
         });
@@ -1029,14 +1114,14 @@ export class POETowerApp extends Component {
         const draw = (g: Graphics, ratio: number, color: Color) => { g.clear(); if (ratio <= 0) return; g.fillColor = new Color(2, 8, 9, 220); g.rect(-28, -3, 56, 6); g.fill(); g.fillColor = color; g.rect(-28, -3, 56 * Math.min(1, ratio), 6); g.fill(); };
         draw(e.hpBar, e.hp / e.maxHp, new Color(96, 218, 126));
         draw(e.shieldBar, e.shieldMax ? e.shield / e.shieldMax : 0, new Color(94, 179, 255));
-        draw(e.statusBar, e.shock / 100, new Color(199, 103, 255));
+        draw(e.statusBar, e.shockUntil > this.battleTime ? 1 : e.shock / 100, new Color(199, 103, 255));
     }
 
     private enemyDetails(e: EnemyRuntime): string {
         const names: Record<string, string> = { enemy_shambler: '行尸', enemy_rusher: '奔袭兽', enemy_swarm: '虫群', enemy_shellback: '甲壳兽', enemy_bog_colossus: '沼泽巨像', enemy_swamp_larva: '沼泽幼体', enemy_mud_armored_guard: '泥甲卫士', enemy_bile_corpse: '腐囊行尸', enemy_waterveil_acolyte: '水幕巫徒', enemy_miasma_priest: '瘴气祭师', enemy_rot_tide_matriarch: '腐潮母体', enemy_rot_tide_cyst: '腐潮孢囊' };
         const affixNames: Record<string, string> = { elite_hardened: '◆ 坚韧', elite_swift: '◆ 迅捷', elite_waterveil: '◆ 水幕', elite_sporebrood: '◆ 孢群' };
         const affix = e.affix.split('|').map(id => affixNames[id] || id).join(' ');
-        return `${e.rarity === 'Magic' ? '魔法 ' : e.rarity === 'Rare' ? '稀有 ' : e.boss ? '首领 ' : ''}${names[e.enemyId] || e.enemyId} ${affix} · HP ${Math.ceil(e.hp)}/${Math.ceil(e.maxHp)}${e.shieldMax ? ` · 水幕 ${Math.ceil(e.shield)}` : ''}`;
+        return `${e.rarity === 'Magic' ? '魔法 ' : e.rarity === 'Rare' ? '稀有 ' : e.boss ? '首领 ' : ''}${names[e.enemyId] || e.enemyId} ${affix} · HP ${Math.ceil(e.hp)}/${Math.ceil(e.maxHp)}${e.shieldMax ? ` · 水幕 ${Math.ceil(e.shield)}` : ''}${e.shockUntil > this.battleTime ? ' · 已感电' : ''}`;
     }
 
     private towerCard(parent: Node, tower: TowerDef, x: number, y: number) {
@@ -1048,6 +1133,7 @@ export class POETowerApp extends Component {
 
     private def(kind: TowerKind) { return TOWERS.find(t => t.id === kind)!; }
     private waves(): WaveConfig[] { return this.mapMode === 'village' ? VILLAGE_WAVES : WAVES; }
+    private paths(): Vec3[][] { return this.mapMode === 'village' ? [VILLAGE_PATH, VILLAGE_PATH_ALT] : [DEMO_PATH, DEMO_PATH_ALT]; }
     private waveEnemyCount(wave: WaveConfig): number { return wave.groups.reduce((sum, group) => sum + group.count, 0); }
     private enemyFallback(id: string): any {
         const fallback: Record<string, any> = {
