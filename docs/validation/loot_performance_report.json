@@ -1,0 +1,19 @@
+{
+  "scenario": "Q53-13",
+  "enemy_count": 100,
+  "warmup_steps": 90,
+  "measured_steps": 900,
+  "simulation_hz": 30,
+  "average_step_ms": 0.0618,
+  "p95_step_ms": 0.0637,
+  "p99_step_ms": 0.0726,
+  "p95_budget_ms": 4,
+  "p99_budget_ms": 8,
+  "allocated_bytes_measured_thread": 144024,
+  "allocated_bytes_per_step": 160.03,
+  "allocation_budget_bytes_per_step": 256,
+  "entity_count_after_cleanup": 0,
+  "marker_active_cap": 12,
+  "marker_queue_cap": 32,
+  "runtime": "8.0.7"
+}

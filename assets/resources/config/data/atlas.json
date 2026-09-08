@@ -1,0 +1,91 @@
+{
+  "tower": {
+    "tower_static_needle": {
+      "kind": "tower",
+      "id": "tower_static_needle",
+      "atlasIndex": 0
+    },
+    "tower_arc": {
+      "kind": "tower",
+      "id": "tower_arc",
+      "atlasIndex": 1
+    },
+    "tower_thunderstorm": {
+      "kind": "tower",
+      "id": "tower_thunderstorm",
+      "atlasIndex": 2
+    },
+    "tower_voltage_aura": {
+      "kind": "tower",
+      "id": "tower_voltage_aura",
+      "atlasIndex": 3
+    },
+    "tower_frost_barrier": {
+      "kind": "tower",
+      "id": "tower_frost_barrier",
+      "atlasIndex": 4
+    },
+    "tower_taunt_totem": {
+      "kind": "tower",
+      "id": "tower_taunt_totem",
+      "atlasIndex": 5
+    }
+  },
+  "enemy": {
+    "enemy_shambler": {
+      "kind": "enemy",
+      "id": "enemy_shambler",
+      "atlasIndex": 6
+    },
+    "enemy_rusher": {
+      "kind": "enemy",
+      "id": "enemy_rusher",
+      "atlasIndex": 7
+    },
+    "enemy_swarm": {
+      "kind": "enemy",
+      "id": "enemy_swarm",
+      "atlasIndex": 8
+    },
+    "enemy_shellback": {
+      "kind": "enemy",
+      "id": "enemy_shellback",
+      "atlasIndex": 9
+    },
+    "enemy_bog_colossus": {
+      "kind": "enemy",
+      "id": "enemy_bog_colossus",
+      "atlasIndex": 10
+    },
+    "enemy_swamp_larva": {
+      "kind": "enemy",
+      "id": "enemy_swamp_larva",
+      "atlasIndex": 12
+    },
+    "enemy_bile_corpse": {
+      "kind": "enemy",
+      "id": "enemy_bile_corpse",
+      "atlasIndex": 13
+    },
+    "enemy_mud_armored_guard": {
+      "kind": "enemy",
+      "id": "enemy_mud_armored_guard",
+      "atlasIndex": 14
+    },
+    "enemy_waterveil_acolyte": {
+      "kind": "enemy",
+      "id": "enemy_waterveil_acolyte",
+      "atlasIndex": 15
+    },
+    "enemy_bile_spore": {
+      "kind": "enemy",
+      "id": "enemy_bile_spore",
+      "atlasIndex": 16
+    },
+    "enemy_sporebrood_child": {
+      "kind": "enemy",
+      "id": "enemy_sporebrood_child",
+      "atlasIndex": 17
+    }
+  }
+}

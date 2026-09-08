@@ -1,0 +1,44 @@
+{
+  "item_marsh_surveyor_hood": {
+    "id": "item_marsh_surveyor_hood",
+    "displayName": "沼泽勘探兜帽",
+    "slot": "Head",
+    "tagIds": "equipment|head|cloth",
+    "minItemLevel": 1
+  },
+  "item_reinforced_field_coat": {
+    "id": "item_reinforced_field_coat",
+    "displayName": "加固野战外套",
+    "slot": "Body",
+    "tagIds": "equipment|body|coat",
+    "minItemLevel": 1
+  },
+  "item_architect_work_gloves": {
+    "id": "item_architect_work_gloves",
+    "displayName": "建筑师工作手套",
+    "slot": "Hands",
+    "tagIds": "equipment|hands|gloves",
+    "minItemLevel": 1
+  },
+  "item_waders_of_haste": {
+    "id": "item_waders_of_haste",
+    "displayName": "轻捷涉水靴",
+    "slot": "Feet",
+    "tagIds": "equipment|feet|waders",
+    "minItemLevel": 1
+  },
+  "item_copper_conductor_rod": {
+    "id": "item_copper_conductor_rod",
+    "displayName": "铜制导能杖",
+    "slot": "MainTool",
+    "tagIds": "equipment|main_tool|conductor",
+    "minItemLevel": 1
+  },
+  "item_marsh_charm": {
+    "id": "item_marsh_charm",
+    "displayName": "沼泽护符",
+    "slot": "Amulet",
+    "tagIds": "equipment|amulet|charm",
+    "minItemLevel": 1
+  }
+}

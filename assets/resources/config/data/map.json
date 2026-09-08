@@ -1,0 +1,9 @@
+{
+    "swamp":  {
+                  "id":  "swamp",
+                  "buildGridId":  "build",
+                  "battleGridId":  "battle",
+                  "routeTable":  "swamp_routes",
+                  "offRoadMovementCost":  8
+              }
+}

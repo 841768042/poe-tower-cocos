@@ -1,0 +1,66 @@
+{
+    "no_tower_selected":  {
+                              "key":  "no_tower_selected",
+                              "value":  "请先从塔池选择一种塔"
+                          },
+    "cell_occupied":  {
+                          "key":  "cell_occupied",
+                          "value":  "该格已经被占用"
+                      },
+    "insufficient_gold":  {
+                              "key":  "insufficient_gold",
+                              "value":  "金币不足，操作未执行"
+                          },
+    "no_built_tower_selected":  {
+                                    "key":  "no_built_tower_selected",
+                                    "value":  "请先点击一座已建塔"
+                                },
+    "tower_max_level":  {
+                            "key":  "tower_max_level",
+                            "value":  "该塔已达到最高等级"
+                        },
+    "support_slots_full":  {
+                               "key":  "support_slots_full",
+                               "value":  "该塔的 5 个辅助槽已满"
+                           },
+    "no_upgradeable_support":  {
+                                   "key":  "no_upgradeable_support",
+                                   "value":  "该辅助已经满级或尚未安装"
+                               },
+    "ice_wall_requires_frost_tower":  {
+                                          "key":  "ice_wall_requires_frost_tower",
+                                          "value":  "只有冰障塔能放置冰墙"
+                                      },
+    "ice_wall_requires_combat":  {
+                                     "key":  "ice_wall_requires_combat",
+                                     "value":  "冰墙只能在战斗中放置"
+                                 },
+    "ice_wall_on_cooldown":  {
+                                 "key":  "ice_wall_on_cooldown",
+                                 "value":  "冰墙仍在冷却"
+                             },
+    "ice_wall_global_limit":  {
+                                  "key":  "ice_wall_global_limit",
+                                  "value":  "全场已达到 2 段冰墙上限"
+                              },
+    "ice_wall_source_limit":  {
+                                  "key":  "ice_wall_source_limit",
+                                  "value":  "该冰障塔已有一段冰墙"
+                              },
+    "ice_wall_enemy_occupied":  {
+                                    "key":  "ice_wall_enemy_occupied",
+                                    "value":  "敌人正占据该格"
+                                },
+    "ice_wall_cell_occupied":  {
+                                   "key":  "ice_wall_cell_occupied",
+                                   "value":  "该战区格已经被占用"
+                               },
+    "would_block_all_paths":  {
+                                  "key":  "would_block_all_paths",
+                                  "value":  "该位置会封死最后一条路线"
+                              },
+    "outside_battle_grid":  {
+                                "key":  "outside_battle_grid",
+                                "value":  "请选择战区内的格子"
+                            }
+}

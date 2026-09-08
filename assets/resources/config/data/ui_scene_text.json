@@ -1,0 +1,146 @@
+{
+  "main_menu:Layout/Title": {
+    "key": "main_menu:Layout/Title",
+    "value": "POE TOWER · 沼泽防线"
+  },
+  "main_menu:Layout/Subtitle": {
+    "key": "main_menu:Layout/Subtitle",
+    "value": "Godot .NET 数据驱动 DEMO · 6 塔 · 4 普通敌人 · 1 首领 · 9 波"
+  },
+  "main_menu:Layout/StartDemo": {
+    "key": "main_menu:Layout/StartDemo",
+    "value": "进入沼泽防线"
+  },
+  "main_menu:Layout/ResetProfile": {
+    "key": "main_menu:Layout/ResetProfile",
+    "value": "重置 DEMO 档案"
+  },
+  "main_menu:Layout/Message": {
+    "key": "main_menu:Layout/Message",
+    "value": "选择天赋后开始；档案主档位于 user://saves/profile.json"
+  },
+  "prebattle:Layout/Header/Row/Map": {
+    "key": "prebattle:Layout/Header/Row/Map",
+    "value": "沼泽防线"
+  },
+  "prebattle:Layout/Header/Row/Tags": {
+    "key": "prebattle:Layout/Header/Row/Tags",
+    "value": "潮湿 · 双路线 · 9 波"
+  },
+  "prebattle:Layout/Title": {
+    "key": "prebattle:Layout/Title",
+    "value": "选择本局携带塔种  6 / 6"
+  },
+  "prebattle:Layout/Slots/Static": {
+    "key": "prebattle:Layout/Slots/Static",
+    "value": "ϟ\n静电针塔\n80 金币\n施加感电"
+  },
+  "prebattle:Layout/Slots/Arc": {
+    "key": "prebattle:Layout/Slots/Arc",
+    "value": "⌁\n电弧塔\n100 金币\n利用感电 · 连锁"
+  },
+  "prebattle:Layout/Slots/Storm": {
+    "key": "prebattle:Layout/Slots/Storm",
+    "value": "☈\n雷暴塔\n120 金币\n消耗感电 · 爆发"
+  },
+  "prebattle:Layout/Slots/Aura": {
+    "key": "prebattle:Layout/Slots/Aura",
+    "value": "◉\n电势光环塔\n140 金币\n强化局部塔阵"
+  },
+  "prebattle:Layout/Slots/Frost": {
+    "key": "prebattle:Layout/Slots/Frost",
+    "value": "❄\n冰障塔\n130 金币\n冰墙改路 · 冰缓"
+  },
+  "prebattle:Layout/Slots/Taunt": {
+    "key": "prebattle:Layout/Slots/Taunt",
+    "value": "♜\n嘲讽图腾塔\n120 金币\n聚怪 · 延缓突破"
+  },
+  "prebattle:Layout/Intel/Margin/Text": {
+    "key": "prebattle:Layout/Intel/Margin/Text",
+    "value": "[font_size=28][color=#e7c56a]地图情报[/color][/font_size]\n\n[color=#9bd9d0]浅水[/color]    感电积累 +20%，感电地面可扩散\n\n[color=#b99b71]软土[/color]    建造费用受地形修正，适合规划关键塔位\n\n[color=#ccb4ef]精英[/color]    第 6～8 波检验持续输出与感电依赖\n\n[color=#e7c56a]首领[/color]    第 9 波：沼泽巨像，控制持续缩短\n\n推荐循环：静电针施加 → 电弧利用 → 雷暴消耗 → 光环加速"
+  },
+  "prebattle:Layout/Snapshot": {
+    "key": "prebattle:Layout/Snapshot",
+    "value": "建筑师装备与天赋将在进入关卡时锁定为只读快照"
+  },
+  "prebattle:Layout/Actions/Back": {
+    "key": "prebattle:Layout/Actions/Back",
+    "value": "返回据点"
+  },
+  "prebattle:Layout/Actions/Enter": {
+    "key": "prebattle:Layout/Actions/Enter",
+    "value": "锁定 6 种塔并进入防线"
+  },
+  "gameplay:../GameSession/WallLabel": {
+    "key": "gameplay:../GameSession/WallLabel",
+    "value": "筑界城墙"
+  },
+  "gameplay:MessagePanel/Message": {
+    "key": "gameplay:MessagePanel/Message",
+    "value": "点击“建造”查看可建造位置"
+  },
+  "gameplay:TowerPalette/Margin/Layout/Header/Title": {
+    "key": "gameplay:TowerPalette/Margin/Layout/Header/Title",
+    "value": "建造塔阵 · 选择一种塔后点击合法格"
+  },
+  "gameplay:TowerPalette/Margin/Layout/Header/Hint": {
+    "key": "gameplay:TowerPalette/Margin/Layout/Header/Hint",
+    "value": "成功放置后自动收起"
+  },
+  "gameplay:Controls/Build": {
+    "key": "gameplay:Controls/Build",
+    "value": "建造"
+  },
+  "gameplay:Controls/WaveInfo": {
+    "key": "gameplay:Controls/WaveInfo",
+    "value": "波次摘要"
+  },
+  "gameplay:Controls/StartWave": {
+    "key": "gameplay:Controls/StartWave",
+    "value": "开始波次"
+  },
+  "gameplay:Controls/Pause": {
+    "key": "gameplay:Controls/Pause",
+    "value": "暂停"
+  },
+  "gameplay:Controls/Speed": {
+    "key": "gameplay:Controls/Speed",
+    "value": "1×"
+  },
+  "gameplay:TowerTips/Margin/Layout/Actions/IceWall": {
+    "key": "gameplay:TowerTips/Margin/Layout/Actions/IceWall",
+    "value": "冰墙"
+  },
+  "gameplay:TowerUpgrade/Margin/Layout/Title": {
+    "key": "gameplay:TowerUpgrade/Margin/Layout/Title",
+    "value": "提升威力"
+  },
+  "gameplay:TowerUpgrade/Margin/Layout/Actions/Back": {
+    "key": "gameplay:TowerUpgrade/Margin/Layout/Actions/Back",
+    "value": "返回"
+  },
+  "gameplay:SupportSelect/Margin/Layout/Description": {
+    "key": "gameplay:SupportSelect/Margin/Layout/Description",
+    "value": "候选固定 10 个；已安装宝石可继续升至 Lv.3"
+  },
+  "gameplay:SupportSelect/Margin/Layout/Back": {
+    "key": "gameplay:SupportSelect/Margin/Layout/Back",
+    "value": "返回塔上 TIPS"
+  },
+  "gameplay:ResultPanel/Panel/Layout/Title": {
+    "key": "gameplay:ResultPanel/Panel/Layout/Title",
+    "value": "本局结束"
+  },
+  "gameplay:ResultPanel/Panel/Layout/Summary": {
+    "key": "gameplay:ResultPanel/Panel/Layout/Summary",
+    "value": "9 波防守结算完成"
+  },
+  "gameplay:ResultPanel/Panel/Layout/Buttons/Retry": {
+    "key": "gameplay:ResultPanel/Panel/Layout/Buttons/Retry",
+    "value": "再次挑战"
+  },
+  "gameplay:ResultPanel/Panel/Layout/Buttons/Menu": {
+    "key": "gameplay:ResultPanel/Panel/Layout/Buttons/Menu",
+    "value": "返回据点"
+  }
+}

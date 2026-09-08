@@ -1,0 +1,7 @@
+"id:string:key","eligibleRarity:string","authoredRareEligible:bool","weight:float","incompatibleGroupId:string","effectIds:string","mechanicIds:string","eligibleEnemyIds:string","enabledInSlice:bool","displayName:string","iconGlyph:string"
+"","随机允许品质","固定Rare允许","词条权重","互斥组","数值效果标识列表","机制标识列表","允许敌人标识列表","本切片启用","词条显示名","词条图标"
+"elite_hardened","Magic","true","1","elite_defense","monster_max_health|monster_move_speed","","enemy_shambler|enemy_swamp_larva|enemy_bile_corpse|enemy_mud_armored_guard|enemy_waterveil_acolyte","true","坚韧","盾"
+"elite_grounded","Magic","false","1","elite_defense","monster_shock_buildup","","enemy_shambler","false","接地","地"
+"elite_swift","Magic","true","1","elite_movement","monster_swift_max_health|monster_swift_move_speed","","enemy_swamp_larva|enemy_bile_corpse|enemy_mud_armored_guard|enemy_waterveil_acolyte","true","迅捷","风"
+"elite_waterveil","Magic","false","1","elite_defense","","mechanic_elite_waterveil","enemy_swamp_larva|enemy_bile_corpse|enemy_mud_armored_guard","true","水幕","水"
+"elite_sporebrood","Magic","false","1","elite_death","","mechanic_elite_sporebrood","enemy_swamp_larva|enemy_mud_armored_guard|enemy_waterveil_acolyte","true","孢群","孢"

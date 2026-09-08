@@ -1,0 +1,34 @@
+{
+    "SingleTarget":  {
+                         "key":  "SingleTarget",
+                         "value":  "施加感电"
+                     },
+    "StaticNeedle":  {
+                         "key":  "StaticNeedle",
+                         "value":  "施加感电"
+                     },
+    "Arc":  {
+                "key":  "Arc",
+                "value":  "连锁清杂"
+            },
+    "Thunderstorm":  {
+                         "key":  "Thunderstorm",
+                         "value":  "消耗感电"
+                     },
+    "VoltageAura":  {
+                        "key":  "VoltageAura",
+                        "value":  "光环强化"
+                    },
+    "FrostBarrier":  {
+                         "key":  "FrostBarrier",
+                         "value":  "冰墙改路"
+                     },
+    "TauntTotem":  {
+                       "key":  "TauntTotem",
+                       "value":  "持续嘲讽"
+                   },
+    "Unknown":  {
+                    "key":  "Unknown",
+                    "value":  "塔阵组件"
+                }
+}

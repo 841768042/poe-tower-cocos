@@ -1,0 +1,4 @@
+﻿"id:string:key","width:int","height:int","originX:float","originY:float","cellWidth:float","cellHeight:float"
+"","网格列数","网格行数","网格左上角X坐标","网格左上角Y坐标","单格宽度（像素）","单格高度（像素）"
+"build","6","4","90","1130","150","82"
+"battle","6","8","90","130","150","110"

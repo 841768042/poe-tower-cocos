@@ -1,0 +1,8 @@
+"id:string:key","displayName:string","slot:string","tagIds:string","minItemLevel:int"
+"","本地化基底名","装备槽位","装备标签","最低物品等级"
+"item_marsh_surveyor_hood","沼泽勘探兜帽","Head","equipment|head|cloth","1"
+"item_reinforced_field_coat","加固野战外套","Body","equipment|body|coat","1"
+"item_architect_work_gloves","建筑师工作手套","Hands","equipment|hands|gloves","1"
+"item_waders_of_haste","轻捷涉水靴","Feet","equipment|feet|waders","1"
+"item_copper_conductor_rod","铜制导能杖","MainTool","equipment|main_tool|conductor","1"
+"item_marsh_charm","沼泽护符","Amulet","equipment|amulet|charm","1"

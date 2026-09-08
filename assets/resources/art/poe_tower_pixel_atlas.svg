@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1280" viewBox="0 0 1024 1280" shape-rendering="crispEdges">
+  <defs>
+    <style>
+      .o{fill:#10191b}.stone{fill:#263638}.stone2{fill:#3d5050}.copper{fill:#9a6737}.gold{fill:#d39a47}.violet{fill:#a263db}.cyan{fill:#56c9d8}.ice{fill:#9de8ef}.moss{fill:#547447}.skin{fill:#789267}.dark{fill:#25342d}.mud{fill:#5b4936}.bone{fill:#c2b786}
+    </style>
+  </defs>
+
+  <!-- row 1: four electrical towers -->
+  <g id="tower_static_needle" transform="translate(0 0)">
+    <rect class="o" x="72" y="178" width="112" height="24"/><rect class="stone" x="80" y="162" width="96" height="32"/>
+    <rect class="o" x="92" y="88" width="72" height="80"/><rect class="copper" x="100" y="96" width="56" height="64"/>
+    <rect class="stone2" x="108" y="112" width="40" height="40"/><rect class="violet" x="116" y="120" width="24" height="24"/>
+    <rect class="o" x="120" y="34" width="16" height="70"/><rect class="gold" x="124" y="26" width="8" height="70"/>
+    <rect class="violet" x="100" y="64" width="16" height="8"/><rect class="violet" x="140" y="48" width="20" height="8"/><rect class="cyan" x="144" y="72" width="12" height="8"/>
+  </g>
+  <g id="tower_arc" transform="translate(256 0)">
+    <rect class="o" x="64" y="174" width="128" height="28"/><rect class="stone" x="72" y="158" width="112" height="36"/>
+    <rect class="o" x="84" y="86" width="88" height="80"/><rect class="copper" x="92" y="94" width="72" height="64"/>
+    <rect class="o" x="104" y="58" width="16" height="48"/><rect class="o" x="136" y="58" width="16" height="48"/>
+    <rect class="gold" x="108" y="62" width="8" height="40"/><rect class="gold" x="140" y="62" width="8" height="40"/>
+    <rect class="violet" x="116" y="70" width="24" height="8"/><rect class="cyan" x="124" y="78" width="24" height="8"/><rect class="violet" x="108" y="86" width="24" height="8"/>
+    <rect class="stone2" x="108" y="118" width="40" height="32"/><rect class="violet" x="116" y="126" width="24" height="16"/>
+  </g>
+  <g id="tower_thunderstorm" transform="translate(512 0)">
+    <rect class="o" x="58" y="176" width="140" height="28"/><rect class="stone" x="66" y="160" width="124" height="36"/>
+    <rect class="o" x="78" y="84" width="100" height="84"/><rect class="copper" x="86" y="92" width="84" height="68"/>
+    <rect class="stone2" x="98" y="104" width="60" height="48"/><rect class="violet" x="110" y="116" width="36" height="24"/>
+    <rect class="o" x="82" y="54" width="20" height="46"/><rect class="gold" x="88" y="58" width="8" height="38"/>
+    <rect class="o" x="154" y="54" width="20" height="46"/><rect class="gold" x="160" y="58" width="8" height="38"/>
+    <rect class="violet" x="104" y="56" width="48" height="8"/><rect class="cyan" x="116" y="44" width="24" height="8"/>
+  </g>
+  <g id="tower_voltage_aura" transform="translate(768 0)">
+    <rect class="o" x="68" y="178" width="120" height="24"/><rect class="stone" x="76" y="162" width="104" height="32"/>
+    <rect class="o" x="104" y="76" width="48" height="92"/><rect class="copper" x="112" y="84" width="32" height="76"/>
+    <rect class="violet" x="120" y="100" width="16" height="44"/>
+    <rect class="o" x="78" y="62" width="100" height="16"/><rect class="gold" x="86" y="66" width="84" height="8"/>
+    <rect class="violet" x="64" y="50" width="24" height="8"/><rect class="violet" x="168" y="50" width="24" height="8"/>
+    <rect class="cyan" x="52" y="78" width="20" height="8"/><rect class="cyan" x="184" y="78" width="20" height="8"/>
+  </g>
+
+  <!-- row 2: utility towers and humanoid enemies -->
+  <g id="tower_frost_barrier" transform="translate(0 256)">
+    <rect class="o" x="66" y="178" width="124" height="24"/><rect class="stone" x="74" y="162" width="108" height="32"/>
+    <rect class="o" x="88" y="94" width="80" height="76"/><rect class="copper" x="96" y="102" width="64" height="60"/>
+    <polygon class="o" points="128,34 170,94 86,94"/><polygon class="ice" points="128,46 158,88 98,88"/>
+    <rect class="cyan" x="116" y="112" width="24" height="36"/><rect class="stone2" x="104" y="148" width="48" height="12"/>
+  </g>
+  <g id="tower_taunt_totem" transform="translate(256 256)">
+    <rect class="o" x="72" y="182" width="112" height="20"/><rect class="stone" x="80" y="166" width="96" height="28"/>
+    <rect class="o" x="108" y="82" width="40" height="88"/><rect class="copper" x="116" y="90" width="24" height="72"/>
+    <polygon class="o" points="72,70 92,42 128,54 164,42 184,70 170,122 128,142 86,122"/>
+    <polygon class="bone" points="84,72 98,54 128,64 158,54 172,72 160,112 128,128 96,112"/>
+    <rect class="violet" x="100" y="78" width="16" height="12"/><rect class="violet" x="140" y="78" width="16" height="12"/>
+    <rect class="o" x="116" y="104" width="24" height="8"/>
+  </g>
+  <g id="enemy_shambler" transform="translate(512 256)">
+    <rect class="o" x="104" y="54" width="48" height="48"/><rect class="skin" x="112" y="62" width="32" height="32"/>
+    <rect class="o" x="94" y="100" width="68" height="72"/><rect class="moss" x="102" y="108" width="52" height="56"/>
+    <rect class="o" x="76" y="108" width="22" height="70"/><rect class="skin" x="82" y="116" width="12" height="54"/>
+    <rect class="o" x="158" y="104" width="22" height="72"/><rect class="skin" x="162" y="112" width="12" height="56"/>
+    <rect class="o" x="98" y="168" width="26" height="42"/><rect class="mud" x="104" y="172" width="14" height="30"/>
+    <rect class="o" x="132" y="168" width="26" height="42"/><rect class="mud" x="138" y="172" width="14" height="30"/>
+    <rect class="violet" x="116" y="72" width="8" height="8"/><rect class="violet" x="136" y="72" width="8" height="8"/>
+  </g>
+  <g id="enemy_rusher" transform="translate(768 256)">
+    <rect class="o" x="112" y="48" width="40" height="42"/><rect class="skin" x="120" y="56" width="24" height="26"/>
+    <polygon class="o" points="104,88 158,88 174,152 144,174 94,150"/><polygon class="moss" points="112,96 150,96 162,146 140,162 104,144"/>
+    <polygon class="o" points="102,104 64,142 76,154 112,128"/><polygon class="skin" points="98,112 74,140 82,146 108,124"/>
+    <polygon class="o" points="156,108 194,136 184,150 148,130"/><polygon class="skin" points="158,116 184,136 178,144 150,126"/>
+    <polygon class="o" points="112,158 90,212 108,216 130,170"/><polygon class="o" points="142,160 166,210 184,204 158,166"/>
+    <rect class="violet" x="122" y="64" width="8" height="8"/><rect class="violet" x="138" y="64" width="8" height="8"/>
+  </g>
+
+  <!-- row 3: swarm, shellback, boss -->
+  <g id="enemy_swarm" transform="translate(0 512)">
+    <g transform="translate(68 84)"><rect class="o" x="0" y="18" width="52" height="28"/><rect class="moss" x="8" y="22" width="36" height="20"/><rect class="o" x="16" y="6" width="20" height="20"/><rect class="violet" x="20" y="10" width="12" height="8"/></g>
+    <g transform="translate(132 62)"><rect class="o" x="0" y="18" width="52" height="28"/><rect class="skin" x="8" y="22" width="36" height="20"/><rect class="o" x="16" y="6" width="20" height="20"/></g>
+    <g transform="translate(104 132)"><rect class="o" x="0" y="18" width="52" height="28"/><rect class="moss" x="8" y="22" width="36" height="20"/><rect class="o" x="16" y="6" width="20" height="20"/><rect class="cyan" x="20" y="10" width="12" height="8"/></g>
+    <rect class="o" x="58" y="116" width="20" height="8"/><rect class="o" x="178" y="106" width="22" height="8"/><rect class="o" x="88" y="188" width="24" height="8"/>
+  </g>
+  <g id="enemy_shellback" transform="translate(256 512)">
+    <rect class="o" x="54" y="108" width="148" height="74"/><rect class="dark" x="62" y="116" width="132" height="58"/>
+    <polygon class="o" points="72,112 92,68 164,58 190,108 174,162 88,162"/>
+    <polygon class="stone2" points="84,110 100,78 156,70 178,108 164,150 96,150"/>
+    <rect class="copper" x="112" y="82" width="16" height="60"/><rect class="copper" x="144" y="78" width="14" height="62"/>
+    <rect class="o" x="184" y="122" width="38" height="34"/><rect class="skin" x="190" y="128" width="24" height="22"/><rect class="violet" x="206" y="132" width="8" height="8"/>
+    <rect class="o" x="68" y="174" width="30" height="22"/><rect class="o" x="158" y="174" width="30" height="22"/>
+  </g>
+  <g id="enemy_bog_colossus" transform="translate(512 512)">
+    <rect class="o" x="88" y="42" width="80" height="66"/><rect class="skin" x="98" y="52" width="60" height="46"/>
+    <polygon class="o" points="72,104 184,104 204,194 166,222 88,218 52,188"/>
+    <polygon class="dark" points="82,114 174,114 190,186 158,208 96,204 66,180"/>
+    <rect class="moss" x="92" y="126" width="72" height="54"/><rect class="mud" x="108" y="142" width="40" height="52"/>
+    <polygon class="o" points="64,118 24,162 40,198 82,164"/><polygon class="skin" points="62,132 36,164 46,184 76,158"/>
+    <polygon class="o" points="184,118 232,154 220,194 174,164"/><polygon class="skin" points="188,132 218,158 210,182 180,158"/>
+    <rect class="violet" x="108" y="68" width="12" height="10"/><rect class="violet" x="140" y="68" width="12" height="10"/>
+    <rect class="cyan" x="72" y="92" width="16" height="8"/><rect class="copper" x="168" y="92" width="18" height="10"/>
+  </g>
+
+  <!-- row 4: M1 enemy silhouettes. Shape and proportion remain readable without colour. -->
+  <g id="enemy_swamp_larva" transform="translate(0 768)">
+    <polygon class="o" points="54,142 78,116 164,116 202,138 178,164 76,164"/>
+    <polygon class="moss" points="66,142 86,124 158,124 188,140 170,156 82,156"/>
+    <rect class="o" x="82" y="92" width="30" height="28"/><rect class="skin" x="88" y="98" width="18" height="16"/>
+    <rect class="o" x="150" y="98" width="30" height="24"/><rect class="skin" x="156" y="104" width="18" height="12"/>
+    <rect class="o" x="78" y="80" width="8" height="20"/><rect class="o" x="174" y="82" width="8" height="20"/>
+    <rect class="violet" x="96" y="132" width="10" height="8"/><rect class="violet" x="150" y="132" width="10" height="8"/>
+    <rect class="o" x="48" y="166" width="34" height="8"/><rect class="o" x="170" y="166" width="36" height="8"/>
+  </g>
+  <g id="enemy_bile_corpse" transform="translate(256 768)">
+    <rect class="o" x="100" y="44" width="56" height="54"/><rect class="skin" x="108" y="52" width="40" height="38"/>
+    <polygon class="o" points="78,94 178,94 196,184 164,216 88,212 62,178"/>
+    <polygon class="moss" points="88,104 168,104 184,176 156,204 96,200 74,172"/>
+    <rect class="o" x="96" y="118" width="64" height="72"/><rect class="mud" x="104" y="126" width="48" height="56"/>
+    <polygon class="o" points="128,128 160,150 156,186 128,202 96,186 92,150"/>
+    <polygon class="skin" points="128,138 150,154 146,178 128,190 106,178 102,154"/>
+    <rect class="violet" x="116" y="64" width="8" height="8"/><rect class="violet" x="136" y="64" width="8" height="8"/>
+    <rect class="o" x="50" y="108" width="28" height="66"/><rect class="skin" x="58" y="116" width="12" height="50"/>
+    <rect class="o" x="178" y="108" width="28" height="66"/><rect class="skin" x="186" y="116" width="12" height="50"/>
+  </g>
+  <g id="enemy_mud_armored_guard" transform="translate(512 768)">
+    <polygon class="o" points="90,42 166,42 190,92 174,134 82,134 66,92"/>
+    <polygon class="stone2" points="100,52 156,52 178,94 164,124 92,124 78,94"/>
+    <polygon class="o" points="58,124 198,124 214,202 174,230 82,230 42,200"/>
+    <polygon class="dark" points="70,134 186,134 200,194 164,218 90,218 56,194"/>
+    <polygon class="stone" points="92,126 164,126 184,164 166,202 90,202 72,164"/>
+    <rect class="copper" x="114" y="132" width="12" height="62"/><rect class="copper" x="136" y="132" width="12" height="62"/>
+    <polygon class="o" points="34,132 82,118 94,204 44,218"/><polygon class="stone2" points="44,140 74,132 84,194 52,204"/>
+    <rect class="violet" x="110" y="76" width="10" height="8"/><rect class="violet" x="138" y="76" width="10" height="8"/>
+  </g>
+  <g id="enemy_waterveil_acolyte" transform="translate(768 768)">
+    <polygon class="o" points="128,32 182,96 164,132 92,132 74,96"/>
+    <polygon class="ice" points="128,46 168,98 154,120 102,120 88,98"/>
+    <rect class="o" x="110" y="70" width="36" height="38"/><rect class="skin" x="118" y="78" width="20" height="22"/>
+    <polygon class="o" points="74,124 182,124 210,222 164,236 92,236 46,222"/>
+    <polygon class="cyan" points="84,134 172,134 194,214 156,226 100,226 62,214"/>
+    <polygon class="o" points="96,140 160,140 178,204 146,216 110,216 78,204"/>
+    <polygon class="ice" points="106,148 150,148 166,198 142,206 114,206 90,198"/>
+    <rect class="violet" x="120" y="86" width="7" height="7"/><rect class="violet" x="132" y="86" width="7" height="7"/>
+    <rect class="o" x="38" y="148" width="42" height="10"/><rect class="o" x="176" y="148" width="42" height="10"/>
+  </g>
+
+  <!-- row 5: bounded M1 split children -->
+  <g id="enemy_bile_spore" transform="translate(0 1024)">
+    <polygon class="o" points="128,78 150,102 182,96 178,128 204,150 174,164 170,198 138,188 112,210 96,178 58,176 74,146 56,118 90,108 96,78"/>
+    <polygon class="moss" points="128,90 144,110 170,106 166,132 190,150 162,158 158,186 136,178 114,196 102,168 70,166 86,144 70,122 100,116 106,90"/>
+    <rect class="violet" x="108" y="132" width="10" height="9"/><rect class="violet" x="140" y="132" width="10" height="9"/>
+  </g>
+  <g id="enemy_sporebrood_child" transform="translate(256 1024)">
+    <polygon class="o" points="128,62 148,100 188,92 178,130 210,154 172,170 164,208 130,190 96,212 88,174 48,164 78,136 64,96 104,104"/>
+    <polygon class="violet" points="128,78 142,110 174,104 164,136 192,154 158,164 152,194 130,178 104,198 100,166 64,158 92,136 80,110 110,116"/>
+    <rect class="ice" x="108" y="136" width="10" height="9"/><rect class="ice" x="140" y="136" width="10" height="9"/>
+  </g>
+</svg>

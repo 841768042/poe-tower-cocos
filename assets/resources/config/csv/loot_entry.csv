@@ -1,0 +1,3 @@
+"lootTableId:string:key","entryId:string:key","rewardKind:string","rewardId:string","weight:float","quantityMin:int","quantityMax:int","enabledInSlice:bool"
+"掉落表标识","条目标识","奖励类别","奖励稳定标识","权重","最小数量","最大数量","本切片启用"
+"loot_default_equipment","entry_copper_conductor_rod","ItemBase","item_copper_conductor_rod","2","1","1","true"

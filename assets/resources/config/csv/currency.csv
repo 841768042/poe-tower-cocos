@@ -1,0 +1,5 @@
+﻿"id:string:key","effectText:string","initialAmount:int"
+"","通货效果说明","新档案初始持有数量"
+"currency_reroll_values","重随机现有词条数值","2"
+"currency_replace_affix","事务性替换一条合法词条","1"
+"currency_respec_talent","退还一个不破坏连通性的天赋","1"

@@ -1,0 +1,38 @@
+{
+  "Normal": {
+    "rarity": "Normal",
+    "prefixMax": 0,
+    "suffixMax": 0,
+    "itemAffixTotalMin": 0,
+    "itemAffixTotalMax": 0,
+    "qualityUpgradeWeight": 70.0,
+    "enabledInSlice": true
+  },
+  "Magic": {
+    "rarity": "Magic",
+    "prefixMax": 1,
+    "suffixMax": 1,
+    "itemAffixTotalMin": 1,
+    "itemAffixTotalMax": 2,
+    "qualityUpgradeWeight": 30.0,
+    "enabledInSlice": true
+  },
+  "Rare": {
+    "rarity": "Rare",
+    "prefixMax": 3,
+    "suffixMax": 3,
+    "itemAffixTotalMin": 1,
+    "itemAffixTotalMax": 6,
+    "qualityUpgradeWeight": 0.0,
+    "enabledInSlice": false
+  },
+  "Unique": {
+    "rarity": "Unique",
+    "prefixMax": 0,
+    "suffixMax": 0,
+    "itemAffixTotalMin": 0,
+    "itemAffixTotalMax": 0,
+    "qualityUpgradeWeight": 0.0,
+    "enabledInSlice": false
+  }
+}

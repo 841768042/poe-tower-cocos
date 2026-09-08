@@ -1,0 +1,20 @@
+{
+    "default":  {
+                    "id":  "default",
+                    "maximumActiveCells":  48,
+                    "tickInterval":  8,
+                    "burningDps":  6.25,
+                    "chillPulseSeconds":  0.3,
+                    "chillMinimumSlow":  0.2,
+                    "shockPulseSeconds":  0.3,
+                    "shallowWaterChillDurationMultiplier":  1.5,
+                    "shallowWaterShockSpreadCells":  2,
+                    "thunderstormDurationSeconds":  4,
+                    "thunderstormDamageTakenMultiplier":  0.1,
+                    "chilledGroundDurationSeconds":  5,
+                    "visualCellScale":  0.42,
+                    "burningColor":  "#ff611f3d",
+                    "chilledColor":  "#4dbfff3d",
+                    "shockedColor":  "#b861ff3d"
+                }
+}

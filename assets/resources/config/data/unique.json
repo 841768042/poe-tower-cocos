@@ -1,0 +1,16 @@
+{
+  "unique_storm_architect_gloves": {
+    "id": "unique_storm_architect_gloves",
+    "displayName": "风暴建筑师手套",
+    "slot": "Hands",
+    "itemBaseId": "item_architect_work_gloves",
+    "effectText": "雷暴感电地面范围 +1 格；雷暴间隔 +25%"
+  },
+  "unique_marsh_conduit_amulet": {
+    "id": "unique_marsh_conduit_amulet",
+    "displayName": "沼泽导流护符",
+    "slot": "Amulet",
+    "itemBaseId": "item_marsh_charm",
+    "effectText": "浅水感电地面额外扩散 1 格；非浅水持续 -30%"
+  }
+}

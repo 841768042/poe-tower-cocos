@@ -1,0 +1,60 @@
+{
+  "1": {
+    "item_marsh_surveyor_hood": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "item_marsh_surveyor_hood",
+      "targetItemBaseId": "item_marsh_surveyor_hood",
+      "targetRarity": "Normal",
+      "targetSlot": "Head"
+    },
+    "item_reinforced_field_coat": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "item_reinforced_field_coat",
+      "targetItemBaseId": "item_reinforced_field_coat",
+      "targetRarity": "Normal",
+      "targetSlot": "Body"
+    },
+    "item_architect_work_gloves": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "item_architect_work_gloves",
+      "targetItemBaseId": "item_architect_work_gloves",
+      "targetRarity": "Normal",
+      "targetSlot": "Hands"
+    },
+    "item_waders_of_haste": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "item_waders_of_haste",
+      "targetItemBaseId": "item_waders_of_haste",
+      "targetRarity": "Normal",
+      "targetSlot": "Feet"
+    },
+    "item_copper_conductor_rod": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "item_copper_conductor_rod",
+      "targetItemBaseId": "item_copper_conductor_rod",
+      "targetRarity": "Normal",
+      "targetSlot": "MainTool"
+    },
+    "item_marsh_charm": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "item_marsh_charm",
+      "targetItemBaseId": "item_marsh_charm",
+      "targetRarity": "Normal",
+      "targetSlot": "Amulet"
+    },
+    "unique_storm_architect_gloves": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "unique_storm_architect_gloves",
+      "targetItemBaseId": "item_architect_work_gloves",
+      "targetRarity": "Normal",
+      "targetSlot": "Hands"
+    },
+    "unique_marsh_conduit_amulet": {
+      "migrationVersion": 1,
+      "legacyDefinitionId": "unique_marsh_conduit_amulet",
+      "targetItemBaseId": "item_marsh_charm",
+      "targetRarity": "Normal",
+      "targetSlot": "Amulet"
+    }
+  }
+}

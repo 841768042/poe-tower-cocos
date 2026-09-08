@@ -1,0 +1,302 @@
+{
+    "support_rapid_cycle":  {
+                                "id":  "support_rapid_cycle",
+                                "towerId":  "tower_static_needle",
+                                "effectText":  "释放更快 · 单次伤害降低"
+                            },
+    "support_deep_conduction":  {
+                                    "id":  "support_deep_conduction",
+                                    "towerId":  "tower_static_needle",
+                                    "effectText":  "感电积累提高 · 射程缩短"
+                                },
+    "support_twin_target":  {
+                                "id":  "support_twin_target",
+                                "towerId":  "tower_static_needle",
+                                "effectText":  "额外目标 · 单目标积累降低"
+                            },
+    "support_unshocked_tracking":  {
+                                       "id":  "support_unshocked_tracking",
+                                       "towerId":  "tower_static_needle",
+                                       "effectText":  "优先未感电目标并强化积累"
+                                   },
+    "support_long_range":  {
+                               "id":  "support_long_range",
+                               "towerId":  "tower_static_needle",
+                               "effectText":  "射程提高 · 伤害降低"
+                           },
+    "support_stunning_spark":  {
+                                   "id":  "support_stunning_spark",
+                                   "towerId":  "tower_static_needle",
+                                   "effectText":  "命中附加眩晕积累 · 间隔增加"
+                               },
+    "support_wet_conductor":  {
+                                  "id":  "support_wet_conductor",
+                                  "towerId":  "tower_static_needle",
+                                  "effectText":  "对潮湿目标强化感电积累"
+                              },
+    "support_focused_needle":  {
+                                   "id":  "support_focused_needle",
+                                   "towerId":  "tower_static_needle",
+                                   "effectText":  "单目标伤害提高 · 感电积累降低"
+                               },
+    "support_aftershock":  {
+                               "id":  "support_aftershock",
+                               "towerId":  "tower_static_needle",
+                               "effectText":  "命中感电目标时震击同格敌人"
+                           },
+    "support_ground_pin":  {
+                               "id":  "support_ground_pin",
+                               "towerId":  "tower_static_needle",
+                               "effectText":  "周期生成感电地面 · 伤害降低"
+                           },
+    "support_extra_chain":  {
+                                "id":  "support_extra_chain",
+                                "towerId":  "tower_arc",
+                                "effectText":  "连锁 +1 · 每跳衰减增加"
+                            },
+    "support_return_arc":  {
+                               "id":  "support_return_arc",
+                               "towerId":  "tower_arc",
+                               "effectText":  "末跳返回首目标造成额外伤害"
+                           },
+    "support_shock_seeker":  {
+                                 "id":  "support_shock_seeker",
+                                 "towerId":  "tower_arc",
+                                 "effectText":  "对已感电目标提高伤害"
+                             },
+    "support_water_conduction":  {
+                                     "id":  "support_water_conduction",
+                                     "towerId":  "tower_arc",
+                                     "effectText":  "潮湿目标之间连锁距离提高"
+                                 },
+    "support_arc_speed":  {
+                              "id":  "support_arc_speed",
+                              "towerId":  "tower_arc",
+                              "effectText":  "释放更快 · 单次伤害降低"
+                          },
+    "support_first_strike":  {
+                                 "id":  "support_first_strike",
+                                 "towerId":  "tower_arc",
+                                 "effectText":  "首目标伤害提高 · 后续跳跃降低"
+                             },
+    "support_equalized_arc":  {
+                                  "id":  "support_equalized_arc",
+                                  "towerId":  "tower_arc",
+                                  "effectText":  "移除跳跃衰减 · 基础伤害降低"
+                              },
+    "support_arc_stun":  {
+                             "id":  "support_arc_stun",
+                             "towerId":  "tower_arc",
+                             "effectText":  "每跳增加眩晕积累 · 连锁 -1"
+                         },
+    "support_ground_jump":  {
+                                "id":  "support_ground_jump",
+                                "towerId":  "tower_arc",
+                                "effectText":  "感电地面目标可提供额外跳跃"
+                            },
+    "support_arc_spread":  {
+                               "id":  "support_arc_spread",
+                               "towerId":  "tower_arc",
+                               "effectText":  "优先未命中目标，强化覆盖"
+                           },
+    "support_wide_storm":  {
+                               "id":  "support_wide_storm",
+                               "towerId":  "tower_thunderstorm",
+                               "effectText":  "范围提高 · 伤害降低"
+                           },
+    "support_lingering_field":  {
+                                    "id":  "support_lingering_field",
+                                    "towerId":  "tower_thunderstorm",
+                                    "effectText":  "感电地面持续时间提高"
+                                },
+    "support_conserve_shock":  {
+                                   "id":  "support_conserve_shock",
+                                   "towerId":  "tower_thunderstorm",
+                                   "effectText":  "不消耗感电 · 失去消费爆发"
+                               },
+    "support_thunder_stun":  {
+                                 "id":  "support_thunder_stun",
+                                 "towerId":  "tower_thunderstorm",
+                                 "effectText":  "大量眩晕积累 · 释放间隔增加"
+                             },
+    "support_fast_storm":  {
+                               "id":  "support_fast_storm",
+                               "towerId":  "tower_thunderstorm",
+                               "effectText":  "释放更快 · 单次伤害降低"
+                           },
+    "support_concentrated_storm":  {
+                                       "id":  "support_concentrated_storm",
+                                       "towerId":  "tower_thunderstorm",
+                                       "effectText":  "范围缩小 · 伤害显著提高"
+                                   },
+    "support_wet_storm":  {
+                              "id":  "support_wet_storm",
+                              "towerId":  "tower_thunderstorm",
+                              "effectText":  "对潮湿目标提高伤害"
+                          },
+    "support_delayed_thunder":  {
+                                    "id":  "support_delayed_thunder",
+                                    "towerId":  "tower_thunderstorm",
+                                    "effectText":  "增加前摇 · 提高爆发伤害"
+                                },
+    "support_field_pulse":  {
+                                "id":  "support_field_pulse",
+                                "towerId":  "tower_thunderstorm",
+                                "effectText":  "感电地面周期造成伤害"
+                            },
+    "support_chain_lightning_strike":  {
+                                           "id":  "support_chain_lightning_strike",
+                                           "towerId":  "tower_thunderstorm",
+                                           "effectText":  "消费感电后震击邻近目标"
+                                       },
+    "support_aura_radius":  {
+                                "id":  "support_aura_radius",
+                                "towerId":  "tower_voltage_aura",
+                                "effectText":  "光环半径提高 · 效果降低"
+                            },
+    "support_aura_focus":  {
+                               "id":  "support_aura_focus",
+                               "towerId":  "tower_voltage_aura",
+                               "effectText":  "光环半径缩小 · 效果提高"
+                           },
+    "support_aura_speed":  {
+                               "id":  "support_aura_speed",
+                               "towerId":  "tower_voltage_aura",
+                               "effectText":  "受益塔获得额外释放速度"
+                           },
+    "support_aura_buildup":  {
+                                 "id":  "support_aura_buildup",
+                                 "towerId":  "tower_voltage_aura",
+                                 "effectText":  "受益塔获得额外感电积累"
+                             },
+    "support_aura_ground":  {
+                                "id":  "support_aura_ground",
+                                "towerId":  "tower_voltage_aura",
+                                "effectText":  "受益塔生成的地面持续更久"
+                            },
+    "support_aura_adjacent":  {
+                                  "id":  "support_aura_adjacent",
+                                  "towerId":  "tower_voltage_aura",
+                                  "effectText":  "四向相邻塔获得额外效果"
+                              },
+    "support_aura_wet":  {
+                             "id":  "support_aura_wet",
+                             "towerId":  "tower_voltage_aura",
+                             "effectText":  "软土或邻水时提高光环效果"
+                         },
+    "support_aura_cost":  {
+                              "id":  "support_aura_cost",
+                              "towerId":  "tower_voltage_aura",
+                              "effectText":  "降低建造费 · 光环效果降低"
+                          },
+    "support_aura_chain":  {
+                               "id":  "support_aura_chain",
+                               "towerId":  "tower_voltage_aura",
+                               "effectText":  "电弧连锁 +1 · 其他效果降低"
+                           },
+    "support_aura_single_school":  {
+                                       "id":  "support_aura_single_school",
+                                       "towerId":  "tower_voltage_aura",
+                                       "effectText":  "只影响闪电塔 · 效果提高"
+                                   },
+    "support_wall_duration":  {
+                                  "id":  "support_wall_duration",
+                                  "towerId":  "tower_frost_barrier",
+                                  "effectText":  "冰墙持续时间提高"
+                              },
+    "support_wall_cooldown":  {
+                                  "id":  "support_wall_cooldown",
+                                  "towerId":  "tower_frost_barrier",
+                                  "effectText":  "冷却恢复提高 · 墙持续降低"
+                              },
+    "support_chilled_ground_duration":  {
+                                            "id":  "support_chilled_ground_duration",
+                                            "towerId":  "tower_frost_barrier",
+                                            "effectText":  "冰缓地面持续时间提高"
+                                        },
+    "support_chilled_ground_slow":  {
+                                        "id":  "support_chilled_ground_slow",
+                                        "towerId":  "tower_frost_barrier",
+                                        "effectText":  "冰缓更强 · 持续时间降低"
+                                    },
+    "support_wall_chill":  {
+                               "id":  "support_wall_chill",
+                               "towerId":  "tower_frost_barrier",
+                               "effectText":  "冰墙相邻格持续施加冰缓"
+                           },
+    "support_wall_shatter":  {
+                                 "id":  "support_wall_shatter",
+                                 "towerId":  "tower_frost_barrier",
+                                 "effectText":  "冰墙到期造成冰冷伤害"
+                             },
+    "support_water_freeze_buildup":  {
+                                         "id":  "support_water_freeze_buildup",
+                                         "towerId":  "tower_frost_barrier",
+                                         "effectText":  "浅水冰缓地面增加冻结积累"
+                                     },
+    "support_barrier_range":  {
+                                  "id":  "support_barrier_range",
+                                  "towerId":  "tower_frost_barrier",
+                                  "effectText":  "冰墙可指定距离提高"
+                              },
+    "support_barrier_aura":  {
+                                 "id":  "support_barrier_aura",
+                                 "towerId":  "tower_frost_barrier",
+                                 "effectText":  "周围友塔的控制积累提高"
+                             },
+    "support_short_wall":  {
+                               "id":  "support_short_wall",
+                               "towerId":  "tower_frost_barrier",
+                               "effectText":  "墙持续缩短 · 冷却恢复大幅提高"
+                           },
+    "support_taunt_radius":  {
+                                 "id":  "support_taunt_radius",
+                                 "towerId":  "tower_taunt_totem",
+                                 "effectText":  "嘲讽作用半径提高"
+                             },
+    "support_taunt_duration":  {
+                                   "id":  "support_taunt_duration",
+                                   "towerId":  "tower_taunt_totem",
+                                   "effectText":  "嘲讽更久 · 脉冲间隔增加"
+                               },
+    "support_taunt_pulse":  {
+                                "id":  "support_taunt_pulse",
+                                "towerId":  "tower_taunt_totem",
+                                "effectText":  "脉冲更快 · 嘲讽持续降低"
+                            },
+    "support_taunt_slow":  {
+                               "id":  "support_taunt_slow",
+                               "towerId":  "tower_taunt_totem",
+                               "effectText":  "被嘲讽目标受到额外减速"
+                           },
+    "support_taunt_stun":  {
+                               "id":  "support_taunt_stun",
+                               "towerId":  "tower_taunt_totem",
+                               "effectText":  "首次嘲讽增加眩晕积累"
+                           },
+    "support_taunt_wet":  {
+                              "id":  "support_taunt_wet",
+                              "towerId":  "tower_taunt_totem",
+                              "effectText":  "潮湿目标的嘲讽持续更久"
+                          },
+    "support_totem_duration":  {
+                                   "id":  "support_totem_duration",
+                                   "towerId":  "tower_taunt_totem",
+                                   "effectText":  "图腾部署持续时间提高"
+                               },
+    "support_totem_redeploy":  {
+                                   "id":  "support_totem_redeploy",
+                                   "towerId":  "tower_taunt_totem",
+                                   "effectText":  "重新部署更快 · 脉冲间隔增加"
+                               },
+    "support_taunt_exposure":  {
+                                   "id":  "support_taunt_exposure",
+                                   "towerId":  "tower_taunt_totem",
+                                   "effectText":  "被嘲讽目标承受更多闪电伤害"
+                               },
+    "support_control_aura":  {
+                                 "id":  "support_control_aura",
+                                 "towerId":  "tower_taunt_totem",
+                                 "effectText":  "周围敌人受到更多硬控积累"
+                             }
+}

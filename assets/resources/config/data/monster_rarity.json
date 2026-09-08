@@ -1,0 +1,50 @@
+{
+  "Normal": {
+    "rarity": "Normal",
+    "minimumAffixCount": 0,
+    "maximumAffixCount": 0,
+    "quantityBonus": 0,
+    "qualityBonus": 0,
+    "enabledInSlice": true,
+    "displayName": "普通",
+    "visualColor": "8aa77b",
+    "badgeGlyph": "",
+    "showFixedName": false
+  },
+  "Magic": {
+    "rarity": "Magic",
+    "minimumAffixCount": 1,
+    "maximumAffixCount": 2,
+    "quantityBonus": 0.25,
+    "qualityBonus": 0.25,
+    "enabledInSlice": true,
+    "displayName": "魔法",
+    "visualColor": "4287f5",
+    "badgeGlyph": "◆",
+    "showFixedName": false
+  },
+  "Rare": {
+    "rarity": "Rare",
+    "minimumAffixCount": 3,
+    "maximumAffixCount": 4,
+    "quantityBonus": 0.5,
+    "qualityBonus": 0.5,
+    "enabledInSlice": false,
+    "displayName": "稀有",
+    "visualColor": "f1c94c",
+    "badgeGlyph": "★",
+    "showFixedName": false
+  },
+  "Unique": {
+    "rarity": "Unique",
+    "minimumAffixCount": 0,
+    "maximumAffixCount": 0,
+    "quantityBonus": 0.75,
+    "qualityBonus": 0.75,
+    "enabledInSlice": false,
+    "displayName": "传奇",
+    "visualColor": "b87333",
+    "badgeGlyph": "♛",
+    "showFixedName": true
+  }
+}

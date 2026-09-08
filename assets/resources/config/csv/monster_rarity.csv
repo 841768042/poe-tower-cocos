@@ -1,0 +1,6 @@
+"rarity:string:key","minimumAffixCount:int","maximumAffixCount:int","quantityBonus:float","qualityBonus:float","enabledInSlice:bool","displayName:string","visualColor:string","badgeGlyph:string","showFixedName:bool"
+"品质标识","最少词条数","最多词条数","稀有度数量加成","稀有度品质加成","本切片启用","显示名","表现颜色","非颜色角标","显示固定名字"
+"Normal","0","0","0","0","true","普通","8aa77b","","false"
+"Magic","1","2","0.25","0.25","true","魔法","4287f5","◆","false"
+"Rare","3","4","0.5","0.5","false","稀有","f1c94c","★","false"
+"Unique","0","0","0.75","0.75","false","传奇","b87333","♛","true"

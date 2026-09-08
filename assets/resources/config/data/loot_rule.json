@@ -1,0 +1,13 @@
+{
+  "default": {
+    "id": "default",
+    "lootTableId": "loot_default_equipment",
+    "baseEquipmentDropRate": 0.02,
+    "playerIirQualityScale": 1,
+    "monsterRarityQuantityWeight": 1,
+    "monsterAffixQuantityWeight": 1,
+    "monsterRarityQualityWeight": 1,
+    "monsterAffixQualityWeight": 1,
+    "enabledInSlice": true
+  }
+}

@@ -1,0 +1,3 @@
+﻿"id:string:key","cooldownSeconds:int","durationSeconds:int","globalLimit:int"
+"","冰墙技能冷却时间（秒）","冰墙持续时间（秒）","全场同时存在的冰墙数量上限"
+"default","18","6","2"

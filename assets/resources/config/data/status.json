@@ -1,0 +1,20 @@
+{
+    "default":  {
+                    "id":  "default",
+                    "shockThreshold":  100,
+                    "shockDurationSeconds":  6,
+                    "shockDamageTakenMultiplier":  1.2,
+                    "shockGroundDamageTakenMultiplier":  1.1,
+                    "shockGroundBuildupMultiplier":  1.25,
+                    "freezeThreshold":  100,
+                    "normalFreezeSeconds":  1.5,
+                    "eliteFreezeSeconds":  0.75,
+                    "bossFreezeSeconds":  0.3,
+                    "stunThreshold":  100,
+                    "normalStunSeconds":  1,
+                    "eliteStunSeconds":  0.5,
+                    "bossStunSeconds":  0.2,
+                    "minimumMoveSpeedMultiplier":  0.4,
+                    "bossTauntDurationSeconds":  0.5
+                }
+}

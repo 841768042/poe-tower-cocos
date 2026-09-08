@@ -1,0 +1,362 @@
+{
+  "error_unknown": {
+    "key": "error_unknown",
+    "value": "操作被拒绝：{0}"
+  },
+  "support_fallback": {
+    "key": "support_fallback",
+    "value": "改变该塔的技能行为"
+  },
+  "build_intro": {
+    "key": "build_intro",
+    "value": "点击“建造”查看可建造位置；先布置塔阵，再开始波次"
+  },
+  "build_mode": {
+    "key": "build_mode",
+    "value": "选择塔种并点击高亮格；成功建造后自动收起"
+  },
+  "build_cancelled": {
+    "key": "build_cancelled",
+    "value": "已退出建造模式"
+  },
+  "ice_wall_armed": {
+    "key": "ice_wall_armed",
+    "value": "冰墙放置：点击上方战区格；网格高亮仅用于路径构造"
+  },
+  "support_slots": {
+    "key": "support_slots",
+    "value": "{0} · 辅助宝石 {1}/{2}（单塔独立）"
+  },
+  "tower_palette_entry": {
+    "key": "tower_palette_entry",
+    "value": "{0}\n{1} · {2} 金币 · 范围 {3:0}"
+  },
+  "tower_tooltip": {
+    "key": "tower_tooltip",
+    "value": "射程 {0:0.0} 格 · {1}"
+  },
+  "build_action": {
+    "key": "build_action",
+    "value": "建造"
+  },
+  "build_cancel_action": {
+    "key": "build_cancel_action",
+    "value": "取消建造"
+  },
+  "wave_summary": {
+    "key": "wave_summary",
+    "value": "第 {0}/{1} 波摘要 · {2}"
+  },
+  "wave_started": {
+    "key": "wave_started",
+    "value": "第 {0}/{1} 波开始"
+  },
+  "wave_completed": {
+    "key": "wave_completed",
+    "value": "第 {0} 波完成 · 点击建造调整塔阵"
+  },
+  "sell_confirmation": {
+    "key": "sell_confirmation",
+    "value": "出售当前塔？将返还 {0} 金币。"
+  },
+  "pause_action": {
+    "key": "pause_action",
+    "value": "暂停"
+  },
+  "resume_action": {
+    "key": "resume_action",
+    "value": "继续"
+  },
+  "tower_selected": {
+    "key": "tower_selected",
+    "value": "已选择 {0} · 点击合法格建造"
+  },
+  "built_tower_selected": {
+    "key": "built_tower_selected",
+    "value": "{0} Lv.{1} · 操作已锚定到该塔"
+  },
+  "tower_built": {
+    "key": "tower_built",
+    "value": "建造完成：格 ({0}, {1}) · 网格已收起"
+  },
+  "tower_upgraded": {
+    "key": "tower_upgraded",
+    "value": "威力升级至 Lv.{0}，下一次释放开始生效"
+  },
+  "tower_sold": {
+    "key": "tower_sold",
+    "value": "塔已出售，返还 {0} 金币"
+  },
+  "support_installed": {
+    "key": "support_installed",
+    "value": "已安装 {0} Lv.{1}"
+  },
+  "support_upgraded": {
+    "key": "support_upgraded",
+    "value": "{0} 已升级至 Lv.{1}"
+  },
+  "ice_wall_placed": {
+    "key": "ice_wall_placed",
+    "value": "冰墙已放置于 ({0}, {1})，敌人将沿替代路线绕行"
+  },
+  "ice_wall_rejected": {
+    "key": "ice_wall_rejected",
+    "value": "冰墙未放置：{0} · 可继续选择其他格"
+  },
+  "resource_status": {
+    "key": "resource_status",
+    "value": "城墙 {0:0}/{1:0}    金币 {2}    敌人 {3}"
+  },
+  "wave_phase": {
+    "key": "wave_phase",
+    "value": "波次 {0}/{1}    {2}"
+  },
+  "start_wave": {
+    "key": "start_wave",
+    "value": "开始波次"
+  },
+  "continue_wave": {
+    "key": "continue_wave",
+    "value": "继续下一波"
+  },
+  "speed_multiplier": {
+    "key": "speed_multiplier",
+    "value": "{0}×"
+  },
+  "status_taunted": {
+    "key": "status_taunted",
+    "value": "◎ 嘲讽"
+  },
+  "status_chilled": {
+    "key": "status_chilled",
+    "value": "❄ 冰缓"
+  },
+  "status_shocked": {
+    "key": "status_shocked",
+    "value": "⚡ 感电"
+  },
+  "status_shock_buildup": {
+    "key": "status_shock_buildup",
+    "value": "⚡ {0:0}%"
+  },
+  "tower_title": {
+    "key": "tower_title",
+    "value": "{0}  ·  威力 Lv.{1}"
+  },
+  "tower_stats": {
+    "key": "tower_stats",
+    "value": "{0}  |  射程 {1:0.0} 格  |  辅助 {2}/{3}"
+  },
+  "power_max": {
+    "key": "power_max",
+    "value": "威力已满"
+  },
+  "upgrade_short": {
+    "key": "upgrade_short",
+    "value": "升级 {0}"
+  },
+  "support_short": {
+    "key": "support_short",
+    "value": "辅助 {0}/{1}"
+  },
+  "sell_short": {
+    "key": "sell_short",
+    "value": "出售 +{0}"
+  },
+  "upgrade_max_description": {
+    "key": "upgrade_max_description",
+    "value": "该塔已经达到威力上限 Lv.{0}。"
+  },
+  "upgrade_description": {
+    "key": "upgrade_description",
+    "value": "威力 Lv.{0} → Lv.{1}\n基础伤害/核心效果约 +{2}%\n实际费用：{3} 金币；从下一次技能释放开始生效。"
+  },
+  "upgrade_confirm": {
+    "key": "upgrade_confirm",
+    "value": "确认升级 · {0} 金币"
+  },
+  "max_level": {
+    "key": "max_level",
+    "value": "已达上限"
+  },
+  "support_max": {
+    "key": "support_max",
+    "value": "已满级"
+  },
+  "support_install_entry": {
+    "key": "support_install_entry",
+    "value": "＋ {0}    安装 {1} 金币\n{2}"
+  },
+  "support_upgrade_entry": {
+    "key": "support_upgrade_entry",
+    "value": "◆ {0} Lv.{1}    {2}\n{3}"
+  },
+  "support_upgrade_cost": {
+    "key": "support_upgrade_cost",
+    "value": "升级 {0} 金币"
+  },
+  "victory_title": {
+    "key": "victory_title",
+    "value": "沼泽防线守住了"
+  },
+  "defeat_title": {
+    "key": "defeat_title",
+    "value": "筑界城墙失守"
+  },
+  "profile_reset": {
+    "key": "profile_reset",
+    "value": "DEMO 档案已重置并保存"
+  },
+  "talent_allocated": {
+    "key": "talent_allocated",
+    "value": "天赋已分配并写入档案"
+  },
+  "talent_error": {
+    "key": "talent_error",
+    "value": "无法分配：{0}"
+  },
+  "talent_entry": {
+    "key": "talent_entry",
+    "value": "{0} {1} — {2}"
+  },
+  "profile_summary": {
+    "key": "profile_summary",
+    "value": "建筑师 Lv.{0}  ·  可用天赋点 {1}\n{2}"
+  },
+  "result_victory": {
+    "key": "result_victory",
+    "value": "完成 {0} 波 · 城墙剩余 {1}/{2}\n临时战利品已提交至据点"
+  },
+  "result_defeat": {
+    "key": "result_defeat",
+    "value": "失败于第 {0} 波 · 城墙生命归零\n本局临时战利品已丢失，永久资产不受影响"
+  },
+  "wave_preview_title": {
+    "key": "wave_preview_title",
+    "value": "第 {0} 波 · {1}"
+  },
+  "wave_preview_totals": {
+    "key": "wave_preview_totals",
+    "value": "共 {0} 名敌人 · {1} 个入口 · 约 {2:0.##} 秒出完 · 理论金币 {3}"
+  },
+  "wave_group_entry": {
+    "key": "wave_group_entry",
+    "value": "{0}｜{1} ×{2} · 生命 {3:0} · 速度 {4:0}{5} · {6:0.#}s 起 · 每 {7:0.##}s"
+  },
+  "wave_group_resist": {
+    "key": "wave_group_resist",
+    "value": "　抗电 {0:0}%"
+  },
+  "wave_group_special": {
+    "key": "wave_group_special",
+    "value": "\n　◆ {0} {1} · {2}"
+  },
+  "wave_group_m1_detail": {
+    "key": "wave_group_m1_detail",
+    "value": "\n　职责：{0} · 机制：{1}\n　目标优先级 {2}（越高越先）：{3}"
+  },
+  "wave_entrance_label": {
+    "key": "wave_entrance_label",
+    "value": "入口{0}"
+  },
+  "wave_threat_line": {
+    "key": "wave_threat_line",
+    "value": "威胁：{0}"
+  },
+  "wave_panel_close": {
+    "key": "wave_panel_close",
+    "value": "关闭"
+  },
+  "wave_start_next": {
+    "key": "wave_start_next",
+    "value": "开始第 {0} 波"
+  },
+  "threat_dual": {
+    "key": "threat_dual",
+    "value": "双路"
+  },
+  "threat_many": {
+    "key": "threat_many",
+    "value": "数量多"
+  },
+  "threat_dense": {
+    "key": "threat_dense",
+    "value": "密集"
+  },
+  "threat_fast": {
+    "key": "threat_fast",
+    "value": "高速"
+  },
+  "threat_durable": {
+    "key": "threat_durable",
+    "value": "高耐久"
+  },
+  "threat_antilightning": {
+    "key": "threat_antilightning",
+    "value": "抗电"
+  },
+  "threat_siege": {
+    "key": "threat_siege",
+    "value": "持续攻城"
+  },
+  "threat_boss": {
+    "key": "threat_boss",
+    "value": "首领"
+  },
+  "wave_hint_default": {
+    "key": "wave_hint_default",
+    "value": "观察敌人构成与路线，规划你的塔阵"
+  },
+  "wave_hint_dual": {
+    "key": "wave_hint_dual",
+    "value": "敌人分两路入场，注意两侧防线"
+  },
+  "wave_hint_dense": {
+    "key": "wave_hint_dense",
+    "value": "短间隔大量刷新，范围清杂更有效"
+  },
+  "wave_hint_fast": {
+    "key": "wave_hint_fast",
+    "value": "高速敌人会快速贴近城墙"
+  },
+  "wave_hint_durable": {
+    "key": "wave_hint_durable",
+    "value": "敌人耐久较高，注意持续输出"
+  },
+  "wave_hint_antilightning": {
+    "key": "wave_hint_antilightning",
+    "value": "部分敌人对闪电有抗性，注意非电系手段"
+  },
+  "wave_hint_boss": {
+    "key": "wave_hint_boss",
+    "value": "首领将长时间攻击城墙"
+  },
+  "build_preview_ok": {
+    "key": "build_preview_ok",
+    "value": "花费 {0} → 剩余 {1} · 范围 {2:0}"
+  },
+  "build_preview_reason": {
+    "key": "build_preview_reason",
+    "value": "无法建造：{0}"
+  },
+  "tower_selected_cost_range": {
+    "key": "tower_selected_cost_range",
+    "value": "已选择 {0} · 费用 {1} · 范围 {2:0} · 点击合法格建造"
+  },
+  "tower_palette_shortfall": {
+    "key": "tower_palette_shortfall",
+    "value": "缺 {0} 金币"
+  },
+  "gold_float_spend": {
+    "key": "gold_float_spend",
+    "value": "-{0} 金币"
+  },
+  "gold_float_gain": {
+    "key": "gold_float_gain",
+    "value": "+{0} 金币"
+  },
+  "upgrade_float": {
+    "key": "upgrade_float",
+    "value": "Lv.{0} → Lv.{1}"
+  }
+}

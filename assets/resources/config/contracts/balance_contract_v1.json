@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "contractId": "swamp_m1_balance_contract_v1",
+  "status": "pending_m1_runtime_measurement",
+  "m0Evidence": {
+    "battleContentHash": "14874089246a1f60d08ef8f66041d56e9c47855fc0417098a78bc976a0480901",
+    "legacyMatrixArtifactHash": "e5ad3b2011e5ed02253eda79d680bf1b41e229df3e47a5f78b88e4b62c9a5ea2",
+    "migratedMatrixArtifactHash": "dd58a658c3e830f84ae9baaad324fe3a3d814f949ca9d75b2c23dc466ec559ff",
+    "distributionHash": "653ddabffbabea8e5b565051fdcbfc8717f4c3a854ac7df6ffc9d90ab0081441",
+    "lowBalanced": { "wave": 3, "tick": 1793, "defeated": 62, "breached": 20, "goldEnd": 220, "investment": 300 },
+    "migrationCompatibility": {
+      "status": "verified_against_migrated_m0_artifacts",
+      "projectionId": "m0_battle_behavior_v1",
+      "semanticProjectionHash": "da82fa0a026c53c3f5582fbf200d4165847148a87886979db547c03d1b7fec3e",
+      "measuredCaseCount": 15,
+      "measuredSensitivityPointCount": 24,
+      "battleContentHash": "14874089246a1f60d08ef8f66041d56e9c47855fc0417098a78bc976a0480901",
+      "lowBalanced": { "wave": 3, "tick": 1793, "defeated": 62, "breached": 20, "goldEnd": 220, "investment": 300 }
+    }
+  },
+  "profiles": [
+    { "id": "low", "equipmentMultiplier": 1.0, "hasTalent": false, "seeds": [51001, 51002, 51003, 51004] },
+    { "id": "target", "equipmentMultiplier": 1.12, "hasTalent": false, "seeds": [52001, 52002, 52003, 52004] },
+    { "id": "high", "equipmentMultiplier": 1.16, "hasTalent": false, "seeds": [53001, 53002, 53003, 53004] }
+  ],
+  "builds": [
+    { "id": "balanced", "investment": 300 },
+    { "id": "shock", "investment": 280 },
+    { "id": "arc", "investment": 240 },
+    { "id": "storm", "investment": 280 },
+    { "id": "control_low", "investment": 250 }
+  ],
+  "enemies": [
+    { "id": "enemy_swamp_larva", "health": 15, "speedPixelsPerSecond": 85, "wallDamage": 2, "gold": 2, "radius": 14, "groupCount": 30, "spawnIntervalSeconds": 0.16, "lightningResistance": 0, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "enemy_bile_corpse", "health": 50, "speedPixelsPerSecond": 70, "wallDamage": 5, "gold": 5, "radius": 25, "lightningResistance": 0, "deathSpawnCount": 2, "spawnChildId": "enemy_bile_spore", "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "enemy_bile_spore", "health": 10, "speedPixelsPerSecond": 95, "wallDamage": 2, "gold": 0, "radius": 14, "lightningResistance": 0, "canDeathSpawn": false, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "enemy_sporebrood_child", "health": 8, "speedPixelsPerSecond": 90, "wallDamage": 1, "gold": 0, "radius": 14, "lightningResistance": 0, "canDeathSpawn": false, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "enemy_mud_armored_guard", "health": 80, "speedPixelsPerSecond": 68, "wallDamage": 8, "gold": 10, "radius": 31, "lightningResistance": 0, "flatDamageReduction": 1.5, "minimumDamageFraction": 0.2, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "enemy_waterveil_acolyte", "health": 55, "speedPixelsPerSecond": 68, "wallDamage": 6, "gold": 7, "radius": 25, "lightningResistance": 0, "shieldMax": 35, "shieldInitial": 35, "shieldRecoveryDelaySeconds": 2.5, "shieldRecoveryPerSecond": 14, "runtimeResultStatus": "pending_m1_runtime_measurement" }
+  ],
+  "affixes": [
+    { "id": "elite_hardened", "rarity": "Magic", "healthIncreased": 0.6, "speedIncreased": -0.1, "incompatibilityGroupId": "elite_defense", "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "elite_swift", "rarity": "Magic", "healthIncreased": -0.1, "speedIncreased": 0.25, "incompatibilityGroupId": "elite_movement", "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "elite_waterveil", "rarity": "Magic", "shieldMax": 25, "shieldRecoveryDelaySeconds": 3, "shieldRecoveryPerSecond": 10, "incompatibilityGroupId": "elite_defense", "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "id": "elite_sporebrood", "rarity": "Magic", "deathSpawnCount": 1, "spawnChildId": "enemy_sporebrood_child", "spawnChildHealth": 8, "spawnChildSpeedPixelsPerSecond": 90, "spawnChildWallDamage": 1, "spawnChildGold": 0, "forbiddenEnemyIds": ["enemy_bile_corpse"], "incompatibilityGroupId": "elite_death", "runtimeResultStatus": "pending_m1_runtime_measurement" }
+  ],
+  "sensitivityAxes": [
+    { "axisId": "larva.count", "baseline": 30, "minusTenPercent": 27, "plusTenPercent": 33, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "larva.health", "baseline": 15, "minusTenPercent": 13.5, "plusTenPercent": 16.5, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "larva.speed", "baseline": 85, "minusTenPercent": 76.5, "plusTenPercent": 93.5, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "bile.child_health", "baseline": 10, "minusTenPercent": 9, "plusTenPercent": 11, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "bile.child_speed", "baseline": 95, "minusTenPercent": 85.5, "plusTenPercent": 104.5, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "bile.parent_health", "baseline": 50, "minusTenPercent": 45, "plusTenPercent": 55, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "armor.health", "baseline": 80, "minusTenPercent": 72, "plusTenPercent": 88, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "armor.speed", "baseline": 68, "minusTenPercent": 61.2, "plusTenPercent": 74.8, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "armor.reduction", "baseline": 1.5, "minusTenPercent": 1.35, "plusTenPercent": 1.65, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "waterveil.shield", "baseline": 35, "minusTenPercent": 31.5, "plusTenPercent": 38.5, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "waterveil.delay", "baseline": 2.5, "minusTenPercent": 2.25, "plusTenPercent": 2.75, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "waterveil.regen", "baseline": 14, "minusTenPercent": 12.6, "plusTenPercent": 15.4, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "hardened.health", "baseline": 0.6, "minusTenPercent": 0.54, "plusTenPercent": 0.66, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "hardened.speed", "baseline": -0.1, "minusTenPercent": -0.09, "plusTenPercent": -0.11, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "swift.health", "baseline": -0.1, "minusTenPercent": -0.09, "plusTenPercent": -0.11, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "swift.speed", "baseline": 0.25, "minusTenPercent": 0.225, "plusTenPercent": 0.275, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "affix_waterveil.shield", "baseline": 25, "minusTenPercent": 22.5, "plusTenPercent": 27.5, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "affix_waterveil.delay", "baseline": 3, "minusTenPercent": 2.7, "plusTenPercent": 3.3, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "affix_waterveil.regen", "baseline": 10, "minusTenPercent": 9, "plusTenPercent": 11, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "sporebrood.child_health", "baseline": 8, "minusTenPercent": 7.2, "plusTenPercent": 8.8, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "sporebrood.child_speed", "baseline": 90, "minusTenPercent": 81, "plusTenPercent": 99, "continuous": true, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+    { "axisId": "sporebrood.child_count_boundary", "baseline": 1, "minusTenPercent": 0, "plusTenPercent": 1, "continuous": false, "runtimeResultStatus": "pending_m1_runtime_measurement" }
+  ],
+  "runtimeAcceptance": {
+    "profileBands": [
+      { "profileId": "low", "counterBuildZeroBreachRequired": true, "fireWindowMarginMin": 0.15, "fireWindowMarginMax": 0.35, "secondLegalBuildZeroBreachRequired": true, "minimumZeroBreachBuilds": 1, "maximumOverallDominance": 0.15, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+      { "profileId": "target", "counterBuildZeroBreachRequired": true, "fireWindowMarginMin": 0.25, "fireWindowMarginMax": 0.45, "secondLegalBuildZeroBreachRequired": false, "minimumZeroBreachBuilds": 2, "maximumOverallDominance": 0.15, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+      { "profileId": "high", "counterBuildZeroBreachRequired": true, "fireWindowMarginMin": 0.30, "fireWindowMarginMax": 0.55, "secondLegalBuildZeroBreachRequired": false, "minimumZeroBreachBuilds": 1, "maximumOverallDominance": 0.15, "runtimeResultStatus": "pending_m1_runtime_measurement" }
+    ],
+    "counterplayCriteria": [
+      { "enemyId": "enemy_swamp_larva", "profileId": "target", "fasterBuildId": "arc", "comparisonBuildId": "storm", "evaluationMode": "both_clear_ratio", "maximumClearTimeRatio": 0.85, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+      { "enemyId": "enemy_bile_corpse", "profileId": "target", "fasterBuildId": "arc", "comparisonBuildId": "shock", "evaluationMode": "both_clear_ratio", "maximumClearTimeRatio": 0.85, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+      { "enemyId": "enemy_mud_armored_guard", "profileId": "target", "fasterBuildId": "storm", "comparisonBuildId": "shock", "evaluationMode": "faster_clear_comparison_breach_or_ratio", "maximumClearTimeRatio": 0.75, "runtimeResultStatus": "pending_m1_runtime_measurement" },
+      { "enemyId": "enemy_waterveil_acolyte", "profileId": "target", "fasterBuildId": "shock", "comparisonBuildId": "storm", "evaluationMode": "both_clear_ratio", "maximumClearTimeRatio": 0.80, "runtimeResultStatus": "pending_m1_runtime_measurement" }
+    ]
+  },
+  "performanceAndReadability": {
+    "activeEnemyCount": 100,
+    "globalLiveChildCap": 32,
+    "logicP95MillisecondsMax": 4,
+    "logicP99MillisecondsMax": 8,
+    "steadyStateAllocationBytesTarget": 0,
+    "minimumNonColorCues": 2,
+    "requiresExactWavePreview": true,
+    "runtimeResultStatus": "pending_m1_runtime_measurement"
+  },
+  "rollback": {
+    "status": "pending_m1_runtime_measurement",
+    "blockers": ["m0_evidence_mismatch", "deterministic_or_config_or_build_failure", "live_child_cap_reached", "recursive_spawn", "nonzero_child_gold", "shield_triggered_death_or_drop", "target_profile_only_one_zero_breach_build", "all_scenario_dominance_over_15_percent", "sensitivity_cliff", "performance_budget_miss"],
+    "initialValuesSource": "this_contract"
+  }
+}

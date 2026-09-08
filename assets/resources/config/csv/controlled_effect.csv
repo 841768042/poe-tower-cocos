@@ -1,0 +1,8 @@
+"id:string:key","operation:string","handlerId:string","targetTagId:string","value:float","active:bool","domain:string"
+"","修正操作","受控处理器","目标标签","效果数值","是否活跃","效果领域"
+"lightning_damage","Increased","increased_lightning_damage","skill.lightning","0","true","equipment"
+"monster_max_health","Increased","monster_max_health","monster.max_health","0.6","true","monster"
+"monster_move_speed","Increased","monster_move_speed","monster.move_speed","-0.1","true","monster"
+"monster_swift_max_health","Increased","monster_max_health","monster.max_health","-0.1","true","monster"
+"monster_swift_move_speed","Increased","monster_move_speed","monster.move_speed","0.25","true","monster"
+"monster_shock_buildup","More","monster_shock_buildup","status.shock_buildup","-0.4","false","monster"

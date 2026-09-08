@@ -1,0 +1,52 @@
+{
+  "demo_default": {
+    "Head": {
+      "profileId": "demo_default",
+      "slot": "Head",
+      "itemBaseId": "item_marsh_surveyor_hood",
+      "rarity": "Normal",
+      "itemLevel": 1,
+      "identified": true
+    },
+    "Body": {
+      "profileId": "demo_default",
+      "slot": "Body",
+      "itemBaseId": "item_reinforced_field_coat",
+      "rarity": "Normal",
+      "itemLevel": 1,
+      "identified": true
+    },
+    "Hands": {
+      "profileId": "demo_default",
+      "slot": "Hands",
+      "itemBaseId": "item_architect_work_gloves",
+      "rarity": "Normal",
+      "itemLevel": 1,
+      "identified": true
+    },
+    "Feet": {
+      "profileId": "demo_default",
+      "slot": "Feet",
+      "itemBaseId": "item_waders_of_haste",
+      "rarity": "Normal",
+      "itemLevel": 1,
+      "identified": true
+    },
+    "MainTool": {
+      "profileId": "demo_default",
+      "slot": "MainTool",
+      "itemBaseId": "item_copper_conductor_rod",
+      "rarity": "Normal",
+      "itemLevel": 1,
+      "identified": true
+    },
+    "Amulet": {
+      "profileId": "demo_default",
+      "slot": "Amulet",
+      "itemBaseId": "item_marsh_charm",
+      "rarity": "Normal",
+      "itemLevel": 1,
+      "identified": true
+    }
+  }
+}

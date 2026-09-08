@@ -1,0 +1,7 @@
+"id:string:key","handlerId:string","targetTagId:string","targetEnemyId:string","spawnEnemyId:string","flatReduction:float","minimumDamageFraction:float","shieldMax:float","shieldRechargeDelaySeconds:float","shieldRechargePerSecond:float","spawnCount:int","activeSpawnCap:int","inheritDeathMechanics:bool","active:bool"
+"","白名单处理器","机制目标标签","基础敌人标识（词条机制为空）","死亡生成子体标识","固定减伤","最低承伤比例","护盾最大值","护盾回充延迟秒数","护盾每秒回充","死亡生成数量","活跃生成物上限","生成物是否继承死亡机制","是否启用"
+"mechanic_bile_corpse_spawn","monster_spawn_on_death","monster.death","enemy_bile_corpse","enemy_bile_spore","0","0","0","0","0","2","32","false","true"
+"mechanic_mud_armored_guard","monster_fixed_damage_reduction","monster.damage_received","enemy_mud_armored_guard","","1.5","0.2","0","0","0","0","0","false","true"
+"mechanic_waterveil_acolyte","monster_shield_layer","monster.shield","enemy_waterveil_acolyte","","0","0","35","2.5","14","0","0","false","true"
+"mechanic_elite_waterveil","monster_shield_layer","monster.shield","","","0","0","25","3","10","0","0","false","true"
+"mechanic_elite_sporebrood","monster_spawn_on_death","monster.death","","enemy_sporebrood_child","0","0","0","0","0","1","32","false","true"

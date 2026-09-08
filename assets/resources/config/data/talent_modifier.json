@@ -1,0 +1,86 @@
+{
+    "talent_build_gold":  {
+                              "starting_gold":  {
+                                                    "talentId":  "talent_build_gold",
+                                                    "modifierKey":  "starting_gold",
+                                                    "value":  25
+                                                }
+                          },
+    "talent_build_cost":  {
+                              "build_cost":  {
+                                                 "talentId":  "talent_build_cost",
+                                                 "modifierKey":  "build_cost",
+                                                 "value":  -0.05
+                                             }
+                          },
+    "talent_sell":  {
+                        "sell_refund":  {
+                                            "talentId":  "talent_sell",
+                                            "modifierKey":  "sell_refund",
+                                            "value":  0.05
+                                        }
+                    },
+    "talent_wall":  {
+                        "wall_health":  {
+                                            "talentId":  "talent_wall",
+                                            "modifierKey":  "wall_health",
+                                            "value":  0.15
+                                        }
+                    },
+    "talent_lightning_damage":  {
+                                    "lightning_damage":  {
+                                                             "talentId":  "talent_lightning_damage",
+                                                             "modifierKey":  "lightning_damage",
+                                                             "value":  0.12
+                                                         }
+                                },
+    "talent_shock_buildup":  {
+                                 "shock_buildup":  {
+                                                       "talentId":  "talent_shock_buildup",
+                                                       "modifierKey":  "shock_buildup",
+                                                       "value":  0.15
+                                                   }
+                             },
+    "talent_arc":  {
+                       "arc_shocked_damage":  {
+                                                  "talentId":  "talent_arc",
+                                                  "modifierKey":  "arc_shocked_damage",
+                                                  "value":  0.15
+                                              }
+                   },
+    "talent_storm_ground":  {
+                                "storm_ground_duration":  {
+                                                              "talentId":  "talent_storm_ground",
+                                                              "modifierKey":  "storm_ground_duration",
+                                                              "value":  0.2
+                                                          }
+                            },
+    "talent_shallow_water":  {
+                                 "wet_shock_buildup":  {
+                                                           "talentId":  "talent_shallow_water",
+                                                           "modifierKey":  "wet_shock_buildup",
+                                                           "value":  0.1
+                                                       }
+                             },
+    "talent_icewall":  {
+                           "icewall_duration":  {
+                                                    "talentId":  "talent_icewall",
+                                                    "modifierKey":  "icewall_duration",
+                                                    "value":  0.15
+                                                }
+                       },
+    "talent_taunt":  {
+                         "taunt_radius":  {
+                                              "talentId":  "talent_taunt",
+                                              "modifierKey":  "taunt_radius",
+                                              "value":  0.12
+                                          }
+                     },
+    "talent_chilled_ground":  {
+                                  "chill_slow":  {
+                                                     "talentId":  "talent_chilled_ground",
+                                                     "modifierKey":  "chill_slow",
+                                                     "value":  0.05
+                                                 }
+                              }
+}

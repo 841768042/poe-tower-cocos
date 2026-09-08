@@ -1,0 +1,7 @@
+﻿"key:string:key","value:string"
+"游戏阶段枚举名","阶段中文名称"
+"WavePreview","波次预览"
+"Combat","战斗中"
+"Intermission","波间调整"
+"Victory","胜利"
+"Defeat","失败"

@@ -1,0 +1,1882 @@
+{
+    "support_rapid_cycle":  {
+                                "speed":  {
+                                              "1":  {
+                                                        "supportId":  "support_rapid_cycle",
+                                                        "effectKey":  "speed",
+                                                        "level":  1,
+                                                        "value":  0.15
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_rapid_cycle",
+                                                        "effectKey":  "speed",
+                                                        "level":  2,
+                                                        "value":  0.22
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_rapid_cycle",
+                                                        "effectKey":  "speed",
+                                                        "level":  3,
+                                                        "value":  0.3
+                                                    }
+                                          },
+                                "damage_more":  {
+                                                    "1":  {
+                                                              "supportId":  "support_rapid_cycle",
+                                                              "effectKey":  "damage_more",
+                                                              "level":  1,
+                                                              "value":  -0.1
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_rapid_cycle",
+                                                              "effectKey":  "damage_more",
+                                                              "level":  2,
+                                                              "value":  -0.1
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_rapid_cycle",
+                                                              "effectKey":  "damage_more",
+                                                              "level":  3,
+                                                              "value":  -0.1
+                                                          }
+                                                }
+                            },
+    "support_deep_conduction":  {
+                                    "shock":  {
+                                                  "1":  {
+                                                            "supportId":  "support_deep_conduction",
+                                                            "effectKey":  "shock",
+                                                            "level":  1,
+                                                            "value":  0.25
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_deep_conduction",
+                                                            "effectKey":  "shock",
+                                                            "level":  2,
+                                                            "value":  0.35
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_deep_conduction",
+                                                            "effectKey":  "shock",
+                                                            "level":  3,
+                                                            "value":  0.45
+                                                        }
+                                              },
+                                    "range":  {
+                                                  "1":  {
+                                                            "supportId":  "support_deep_conduction",
+                                                            "effectKey":  "range",
+                                                            "level":  1,
+                                                            "value":  -0.15
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_deep_conduction",
+                                                            "effectKey":  "range",
+                                                            "level":  2,
+                                                            "value":  -0.15
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_deep_conduction",
+                                                            "effectKey":  "range",
+                                                            "level":  3,
+                                                            "value":  -0.15
+                                                        }
+                                              }
+                                },
+    "support_twin_target":  {
+                                "target_count":  {
+                                                     "1":  {
+                                                               "supportId":  "support_twin_target",
+                                                               "effectKey":  "target_count",
+                                                               "level":  1,
+                                                               "value":  1
+                                                           },
+                                                     "2":  {
+                                                               "supportId":  "support_twin_target",
+                                                               "effectKey":  "target_count",
+                                                               "level":  2,
+                                                               "value":  1
+                                                           },
+                                                     "3":  {
+                                                               "supportId":  "support_twin_target",
+                                                               "effectKey":  "target_count",
+                                                               "level":  3,
+                                                               "value":  1
+                                                           }
+                                                 },
+                                "shock_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_twin_target",
+                                                             "effectKey":  "shock_more",
+                                                             "level":  1,
+                                                             "value":  -0.25
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_twin_target",
+                                                             "effectKey":  "shock_more",
+                                                             "level":  2,
+                                                             "value":  -0.2
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_twin_target",
+                                                             "effectKey":  "shock_more",
+                                                             "level":  3,
+                                                             "value":  -0.15
+                                                         }
+                                               }
+                            },
+    "support_unshocked_tracking":  {
+                                       "shock":  {
+                                                     "1":  {
+                                                               "supportId":  "support_unshocked_tracking",
+                                                               "effectKey":  "shock",
+                                                               "level":  1,
+                                                               "value":  0.1
+                                                           },
+                                                     "2":  {
+                                                               "supportId":  "support_unshocked_tracking",
+                                                               "effectKey":  "shock",
+                                                               "level":  2,
+                                                               "value":  0.15
+                                                           },
+                                                     "3":  {
+                                                               "supportId":  "support_unshocked_tracking",
+                                                               "effectKey":  "shock",
+                                                               "level":  3,
+                                                               "value":  0.2
+                                                           }
+                                                 }
+                                   },
+    "support_long_range":  {
+                               "range":  {
+                                             "1":  {
+                                                       "supportId":  "support_long_range",
+                                                       "effectKey":  "range",
+                                                       "level":  1,
+                                                       "value":  0.15
+                                                   },
+                                             "2":  {
+                                                       "supportId":  "support_long_range",
+                                                       "effectKey":  "range",
+                                                       "level":  2,
+                                                       "value":  0.22
+                                                   },
+                                             "3":  {
+                                                       "supportId":  "support_long_range",
+                                                       "effectKey":  "range",
+                                                       "level":  3,
+                                                       "value":  0.3
+                                                   }
+                                         },
+                               "damage_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_long_range",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  1,
+                                                             "value":  -0.08
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_long_range",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  2,
+                                                             "value":  -0.08
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_long_range",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  3,
+                                                             "value":  -0.08
+                                                         }
+                                               }
+                           },
+    "support_stunning_spark":  {
+                                   "stun":  {
+                                                "1":  {
+                                                          "supportId":  "support_stunning_spark",
+                                                          "effectKey":  "stun",
+                                                          "level":  1,
+                                                          "value":  3
+                                                      },
+                                                "2":  {
+                                                          "supportId":  "support_stunning_spark",
+                                                          "effectKey":  "stun",
+                                                          "level":  2,
+                                                          "value":  5
+                                                      },
+                                                "3":  {
+                                                          "supportId":  "support_stunning_spark",
+                                                          "effectKey":  "stun",
+                                                          "level":  3,
+                                                          "value":  7
+                                                      }
+                                            },
+                                   "interval":  {
+                                                    "1":  {
+                                                              "supportId":  "support_stunning_spark",
+                                                              "effectKey":  "interval",
+                                                              "level":  1,
+                                                              "value":  0.1
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_stunning_spark",
+                                                              "effectKey":  "interval",
+                                                              "level":  2,
+                                                              "value":  0.1
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_stunning_spark",
+                                                              "effectKey":  "interval",
+                                                              "level":  3,
+                                                              "value":  0.1
+                                                          }
+                                                }
+                               },
+    "support_wet_conductor":  {
+                                  "shock":  {
+                                                "1":  {
+                                                          "supportId":  "support_wet_conductor",
+                                                          "effectKey":  "shock",
+                                                          "level":  1,
+                                                          "value":  0.2
+                                                      },
+                                                "2":  {
+                                                          "supportId":  "support_wet_conductor",
+                                                          "effectKey":  "shock",
+                                                          "level":  2,
+                                                          "value":  0.3
+                                                      },
+                                                "3":  {
+                                                          "supportId":  "support_wet_conductor",
+                                                          "effectKey":  "shock",
+                                                          "level":  3,
+                                                          "value":  0.4
+                                                      }
+                                            }
+                              },
+    "support_focused_needle":  {
+                                   "damage":  {
+                                                  "1":  {
+                                                            "supportId":  "support_focused_needle",
+                                                            "effectKey":  "damage",
+                                                            "level":  1,
+                                                            "value":  0.2
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_focused_needle",
+                                                            "effectKey":  "damage",
+                                                            "level":  2,
+                                                            "value":  0.3
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_focused_needle",
+                                                            "effectKey":  "damage",
+                                                            "level":  3,
+                                                            "value":  0.4
+                                                        }
+                                              },
+                                   "shock":  {
+                                                 "1":  {
+                                                           "supportId":  "support_focused_needle",
+                                                           "effectKey":  "shock",
+                                                           "level":  1,
+                                                           "value":  -0.1
+                                                       },
+                                                 "2":  {
+                                                           "supportId":  "support_focused_needle",
+                                                           "effectKey":  "shock",
+                                                           "level":  2,
+                                                           "value":  -0.1
+                                                       },
+                                                 "3":  {
+                                                           "supportId":  "support_focused_needle",
+                                                           "effectKey":  "shock",
+                                                           "level":  3,
+                                                           "value":  -0.1
+                                                       }
+                                             }
+                               },
+    "support_aftershock":  {
+                               "damage_ratio":  {
+                                                    "1":  {
+                                                              "supportId":  "support_aftershock",
+                                                              "effectKey":  "damage_ratio",
+                                                              "level":  1,
+                                                              "value":  0.2
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_aftershock",
+                                                              "effectKey":  "damage_ratio",
+                                                              "level":  2,
+                                                              "value":  0.3
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_aftershock",
+                                                              "effectKey":  "damage_ratio",
+                                                              "level":  3,
+                                                              "value":  0.4
+                                                          }
+                                                }
+                           },
+    "support_ground_pin":  {
+                               "hit_count":  {
+                                                 "1":  {
+                                                           "supportId":  "support_ground_pin",
+                                                           "effectKey":  "hit_count",
+                                                           "level":  1,
+                                                           "value":  8
+                                                       },
+                                                 "2":  {
+                                                           "supportId":  "support_ground_pin",
+                                                           "effectKey":  "hit_count",
+                                                           "level":  2,
+                                                           "value":  7
+                                                       },
+                                                 "3":  {
+                                                           "supportId":  "support_ground_pin",
+                                                           "effectKey":  "hit_count",
+                                                           "level":  3,
+                                                           "value":  6
+                                                       }
+                                             },
+                               "duration":  {
+                                                "1":  {
+                                                          "supportId":  "support_ground_pin",
+                                                          "effectKey":  "duration",
+                                                          "level":  1,
+                                                          "value":  2
+                                                      },
+                                                "2":  {
+                                                          "supportId":  "support_ground_pin",
+                                                          "effectKey":  "duration",
+                                                          "level":  2,
+                                                          "value":  2
+                                                      },
+                                                "3":  {
+                                                          "supportId":  "support_ground_pin",
+                                                          "effectKey":  "duration",
+                                                          "level":  3,
+                                                          "value":  2
+                                                      }
+                                            },
+                               "damage_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_ground_pin",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  1,
+                                                             "value":  -0.15
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_ground_pin",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  2,
+                                                             "value":  -0.15
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_ground_pin",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  3,
+                                                             "value":  -0.15
+                                                         }
+                                               }
+                           },
+    "support_extra_chain":  {
+                                "chain":  {
+                                              "1":  {
+                                                        "supportId":  "support_extra_chain",
+                                                        "effectKey":  "chain",
+                                                        "level":  1,
+                                                        "value":  1
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_extra_chain",
+                                                        "effectKey":  "chain",
+                                                        "level":  2,
+                                                        "value":  1
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_extra_chain",
+                                                        "effectKey":  "chain",
+                                                        "level":  3,
+                                                        "value":  1
+                                                    }
+                                          },
+                                "falloff":  {
+                                                "1":  {
+                                                          "supportId":  "support_extra_chain",
+                                                          "effectKey":  "falloff",
+                                                          "level":  1,
+                                                          "value":  0.05
+                                                      },
+                                                "2":  {
+                                                          "supportId":  "support_extra_chain",
+                                                          "effectKey":  "falloff",
+                                                          "level":  2,
+                                                          "value":  0.04
+                                                      },
+                                                "3":  {
+                                                          "supportId":  "support_extra_chain",
+                                                          "effectKey":  "falloff",
+                                                          "level":  3,
+                                                          "value":  0.03
+                                                      }
+                                            }
+                            },
+    "support_return_arc":  {
+                               "damage_ratio":  {
+                                                    "1":  {
+                                                              "supportId":  "support_return_arc",
+                                                              "effectKey":  "damage_ratio",
+                                                              "level":  1,
+                                                              "value":  0.2
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_return_arc",
+                                                              "effectKey":  "damage_ratio",
+                                                              "level":  2,
+                                                              "value":  0.3
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_return_arc",
+                                                              "effectKey":  "damage_ratio",
+                                                              "level":  3,
+                                                              "value":  0.4
+                                                          }
+                                                }
+                           },
+    "support_shock_seeker":  {
+                                 "damage":  {
+                                                "1":  {
+                                                          "supportId":  "support_shock_seeker",
+                                                          "effectKey":  "damage",
+                                                          "level":  1,
+                                                          "value":  0.2
+                                                      },
+                                                "2":  {
+                                                          "supportId":  "support_shock_seeker",
+                                                          "effectKey":  "damage",
+                                                          "level":  2,
+                                                          "value":  0.3
+                                                      },
+                                                "3":  {
+                                                          "supportId":  "support_shock_seeker",
+                                                          "effectKey":  "damage",
+                                                          "level":  3,
+                                                          "value":  0.4
+                                                      }
+                                            }
+                             },
+    "support_water_conduction":  {
+                                     "chain_range":  {
+                                                         "1":  {
+                                                                   "supportId":  "support_water_conduction",
+                                                                   "effectKey":  "chain_range",
+                                                                   "level":  1,
+                                                                   "value":  0.25
+                                                               },
+                                                         "2":  {
+                                                                   "supportId":  "support_water_conduction",
+                                                                   "effectKey":  "chain_range",
+                                                                   "level":  2,
+                                                                   "value":  0.4
+                                                               },
+                                                         "3":  {
+                                                                   "supportId":  "support_water_conduction",
+                                                                   "effectKey":  "chain_range",
+                                                                   "level":  3,
+                                                                   "value":  0.55
+                                                               }
+                                                     }
+                                 },
+    "support_arc_speed":  {
+                              "speed":  {
+                                            "1":  {
+                                                      "supportId":  "support_arc_speed",
+                                                      "effectKey":  "speed",
+                                                      "level":  1,
+                                                      "value":  0.12
+                                                  },
+                                            "2":  {
+                                                      "supportId":  "support_arc_speed",
+                                                      "effectKey":  "speed",
+                                                      "level":  2,
+                                                      "value":  0.18
+                                                  },
+                                            "3":  {
+                                                      "supportId":  "support_arc_speed",
+                                                      "effectKey":  "speed",
+                                                      "level":  3,
+                                                      "value":  0.25
+                                                  }
+                                        },
+                              "damage_more":  {
+                                                  "1":  {
+                                                            "supportId":  "support_arc_speed",
+                                                            "effectKey":  "damage_more",
+                                                            "level":  1,
+                                                            "value":  -0.08
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_arc_speed",
+                                                            "effectKey":  "damage_more",
+                                                            "level":  2,
+                                                            "value":  -0.08
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_arc_speed",
+                                                            "effectKey":  "damage_more",
+                                                            "level":  3,
+                                                            "value":  -0.08
+                                                        }
+                                              }
+                          },
+    "support_first_strike":  {
+                                 "first_damage":  {
+                                                      "1":  {
+                                                                "supportId":  "support_first_strike",
+                                                                "effectKey":  "first_damage",
+                                                                "level":  1,
+                                                                "value":  0.3
+                                                            },
+                                                      "2":  {
+                                                                "supportId":  "support_first_strike",
+                                                                "effectKey":  "first_damage",
+                                                                "level":  2,
+                                                                "value":  0.45
+                                                            },
+                                                      "3":  {
+                                                                "supportId":  "support_first_strike",
+                                                                "effectKey":  "first_damage",
+                                                                "level":  3,
+                                                                "value":  0.6
+                                                            }
+                                                  },
+                                 "later_damage":  {
+                                                      "1":  {
+                                                                "supportId":  "support_first_strike",
+                                                                "effectKey":  "later_damage",
+                                                                "level":  1,
+                                                                "value":  -0.1
+                                                            },
+                                                      "2":  {
+                                                                "supportId":  "support_first_strike",
+                                                                "effectKey":  "later_damage",
+                                                                "level":  2,
+                                                                "value":  -0.1
+                                                            },
+                                                      "3":  {
+                                                                "supportId":  "support_first_strike",
+                                                                "effectKey":  "later_damage",
+                                                                "level":  3,
+                                                                "value":  -0.1
+                                                            }
+                                                  }
+                             },
+    "support_equalized_arc":  {
+                                  "damage_more":  {
+                                                      "1":  {
+                                                                "supportId":  "support_equalized_arc",
+                                                                "effectKey":  "damage_more",
+                                                                "level":  1,
+                                                                "value":  -0.2
+                                                            },
+                                                      "2":  {
+                                                                "supportId":  "support_equalized_arc",
+                                                                "effectKey":  "damage_more",
+                                                                "level":  2,
+                                                                "value":  -0.17
+                                                            },
+                                                      "3":  {
+                                                                "supportId":  "support_equalized_arc",
+                                                                "effectKey":  "damage_more",
+                                                                "level":  3,
+                                                                "value":  -0.14
+                                                            }
+                                                  }
+                              },
+    "support_arc_stun":  {
+                             "stun":  {
+                                          "1":  {
+                                                    "supportId":  "support_arc_stun",
+                                                    "effectKey":  "stun",
+                                                    "level":  1,
+                                                    "value":  4
+                                                },
+                                          "2":  {
+                                                    "supportId":  "support_arc_stun",
+                                                    "effectKey":  "stun",
+                                                    "level":  2,
+                                                    "value":  6
+                                                },
+                                          "3":  {
+                                                    "supportId":  "support_arc_stun",
+                                                    "effectKey":  "stun",
+                                                    "level":  3,
+                                                    "value":  8
+                                                }
+                                      },
+                             "chain":  {
+                                           "1":  {
+                                                     "supportId":  "support_arc_stun",
+                                                     "effectKey":  "chain",
+                                                     "level":  1,
+                                                     "value":  -1
+                                                 },
+                                           "2":  {
+                                                     "supportId":  "support_arc_stun",
+                                                     "effectKey":  "chain",
+                                                     "level":  2,
+                                                     "value":  -1
+                                                 },
+                                           "3":  {
+                                                     "supportId":  "support_arc_stun",
+                                                     "effectKey":  "chain",
+                                                     "level":  3,
+                                                     "value":  -1
+                                                 }
+                                       }
+                         },
+    "support_ground_jump":  {
+                                "chain":  {
+                                              "1":  {
+                                                        "supportId":  "support_ground_jump",
+                                                        "effectKey":  "chain",
+                                                        "level":  1,
+                                                        "value":  1
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_ground_jump",
+                                                        "effectKey":  "chain",
+                                                        "level":  2,
+                                                        "value":  1
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_ground_jump",
+                                                        "effectKey":  "chain",
+                                                        "level":  3,
+                                                        "value":  2
+                                                    }
+                                          }
+                            },
+    "support_arc_spread":  {
+                               "repeat_damage_more":  {
+                                                          "1":  {
+                                                                    "supportId":  "support_arc_spread",
+                                                                    "effectKey":  "repeat_damage_more",
+                                                                    "level":  1,
+                                                                    "value":  -0.3
+                                                                },
+                                                          "2":  {
+                                                                    "supportId":  "support_arc_spread",
+                                                                    "effectKey":  "repeat_damage_more",
+                                                                    "level":  2,
+                                                                    "value":  -0.25
+                                                                },
+                                                          "3":  {
+                                                                    "supportId":  "support_arc_spread",
+                                                                    "effectKey":  "repeat_damage_more",
+                                                                    "level":  3,
+                                                                    "value":  -0.2
+                                                                }
+                                                      }
+                           },
+    "support_wide_storm":  {
+                               "radius":  {
+                                              "1":  {
+                                                        "supportId":  "support_wide_storm",
+                                                        "effectKey":  "radius",
+                                                        "level":  1,
+                                                        "value":  0.2
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_wide_storm",
+                                                        "effectKey":  "radius",
+                                                        "level":  2,
+                                                        "value":  0.3
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_wide_storm",
+                                                        "effectKey":  "radius",
+                                                        "level":  3,
+                                                        "value":  0.4
+                                                    }
+                                          },
+                               "damage_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_wide_storm",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  1,
+                                                             "value":  -0.12
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_wide_storm",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  2,
+                                                             "value":  -0.12
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_wide_storm",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  3,
+                                                             "value":  -0.12
+                                                         }
+                                               }
+                           },
+    "support_lingering_field":  {
+                                    "duration":  {
+                                                     "1":  {
+                                                               "supportId":  "support_lingering_field",
+                                                               "effectKey":  "duration",
+                                                               "level":  1,
+                                                               "value":  0.25
+                                                           },
+                                                     "2":  {
+                                                               "supportId":  "support_lingering_field",
+                                                               "effectKey":  "duration",
+                                                               "level":  2,
+                                                               "value":  0.4
+                                                           },
+                                                     "3":  {
+                                                               "supportId":  "support_lingering_field",
+                                                               "effectKey":  "duration",
+                                                               "level":  3,
+                                                               "value":  0.6
+                                                           }
+                                                 }
+                                },
+    "support_conserve_shock":  {
+                                   "damage":  {
+                                                  "1":  {
+                                                            "supportId":  "support_conserve_shock",
+                                                            "effectKey":  "damage",
+                                                            "level":  1,
+                                                            "value":  0.1
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_conserve_shock",
+                                                            "effectKey":  "damage",
+                                                            "level":  2,
+                                                            "value":  0.15
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_conserve_shock",
+                                                            "effectKey":  "damage",
+                                                            "level":  3,
+                                                            "value":  0.2
+                                                        }
+                                              }
+                               },
+    "support_thunder_stun":  {
+                                 "stun":  {
+                                              "1":  {
+                                                        "supportId":  "support_thunder_stun",
+                                                        "effectKey":  "stun",
+                                                        "level":  1,
+                                                        "value":  20
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_thunder_stun",
+                                                        "effectKey":  "stun",
+                                                        "level":  2,
+                                                        "value":  30
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_thunder_stun",
+                                                        "effectKey":  "stun",
+                                                        "level":  3,
+                                                        "value":  40
+                                                    }
+                                          },
+                                 "interval":  {
+                                                  "1":  {
+                                                            "supportId":  "support_thunder_stun",
+                                                            "effectKey":  "interval",
+                                                            "level":  1,
+                                                            "value":  0.15
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_thunder_stun",
+                                                            "effectKey":  "interval",
+                                                            "level":  2,
+                                                            "value":  0.15
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_thunder_stun",
+                                                            "effectKey":  "interval",
+                                                            "level":  3,
+                                                            "value":  0.15
+                                                        }
+                                              }
+                             },
+    "support_fast_storm":  {
+                               "speed":  {
+                                             "1":  {
+                                                       "supportId":  "support_fast_storm",
+                                                       "effectKey":  "speed",
+                                                       "level":  1,
+                                                       "value":  0.15
+                                                   },
+                                             "2":  {
+                                                       "supportId":  "support_fast_storm",
+                                                       "effectKey":  "speed",
+                                                       "level":  2,
+                                                       "value":  0.22
+                                                   },
+                                             "3":  {
+                                                       "supportId":  "support_fast_storm",
+                                                       "effectKey":  "speed",
+                                                       "level":  3,
+                                                       "value":  0.3
+                                                   }
+                                         },
+                               "damage_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_fast_storm",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  1,
+                                                             "value":  -0.15
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_fast_storm",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  2,
+                                                             "value":  -0.15
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_fast_storm",
+                                                             "effectKey":  "damage_more",
+                                                             "level":  3,
+                                                             "value":  -0.15
+                                                         }
+                                               }
+                           },
+    "support_concentrated_storm":  {
+                                       "radius":  {
+                                                      "1":  {
+                                                                "supportId":  "support_concentrated_storm",
+                                                                "effectKey":  "radius",
+                                                                "level":  1,
+                                                                "value":  -0.25
+                                                            },
+                                                      "2":  {
+                                                                "supportId":  "support_concentrated_storm",
+                                                                "effectKey":  "radius",
+                                                                "level":  2,
+                                                                "value":  -0.25
+                                                            },
+                                                      "3":  {
+                                                                "supportId":  "support_concentrated_storm",
+                                                                "effectKey":  "radius",
+                                                                "level":  3,
+                                                                "value":  -0.25
+                                                            }
+                                                  },
+                                       "damage_more":  {
+                                                           "1":  {
+                                                                     "supportId":  "support_concentrated_storm",
+                                                                     "effectKey":  "damage_more",
+                                                                     "level":  1,
+                                                                     "value":  0.25
+                                                                 },
+                                                           "2":  {
+                                                                     "supportId":  "support_concentrated_storm",
+                                                                     "effectKey":  "damage_more",
+                                                                     "level":  2,
+                                                                     "value":  0.35
+                                                                 },
+                                                           "3":  {
+                                                                     "supportId":  "support_concentrated_storm",
+                                                                     "effectKey":  "damage_more",
+                                                                     "level":  3,
+                                                                     "value":  0.45
+                                                                 }
+                                                       }
+                                   },
+    "support_wet_storm":  {
+                              "damage":  {
+                                             "1":  {
+                                                       "supportId":  "support_wet_storm",
+                                                       "effectKey":  "damage",
+                                                       "level":  1,
+                                                       "value":  0.2
+                                                   },
+                                             "2":  {
+                                                       "supportId":  "support_wet_storm",
+                                                       "effectKey":  "damage",
+                                                       "level":  2,
+                                                       "value":  0.3
+                                                   },
+                                             "3":  {
+                                                       "supportId":  "support_wet_storm",
+                                                       "effectKey":  "damage",
+                                                       "level":  3,
+                                                       "value":  0.4
+                                                   }
+                                         }
+                          },
+    "support_delayed_thunder":  {
+                                    "windup":  {
+                                                   "1":  {
+                                                             "supportId":  "support_delayed_thunder",
+                                                             "effectKey":  "windup",
+                                                             "level":  1,
+                                                             "value":  0.5
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_delayed_thunder",
+                                                             "effectKey":  "windup",
+                                                             "level":  2,
+                                                             "value":  0.5
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_delayed_thunder",
+                                                             "effectKey":  "windup",
+                                                             "level":  3,
+                                                             "value":  0.5
+                                                         }
+                                               },
+                                    "damage_more":  {
+                                                        "1":  {
+                                                                  "supportId":  "support_delayed_thunder",
+                                                                  "effectKey":  "damage_more",
+                                                                  "level":  1,
+                                                                  "value":  0.3
+                                                              },
+                                                        "2":  {
+                                                                  "supportId":  "support_delayed_thunder",
+                                                                  "effectKey":  "damage_more",
+                                                                  "level":  2,
+                                                                  "value":  0.4
+                                                              },
+                                                        "3":  {
+                                                                  "supportId":  "support_delayed_thunder",
+                                                                  "effectKey":  "damage_more",
+                                                                  "level":  3,
+                                                                  "value":  0.5
+                                                              }
+                                                    }
+                                },
+    "support_field_pulse":  {
+                                "damage_ratio":  {
+                                                     "1":  {
+                                                               "supportId":  "support_field_pulse",
+                                                               "effectKey":  "damage_ratio",
+                                                               "level":  1,
+                                                               "value":  0.08
+                                                           },
+                                                     "2":  {
+                                                               "supportId":  "support_field_pulse",
+                                                               "effectKey":  "damage_ratio",
+                                                               "level":  2,
+                                                               "value":  0.12
+                                                           },
+                                                     "3":  {
+                                                               "supportId":  "support_field_pulse",
+                                                               "effectKey":  "damage_ratio",
+                                                               "level":  3,
+                                                               "value":  0.16
+                                                           }
+                                                 }
+                            },
+    "support_chain_lightning_strike":  {
+                                           "target_count":  {
+                                                                "1":  {
+                                                                          "supportId":  "support_chain_lightning_strike",
+                                                                          "effectKey":  "target_count",
+                                                                          "level":  1,
+                                                                          "value":  1
+                                                                      },
+                                                                "2":  {
+                                                                          "supportId":  "support_chain_lightning_strike",
+                                                                          "effectKey":  "target_count",
+                                                                          "level":  2,
+                                                                          "value":  2
+                                                                      },
+                                                                "3":  {
+                                                                          "supportId":  "support_chain_lightning_strike",
+                                                                          "effectKey":  "target_count",
+                                                                          "level":  3,
+                                                                          "value":  3
+                                                                      }
+                                                            },
+                                           "damage_ratio":  {
+                                                                "1":  {
+                                                                          "supportId":  "support_chain_lightning_strike",
+                                                                          "effectKey":  "damage_ratio",
+                                                                          "level":  1,
+                                                                          "value":  0.25
+                                                                      },
+                                                                "2":  {
+                                                                          "supportId":  "support_chain_lightning_strike",
+                                                                          "effectKey":  "damage_ratio",
+                                                                          "level":  2,
+                                                                          "value":  0.25
+                                                                      },
+                                                                "3":  {
+                                                                          "supportId":  "support_chain_lightning_strike",
+                                                                          "effectKey":  "damage_ratio",
+                                                                          "level":  3,
+                                                                          "value":  0.25
+                                                                      }
+                                                            }
+                                       },
+    "support_aura_radius":  {
+                                "range":  {
+                                              "1":  {
+                                                        "supportId":  "support_aura_radius",
+                                                        "effectKey":  "range",
+                                                        "level":  1,
+                                                        "value":  0.15
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_aura_radius",
+                                                        "effectKey":  "range",
+                                                        "level":  2,
+                                                        "value":  0.25
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_aura_radius",
+                                                        "effectKey":  "range",
+                                                        "level":  3,
+                                                        "value":  0.35
+                                                    }
+                                          },
+                                "effect_more":  {
+                                                    "1":  {
+                                                              "supportId":  "support_aura_radius",
+                                                              "effectKey":  "effect_more",
+                                                              "level":  1,
+                                                              "value":  -0.08
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_aura_radius",
+                                                              "effectKey":  "effect_more",
+                                                              "level":  2,
+                                                              "value":  -0.08
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_aura_radius",
+                                                              "effectKey":  "effect_more",
+                                                              "level":  3,
+                                                              "value":  -0.08
+                                                          }
+                                                }
+                            },
+    "support_aura_focus":  {
+                               "range":  {
+                                             "1":  {
+                                                       "supportId":  "support_aura_focus",
+                                                       "effectKey":  "range",
+                                                       "level":  1,
+                                                       "value":  -0.2
+                                                   },
+                                             "2":  {
+                                                       "supportId":  "support_aura_focus",
+                                                       "effectKey":  "range",
+                                                       "level":  2,
+                                                       "value":  -0.2
+                                                   },
+                                             "3":  {
+                                                       "supportId":  "support_aura_focus",
+                                                       "effectKey":  "range",
+                                                       "level":  3,
+                                                       "value":  -0.2
+                                                   }
+                                         },
+                               "effect_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_aura_focus",
+                                                             "effectKey":  "effect_more",
+                                                             "level":  1,
+                                                             "value":  0.2
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_aura_focus",
+                                                             "effectKey":  "effect_more",
+                                                             "level":  2,
+                                                             "value":  0.3
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_aura_focus",
+                                                             "effectKey":  "effect_more",
+                                                             "level":  3,
+                                                             "value":  0.4
+                                                         }
+                                               }
+                           },
+    "support_aura_speed":  {
+                               "speed":  {
+                                             "1":  {
+                                                       "supportId":  "support_aura_speed",
+                                                       "effectKey":  "speed",
+                                                       "level":  1,
+                                                       "value":  0.04
+                                                   },
+                                             "2":  {
+                                                       "supportId":  "support_aura_speed",
+                                                       "effectKey":  "speed",
+                                                       "level":  2,
+                                                       "value":  0.06
+                                                   },
+                                             "3":  {
+                                                       "supportId":  "support_aura_speed",
+                                                       "effectKey":  "speed",
+                                                       "level":  3,
+                                                       "value":  0.08
+                                                   }
+                                         }
+                           },
+    "support_aura_buildup":  {
+                                 "shock":  {
+                                               "1":  {
+                                                         "supportId":  "support_aura_buildup",
+                                                         "effectKey":  "shock",
+                                                         "level":  1,
+                                                         "value":  0.1
+                                                     },
+                                               "2":  {
+                                                         "supportId":  "support_aura_buildup",
+                                                         "effectKey":  "shock",
+                                                         "level":  2,
+                                                         "value":  0.15
+                                                     },
+                                               "3":  {
+                                                         "supportId":  "support_aura_buildup",
+                                                         "effectKey":  "shock",
+                                                         "level":  3,
+                                                         "value":  0.2
+                                                     }
+                                           }
+                             },
+    "support_aura_ground":  {
+                                "duration":  {
+                                                 "1":  {
+                                                           "supportId":  "support_aura_ground",
+                                                           "effectKey":  "duration",
+                                                           "level":  1,
+                                                           "value":  0.1
+                                                       },
+                                                 "2":  {
+                                                           "supportId":  "support_aura_ground",
+                                                           "effectKey":  "duration",
+                                                           "level":  2,
+                                                           "value":  0.2
+                                                       },
+                                                 "3":  {
+                                                           "supportId":  "support_aura_ground",
+                                                           "effectKey":  "duration",
+                                                           "level":  3,
+                                                           "value":  0.3
+                                                       }
+                                             }
+                            },
+    "support_aura_adjacent":  {
+                                  "effect":  {
+                                                 "1":  {
+                                                           "supportId":  "support_aura_adjacent",
+                                                           "effectKey":  "effect",
+                                                           "level":  1,
+                                                           "value":  0.08
+                                                       },
+                                                 "2":  {
+                                                           "supportId":  "support_aura_adjacent",
+                                                           "effectKey":  "effect",
+                                                           "level":  2,
+                                                           "value":  0.12
+                                                       },
+                                                 "3":  {
+                                                           "supportId":  "support_aura_adjacent",
+                                                           "effectKey":  "effect",
+                                                           "level":  3,
+                                                           "value":  0.16
+                                                       }
+                                             }
+                              },
+    "support_aura_wet":  {
+                             "effect":  {
+                                            "1":  {
+                                                      "supportId":  "support_aura_wet",
+                                                      "effectKey":  "effect",
+                                                      "level":  1,
+                                                      "value":  0.1
+                                                  },
+                                            "2":  {
+                                                      "supportId":  "support_aura_wet",
+                                                      "effectKey":  "effect",
+                                                      "level":  2,
+                                                      "value":  0.15
+                                                  },
+                                            "3":  {
+                                                      "supportId":  "support_aura_wet",
+                                                      "effectKey":  "effect",
+                                                      "level":  3,
+                                                      "value":  0.2
+                                                  }
+                                        }
+                         },
+    "support_aura_cost":  {
+                              "cost":  {
+                                           "1":  {
+                                                     "supportId":  "support_aura_cost",
+                                                     "effectKey":  "cost",
+                                                     "level":  1,
+                                                     "value":  -0.1
+                                                 },
+                                           "2":  {
+                                                     "supportId":  "support_aura_cost",
+                                                     "effectKey":  "cost",
+                                                     "level":  2,
+                                                     "value":  -0.15
+                                                 },
+                                           "3":  {
+                                                     "supportId":  "support_aura_cost",
+                                                     "effectKey":  "cost",
+                                                     "level":  3,
+                                                     "value":  -0.2
+                                                 }
+                                       },
+                              "effect_more":  {
+                                                  "1":  {
+                                                            "supportId":  "support_aura_cost",
+                                                            "effectKey":  "effect_more",
+                                                            "level":  1,
+                                                            "value":  -0.1
+                                                        },
+                                                  "2":  {
+                                                            "supportId":  "support_aura_cost",
+                                                            "effectKey":  "effect_more",
+                                                            "level":  2,
+                                                            "value":  -0.1
+                                                        },
+                                                  "3":  {
+                                                            "supportId":  "support_aura_cost",
+                                                            "effectKey":  "effect_more",
+                                                            "level":  3,
+                                                            "value":  -0.1
+                                                        }
+                                              }
+                          },
+    "support_aura_chain":  {
+                               "chain":  {
+                                             "1":  {
+                                                       "supportId":  "support_aura_chain",
+                                                       "effectKey":  "chain",
+                                                       "level":  1,
+                                                       "value":  1
+                                                   },
+                                             "2":  {
+                                                       "supportId":  "support_aura_chain",
+                                                       "effectKey":  "chain",
+                                                       "level":  2,
+                                                       "value":  1
+                                                   },
+                                             "3":  {
+                                                       "supportId":  "support_aura_chain",
+                                                       "effectKey":  "chain",
+                                                       "level":  3,
+                                                       "value":  1
+                                                   }
+                                         },
+                               "effect_more":  {
+                                                   "1":  {
+                                                             "supportId":  "support_aura_chain",
+                                                             "effectKey":  "effect_more",
+                                                             "level":  1,
+                                                             "value":  -0.15
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_aura_chain",
+                                                             "effectKey":  "effect_more",
+                                                             "level":  2,
+                                                             "value":  -0.15
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_aura_chain",
+                                                             "effectKey":  "effect_more",
+                                                             "level":  3,
+                                                             "value":  -0.15
+                                                         }
+                                               }
+                           },
+    "support_aura_single_school":  {
+                                       "effect_more":  {
+                                                           "1":  {
+                                                                     "supportId":  "support_aura_single_school",
+                                                                     "effectKey":  "effect_more",
+                                                                     "level":  1,
+                                                                     "value":  0.15
+                                                                 },
+                                                           "2":  {
+                                                                     "supportId":  "support_aura_single_school",
+                                                                     "effectKey":  "effect_more",
+                                                                     "level":  2,
+                                                                     "value":  0.25
+                                                                 },
+                                                           "3":  {
+                                                                     "supportId":  "support_aura_single_school",
+                                                                     "effectKey":  "effect_more",
+                                                                     "level":  3,
+                                                                     "value":  0.35
+                                                                 }
+                                                       }
+                                   },
+    "support_wall_duration":  {
+                                  "duration":  {
+                                                   "1":  {
+                                                             "supportId":  "support_wall_duration",
+                                                             "effectKey":  "duration",
+                                                             "level":  1,
+                                                             "value":  0.2
+                                                         },
+                                                   "2":  {
+                                                             "supportId":  "support_wall_duration",
+                                                             "effectKey":  "duration",
+                                                             "level":  2,
+                                                             "value":  0.35
+                                                         },
+                                                   "3":  {
+                                                             "supportId":  "support_wall_duration",
+                                                             "effectKey":  "duration",
+                                                             "level":  3,
+                                                             "value":  0.5
+                                                         }
+                                               }
+                              },
+    "support_wall_cooldown":  {
+                                  "cooldown_recovery":  {
+                                                            "1":  {
+                                                                      "supportId":  "support_wall_cooldown",
+                                                                      "effectKey":  "cooldown_recovery",
+                                                                      "level":  1,
+                                                                      "value":  0.15
+                                                                  },
+                                                            "2":  {
+                                                                      "supportId":  "support_wall_cooldown",
+                                                                      "effectKey":  "cooldown_recovery",
+                                                                      "level":  2,
+                                                                      "value":  0.22
+                                                                  },
+                                                            "3":  {
+                                                                      "supportId":  "support_wall_cooldown",
+                                                                      "effectKey":  "cooldown_recovery",
+                                                                      "level":  3,
+                                                                      "value":  0.3
+                                                                  }
+                                                        },
+                                  "duration_more":  {
+                                                        "1":  {
+                                                                  "supportId":  "support_wall_cooldown",
+                                                                  "effectKey":  "duration_more",
+                                                                  "level":  1,
+                                                                  "value":  -0.1
+                                                              },
+                                                        "2":  {
+                                                                  "supportId":  "support_wall_cooldown",
+                                                                  "effectKey":  "duration_more",
+                                                                  "level":  2,
+                                                                  "value":  -0.1
+                                                              },
+                                                        "3":  {
+                                                                  "supportId":  "support_wall_cooldown",
+                                                                  "effectKey":  "duration_more",
+                                                                  "level":  3,
+                                                                  "value":  -0.1
+                                                              }
+                                                    }
+                              },
+    "support_chilled_ground_duration":  {
+                                            "duration":  {
+                                                             "1":  {
+                                                                       "supportId":  "support_chilled_ground_duration",
+                                                                       "effectKey":  "duration",
+                                                                       "level":  1,
+                                                                       "value":  0.2
+                                                                   },
+                                                             "2":  {
+                                                                       "supportId":  "support_chilled_ground_duration",
+                                                                       "effectKey":  "duration",
+                                                                       "level":  2,
+                                                                       "value":  0.35
+                                                                   },
+                                                             "3":  {
+                                                                       "supportId":  "support_chilled_ground_duration",
+                                                                       "effectKey":  "duration",
+                                                                       "level":  3,
+                                                                       "value":  0.5
+                                                                   }
+                                                         }
+                                        },
+    "support_chilled_ground_slow":  {
+                                        "slow":  {
+                                                     "1":  {
+                                                               "supportId":  "support_chilled_ground_slow",
+                                                               "effectKey":  "slow",
+                                                               "level":  1,
+                                                               "value":  0.05
+                                                           },
+                                                     "2":  {
+                                                               "supportId":  "support_chilled_ground_slow",
+                                                               "effectKey":  "slow",
+                                                               "level":  2,
+                                                               "value":  0.08
+                                                           },
+                                                     "3":  {
+                                                               "supportId":  "support_chilled_ground_slow",
+                                                               "effectKey":  "slow",
+                                                               "level":  3,
+                                                               "value":  0.1
+                                                           }
+                                                 },
+                                        "duration_more":  {
+                                                              "1":  {
+                                                                        "supportId":  "support_chilled_ground_slow",
+                                                                        "effectKey":  "duration_more",
+                                                                        "level":  1,
+                                                                        "value":  -0.2
+                                                                    },
+                                                              "2":  {
+                                                                        "supportId":  "support_chilled_ground_slow",
+                                                                        "effectKey":  "duration_more",
+                                                                        "level":  2,
+                                                                        "value":  -0.2
+                                                                    },
+                                                              "3":  {
+                                                                        "supportId":  "support_chilled_ground_slow",
+                                                                        "effectKey":  "duration_more",
+                                                                        "level":  3,
+                                                                        "value":  -0.2
+                                                                    }
+                                                          }
+                                    },
+    "support_wall_chill":  {
+                               "slow":  {
+                                            "1":  {
+                                                      "supportId":  "support_wall_chill",
+                                                      "effectKey":  "slow",
+                                                      "level":  1,
+                                                      "value":  0.1
+                                                  },
+                                            "2":  {
+                                                      "supportId":  "support_wall_chill",
+                                                      "effectKey":  "slow",
+                                                      "level":  2,
+                                                      "value":  0.15
+                                                  },
+                                            "3":  {
+                                                      "supportId":  "support_wall_chill",
+                                                      "effectKey":  "slow",
+                                                      "level":  3,
+                                                      "value":  0.2
+                                                  }
+                                        }
+                           },
+    "support_wall_shatter":  {
+                                 "damage":  {
+                                                "1":  {
+                                                          "supportId":  "support_wall_shatter",
+                                                          "effectKey":  "damage",
+                                                          "level":  1,
+                                                          "value":  10
+                                                      },
+                                                "2":  {
+                                                          "supportId":  "support_wall_shatter",
+                                                          "effectKey":  "damage",
+                                                          "level":  2,
+                                                          "value":  15
+                                                      },
+                                                "3":  {
+                                                          "supportId":  "support_wall_shatter",
+                                                          "effectKey":  "damage",
+                                                          "level":  3,
+                                                          "value":  20
+                                                      }
+                                            }
+                             },
+    "support_water_freeze_buildup":  {
+                                         "freeze_per_second":  {
+                                                                   "1":  {
+                                                                             "supportId":  "support_water_freeze_buildup",
+                                                                             "effectKey":  "freeze_per_second",
+                                                                             "level":  1,
+                                                                             "value":  4
+                                                                         },
+                                                                   "2":  {
+                                                                             "supportId":  "support_water_freeze_buildup",
+                                                                             "effectKey":  "freeze_per_second",
+                                                                             "level":  2,
+                                                                             "value":  6
+                                                                         },
+                                                                   "3":  {
+                                                                             "supportId":  "support_water_freeze_buildup",
+                                                                             "effectKey":  "freeze_per_second",
+                                                                             "level":  3,
+                                                                             "value":  8
+                                                                         }
+                                                               }
+                                     },
+    "support_barrier_range":  {
+                                  "range_cells":  {
+                                                      "1":  {
+                                                                "supportId":  "support_barrier_range",
+                                                                "effectKey":  "range_cells",
+                                                                "level":  1,
+                                                                "value":  1
+                                                            },
+                                                      "2":  {
+                                                                "supportId":  "support_barrier_range",
+                                                                "effectKey":  "range_cells",
+                                                                "level":  2,
+                                                                "value":  1
+                                                            },
+                                                      "3":  {
+                                                                "supportId":  "support_barrier_range",
+                                                                "effectKey":  "range_cells",
+                                                                "level":  3,
+                                                                "value":  2
+                                                            }
+                                                  }
+                              },
+    "support_barrier_aura":  {
+                                 "control":  {
+                                                 "1":  {
+                                                           "supportId":  "support_barrier_aura",
+                                                           "effectKey":  "control",
+                                                           "level":  1,
+                                                           "value":  0.08
+                                                       },
+                                                 "2":  {
+                                                           "supportId":  "support_barrier_aura",
+                                                           "effectKey":  "control",
+                                                           "level":  2,
+                                                           "value":  0.12
+                                                       },
+                                                 "3":  {
+                                                           "supportId":  "support_barrier_aura",
+                                                           "effectKey":  "control",
+                                                           "level":  3,
+                                                           "value":  0.16
+                                                       }
+                                             }
+                             },
+    "support_short_wall":  {
+                               "duration_more":  {
+                                                     "1":  {
+                                                               "supportId":  "support_short_wall",
+                                                               "effectKey":  "duration_more",
+                                                               "level":  1,
+                                                               "value":  -0.35
+                                                           },
+                                                     "2":  {
+                                                               "supportId":  "support_short_wall",
+                                                               "effectKey":  "duration_more",
+                                                               "level":  2,
+                                                               "value":  -0.35
+                                                           },
+                                                     "3":  {
+                                                               "supportId":  "support_short_wall",
+                                                               "effectKey":  "duration_more",
+                                                               "level":  3,
+                                                               "value":  -0.35
+                                                           }
+                                                 },
+                               "cooldown_recovery":  {
+                                                         "1":  {
+                                                                   "supportId":  "support_short_wall",
+                                                                   "effectKey":  "cooldown_recovery",
+                                                                   "level":  1,
+                                                                   "value":  0.35
+                                                               },
+                                                         "2":  {
+                                                                   "supportId":  "support_short_wall",
+                                                                   "effectKey":  "cooldown_recovery",
+                                                                   "level":  2,
+                                                                   "value":  0.5
+                                                               },
+                                                         "3":  {
+                                                                   "supportId":  "support_short_wall",
+                                                                   "effectKey":  "cooldown_recovery",
+                                                                   "level":  3,
+                                                                   "value":  0.65
+                                                               }
+                                                     }
+                           },
+    "support_taunt_radius":  {
+                                 "range":  {
+                                               "1":  {
+                                                         "supportId":  "support_taunt_radius",
+                                                         "effectKey":  "range",
+                                                         "level":  1,
+                                                         "value":  0.15
+                                                     },
+                                               "2":  {
+                                                         "supportId":  "support_taunt_radius",
+                                                         "effectKey":  "range",
+                                                         "level":  2,
+                                                         "value":  0.25
+                                                     },
+                                               "3":  {
+                                                         "supportId":  "support_taunt_radius",
+                                                         "effectKey":  "range",
+                                                         "level":  3,
+                                                         "value":  0.35
+                                                     }
+                                           }
+                             },
+    "support_taunt_duration":  {
+                                   "duration":  {
+                                                    "1":  {
+                                                              "supportId":  "support_taunt_duration",
+                                                              "effectKey":  "duration",
+                                                              "level":  1,
+                                                              "value":  0.15
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_taunt_duration",
+                                                              "effectKey":  "duration",
+                                                              "level":  2,
+                                                              "value":  0.25
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_taunt_duration",
+                                                              "effectKey":  "duration",
+                                                              "level":  3,
+                                                              "value":  0.35
+                                                          }
+                                                },
+                                   "interval":  {
+                                                    "1":  {
+                                                              "supportId":  "support_taunt_duration",
+                                                              "effectKey":  "interval",
+                                                              "level":  1,
+                                                              "value":  0.1
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_taunt_duration",
+                                                              "effectKey":  "interval",
+                                                              "level":  2,
+                                                              "value":  0.1
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_taunt_duration",
+                                                              "effectKey":  "interval",
+                                                              "level":  3,
+                                                              "value":  0.1
+                                                          }
+                                                }
+                               },
+    "support_taunt_pulse":  {
+                                "speed":  {
+                                              "1":  {
+                                                        "supportId":  "support_taunt_pulse",
+                                                        "effectKey":  "speed",
+                                                        "level":  1,
+                                                        "value":  0.15
+                                                    },
+                                              "2":  {
+                                                        "supportId":  "support_taunt_pulse",
+                                                        "effectKey":  "speed",
+                                                        "level":  2,
+                                                        "value":  0.22
+                                                    },
+                                              "3":  {
+                                                        "supportId":  "support_taunt_pulse",
+                                                        "effectKey":  "speed",
+                                                        "level":  3,
+                                                        "value":  0.3
+                                                    }
+                                          },
+                                "duration_more":  {
+                                                      "1":  {
+                                                                "supportId":  "support_taunt_pulse",
+                                                                "effectKey":  "duration_more",
+                                                                "level":  1,
+                                                                "value":  -0.1
+                                                            },
+                                                      "2":  {
+                                                                "supportId":  "support_taunt_pulse",
+                                                                "effectKey":  "duration_more",
+                                                                "level":  2,
+                                                                "value":  -0.1
+                                                            },
+                                                      "3":  {
+                                                                "supportId":  "support_taunt_pulse",
+                                                                "effectKey":  "duration_more",
+                                                                "level":  3,
+                                                                "value":  -0.1
+                                                            }
+                                                  }
+                            },
+    "support_taunt_slow":  {
+                               "slow":  {
+                                            "1":  {
+                                                      "supportId":  "support_taunt_slow",
+                                                      "effectKey":  "slow",
+                                                      "level":  1,
+                                                      "value":  0.05
+                                                  },
+                                            "2":  {
+                                                      "supportId":  "support_taunt_slow",
+                                                      "effectKey":  "slow",
+                                                      "level":  2,
+                                                      "value":  0.08
+                                                  },
+                                            "3":  {
+                                                      "supportId":  "support_taunt_slow",
+                                                      "effectKey":  "slow",
+                                                      "level":  3,
+                                                      "value":  0.1
+                                                  }
+                                        }
+                           },
+    "support_taunt_stun":  {
+                               "stun":  {
+                                            "1":  {
+                                                      "supportId":  "support_taunt_stun",
+                                                      "effectKey":  "stun",
+                                                      "level":  1,
+                                                      "value":  8
+                                                  },
+                                            "2":  {
+                                                      "supportId":  "support_taunt_stun",
+                                                      "effectKey":  "stun",
+                                                      "level":  2,
+                                                      "value":  12
+                                                  },
+                                            "3":  {
+                                                      "supportId":  "support_taunt_stun",
+                                                      "effectKey":  "stun",
+                                                      "level":  3,
+                                                      "value":  16
+                                                  }
+                                        }
+                           },
+    "support_taunt_wet":  {
+                              "duration":  {
+                                               "1":  {
+                                                         "supportId":  "support_taunt_wet",
+                                                         "effectKey":  "duration",
+                                                         "level":  1,
+                                                         "value":  0.15
+                                                     },
+                                               "2":  {
+                                                         "supportId":  "support_taunt_wet",
+                                                         "effectKey":  "duration",
+                                                         "level":  2,
+                                                         "value":  0.25
+                                                     },
+                                               "3":  {
+                                                         "supportId":  "support_taunt_wet",
+                                                         "effectKey":  "duration",
+                                                         "level":  3,
+                                                         "value":  0.35
+                                                     }
+                                           }
+                          },
+    "support_totem_duration":  {
+                                   "duration":  {
+                                                    "1":  {
+                                                              "supportId":  "support_totem_duration",
+                                                              "effectKey":  "duration",
+                                                              "level":  1,
+                                                              "value":  0.2
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_totem_duration",
+                                                              "effectKey":  "duration",
+                                                              "level":  2,
+                                                              "value":  0.35
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_totem_duration",
+                                                              "effectKey":  "duration",
+                                                              "level":  3,
+                                                              "value":  0.5
+                                                          }
+                                                }
+                               },
+    "support_totem_redeploy":  {
+                                   "cooldown_recovery":  {
+                                                             "1":  {
+                                                                       "supportId":  "support_totem_redeploy",
+                                                                       "effectKey":  "cooldown_recovery",
+                                                                       "level":  1,
+                                                                       "value":  0.15
+                                                                   },
+                                                             "2":  {
+                                                                       "supportId":  "support_totem_redeploy",
+                                                                       "effectKey":  "cooldown_recovery",
+                                                                       "level":  2,
+                                                                       "value":  0.22
+                                                                   },
+                                                             "3":  {
+                                                                       "supportId":  "support_totem_redeploy",
+                                                                       "effectKey":  "cooldown_recovery",
+                                                                       "level":  3,
+                                                                       "value":  0.3
+                                                                   }
+                                                         },
+                                   "interval":  {
+                                                    "1":  {
+                                                              "supportId":  "support_totem_redeploy",
+                                                              "effectKey":  "interval",
+                                                              "level":  1,
+                                                              "value":  0.1
+                                                          },
+                                                    "2":  {
+                                                              "supportId":  "support_totem_redeploy",
+                                                              "effectKey":  "interval",
+                                                              "level":  2,
+                                                              "value":  0.1
+                                                          },
+                                                    "3":  {
+                                                              "supportId":  "support_totem_redeploy",
+                                                              "effectKey":  "interval",
+                                                              "level":  3,
+                                                              "value":  0.1
+                                                          }
+                                                }
+                               },
+    "support_taunt_exposure":  {
+                                   "damage_taken":  {
+                                                        "1":  {
+                                                                  "supportId":  "support_taunt_exposure",
+                                                                  "effectKey":  "damage_taken",
+                                                                  "level":  1,
+                                                                  "value":  0.05
+                                                              },
+                                                        "2":  {
+                                                                  "supportId":  "support_taunt_exposure",
+                                                                  "effectKey":  "damage_taken",
+                                                                  "level":  2,
+                                                                  "value":  0.08
+                                                              },
+                                                        "3":  {
+                                                                  "supportId":  "support_taunt_exposure",
+                                                                  "effectKey":  "damage_taken",
+                                                                  "level":  3,
+                                                                  "value":  0.1
+                                                              }
+                                                    }
+                               },
+    "support_control_aura":  {
+                                 "control":  {
+                                                 "1":  {
+                                                           "supportId":  "support_control_aura",
+                                                           "effectKey":  "control",
+                                                           "level":  1,
+                                                           "value":  0.08
+                                                       },
+                                                 "2":  {
+                                                           "supportId":  "support_control_aura",
+                                                           "effectKey":  "control",
+                                                           "level":  2,
+                                                           "value":  0.12
+                                                       },
+                                                 "3":  {
+                                                           "supportId":  "support_control_aura",
+                                                           "effectKey":  "control",
+                                                           "level":  3,
+                                                           "value":  0.16
+                                                       }
+                                             }
+                             }
+}

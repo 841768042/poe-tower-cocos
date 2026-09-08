@@ -1,0 +1,66 @@
+﻿"key:string:key","value:string"
+"场景ID与节点路径","节点静态中文文案"
+"main_menu:Layout/Title","POE TOWER · 沼泽防线"
+"main_menu:Layout/Subtitle","Godot .NET 数据驱动 DEMO · 6 塔 · 4 普通敌人 · 1 首领 · 9 波"
+"main_menu:Layout/StartDemo","进入沼泽防线"
+"main_menu:Layout/ResetProfile","重置 DEMO 档案"
+"main_menu:Layout/Message","选择天赋后开始；档案主档位于 user://saves/profile.json"
+"prebattle:Layout/Header/Row/Map","沼泽防线"
+"prebattle:Layout/Header/Row/Tags","潮湿 · 双路线 · 9 波"
+"prebattle:Layout/Title","选择本局携带塔种  6 / 6"
+"prebattle:Layout/Slots/Static","ϟ
+静电针塔
+80 金币
+施加感电"
+"prebattle:Layout/Slots/Arc","⌁
+电弧塔
+100 金币
+利用感电 · 连锁"
+"prebattle:Layout/Slots/Storm","☈
+雷暴塔
+120 金币
+消耗感电 · 爆发"
+"prebattle:Layout/Slots/Aura","◉
+电势光环塔
+140 金币
+强化局部塔阵"
+"prebattle:Layout/Slots/Frost","❄
+冰障塔
+130 金币
+冰墙改路 · 冰缓"
+"prebattle:Layout/Slots/Taunt","♜
+嘲讽图腾塔
+120 金币
+聚怪 · 延缓突破"
+"prebattle:Layout/Intel/Margin/Text","[font_size=28][color=#e7c56a]地图情报[/color][/font_size]
+
+[color=#9bd9d0]浅水[/color]    感电积累 +20%，感电地面可扩散
+
+[color=#b99b71]软土[/color]    建造费用受地形修正，适合规划关键塔位
+
+[color=#ccb4ef]精英[/color]    第 6～8 波检验持续输出与感电依赖
+
+[color=#e7c56a]首领[/color]    第 9 波：沼泽巨像，控制持续缩短
+
+推荐循环：静电针施加 → 电弧利用 → 雷暴消耗 → 光环加速"
+"prebattle:Layout/Snapshot","建筑师装备与天赋将在进入关卡时锁定为只读快照"
+"prebattle:Layout/Actions/Back","返回据点"
+"prebattle:Layout/Actions/Enter","锁定 6 种塔并进入防线"
+"gameplay:../GameSession/WallLabel","筑界城墙"
+"gameplay:MessagePanel/Message","点击“建造”查看可建造位置"
+"gameplay:TowerPalette/Margin/Layout/Header/Title","建造塔阵 · 选择一种塔后点击合法格"
+"gameplay:TowerPalette/Margin/Layout/Header/Hint","成功放置后自动收起"
+"gameplay:Controls/Build","建造"
+"gameplay:Controls/WaveInfo","波次摘要"
+"gameplay:Controls/StartWave","开始波次"
+"gameplay:Controls/Pause","暂停"
+"gameplay:Controls/Speed","1×"
+"gameplay:TowerTips/Margin/Layout/Actions/IceWall","冰墙"
+"gameplay:TowerUpgrade/Margin/Layout/Title","提升威力"
+"gameplay:TowerUpgrade/Margin/Layout/Actions/Back","返回"
+"gameplay:SupportSelect/Margin/Layout/Description","候选固定 10 个；已安装宝石可继续升至 Lv.3"
+"gameplay:SupportSelect/Margin/Layout/Back","返回塔上 TIPS"
+"gameplay:ResultPanel/Panel/Layout/Title","本局结束"
+"gameplay:ResultPanel/Panel/Layout/Summary","9 波防守结算完成"
+"gameplay:ResultPanel/Panel/Layout/Buttons/Retry","再次挑战"
+"gameplay:ResultPanel/Panel/Layout/Buttons/Menu","返回据点"

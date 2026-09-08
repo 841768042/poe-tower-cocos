@@ -1,0 +1,3 @@
+﻿"id:string:key","buildGridId:string","battleGridId:string","routeTable:string","offRoadMovementCost:float"
+"","引用的建造区网格ID","引用的战区网格ID","引用的道路配置表名","离开道路格的移动代价"
+"swamp","build","battle","swamp_routes","8"

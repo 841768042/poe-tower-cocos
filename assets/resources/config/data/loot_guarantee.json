@@ -1,0 +1,13 @@
+{
+  "tutorial_wave_3_copper_rod": {
+    "id": "tutorial_wave_3_copper_rod",
+    "waveIndex": 3,
+    "conditionKind": "NoEquipmentCollectedBeforeWave",
+    "itemBaseId": "item_copper_conductor_rod",
+    "rarity": "Magic",
+    "affixId": "affix_lightning_damage",
+    "tierId": "T9",
+    "fixedRoll": 12.0,
+    "enabledInSlice": true
+  }
+}

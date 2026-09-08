@@ -1,0 +1,4 @@
+"id:string:key","displayName:string","slot:string","itemBaseId:string","effectText:string"
+"","传奇装备名","传奇装备槽位","传奇装备基底","传奇装备效果说明"
+"unique_storm_architect_gloves","风暴建筑师手套","Hands","item_architect_work_gloves","雷暴感电地面范围 +1 格；雷暴间隔 +25%"
+"unique_marsh_conduit_amulet","沼泽导流护符","Amulet","item_marsh_charm","浅水感电地面额外扩散 1 格；非浅水持续 -30%"

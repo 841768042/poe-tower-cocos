@@ -1,0 +1,3 @@
+﻿"id:string:key","maximumActiveCells:int","tickInterval:int","burningDps:float","chillPulseSeconds:float","chillMinimumSlow:float","shockPulseSeconds:float","shallowWaterChillDurationMultiplier:float","shallowWaterShockSpreadCells:int","thunderstormDurationSeconds:int","thunderstormDamageTakenMultiplier:float","chilledGroundDurationSeconds:int","visualCellScale:float","burningColor:string","chilledColor:string","shockedColor:string"
+"","同时存在的地面效果格上限","地面效果结算间隔（模拟帧）","燃烧地面每秒伤害","冰缓地面每次施加的持续时间（秒）","冰缓地面的最低减速比例","感电地面每次施加的持续时间（秒）","浅水格冰缓持续时间倍率","浅水格感电扩散格数","雷暴感电地面持续时间（秒）","雷暴感电地面承伤增幅","冰缓地面基础持续时间（秒）","地面效果图形占格尺寸比例","燃烧地面显示颜色","冰缓地面显示颜色","感电地面显示颜色"
+"default","48","8","6.25","0.3","0.2","0.3","1.5","2","4","0.1","5","0.42","#ff611f3d","#4dbfff3d","#b861ff3d"

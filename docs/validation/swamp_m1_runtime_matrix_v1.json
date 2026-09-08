@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "measurementKind": "swamp_m1_runtime_matrix",
+  "measurementStatus": "partial_runtime_smoke",
+  "scope": "Not measured in focused M1 verification. Full 3-profile/4-seed/5-build matrix is deferred to M8.",
+  "contentHash": "not_measured_in_focused_mode",
+  "profiles": null,
+  "builds": [
+    {
+      "id": "balanced",
+      "investment": 300
+    },
+    {
+      "id": "shock",
+      "investment": 280
+    },
+    {
+      "id": "arc",
+      "investment": 240
+    },
+    {
+      "id": "storm",
+      "investment": 280
+    },
+    {
+      "id": "control_low",
+      "investment": 250
+    }
+  ],
+  "cases": [],
+  "replayPolicy": "two fresh Godot processes per profile/build/fixed-seed case; SummaryHash excludes wall-clock samples",
+  "acceptance": "recorded_only_pending_balance_adjudication",
+  "artifactHash": "234775b09e4ba6de0375c3bf42fc3dddf66996f008cb04ec199c24112ac7980a"
+}

@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "contractId": "swamp_m0_content_contract_v1",
+  "idRules": [
+    { "contentType": "enemy", "prefix": "enemy_", "pattern": "^enemy_[a-z0-9_]+$" },
+    { "contentType": "wave", "prefix": "wave_", "pattern": "^wave_[a-z0-9_]+$" },
+    { "contentType": "boss", "prefix": "boss_", "pattern": "^boss_[a-z0-9_]+$" },
+    { "contentType": "support", "prefix": "support_", "pattern": "^support_[a-z0-9_]+$" },
+    { "contentType": "equipment", "prefix": "item_", "pattern": "^item_[a-z0-9_]+$" }
+  ],
+  "currentBaseline": {
+    "fixtureId": "swamp_m0_demo_fixture",
+    "status": "baseline_fixture",
+    "enemyResources": [
+      { "id": "enemy_shambler", "path": "res://resources/definitions/enemies/enemy_shambler.tres" },
+      { "id": "enemy_swarm", "path": "res://resources/definitions/enemies/enemy_swarm.tres" },
+      { "id": "enemy_shellback", "path": "res://resources/definitions/enemies/enemy_shellback.tres" },
+      { "id": "enemy_rusher", "path": "res://resources/definitions/enemies/enemy_rusher.tres" },
+      { "id": "enemy_bog_colossus", "path": "res://resources/definitions/enemies/enemy_bog_colossus.tres" }
+    ],
+    "waveResources": [
+      { "id": "wave_01", "path": "res://resources/definitions/waves/wave_01.tres" },
+      { "id": "wave_02", "path": "res://resources/definitions/waves/wave_02.tres" },
+      { "id": "wave_03", "path": "res://resources/definitions/waves/wave_03.tres" },
+      { "id": "wave_04", "path": "res://resources/definitions/waves/wave_04.tres" },
+      { "id": "wave_05", "path": "res://resources/definitions/waves/wave_05.tres" },
+      { "id": "wave_06", "path": "res://resources/definitions/waves/wave_06.tres" },
+      { "id": "wave_07", "path": "res://resources/definitions/waves/wave_07.tres" },
+      { "id": "wave_08", "path": "res://resources/definitions/waves/wave_08.tres" },
+      { "id": "wave_09", "path": "res://resources/definitions/waves/wave_09.tres" },
+      { "id": "wave_set_demo", "path": "res://resources/definitions/waves/wave_set_demo.tres" }
+    ],
+    "supportIds": ["support_deep_conduction", "support_extra_chain", "support_concentrated_storm"],
+    "equipmentIds": ["item_copper_conductor_rod"],
+    "bossIds": []
+  },
+  "acceptance": {
+    "chapters": [
+      { "chapterId": "swamp_m0_baseline", "mapIds": ["swamp_demo"] }
+    ],
+    "maps": [
+      { "mapId": "swamp_demo", "encounterIds": ["encounter_demo_nine_waves"] }
+    ],
+    "encounters": [
+      { "encounterId": "encounter_demo_nine_waves", "waveSetId": "wave_set_demo", "expectedWaveCount": 9, "status": "baseline_fixture" }
+    ]
+  },
+  "futureCategoryContracts": [
+    { "contentType": "enemy", "scheduledMilestone": "M1", "status": "future_contract_only" },
+    { "contentType": "wave", "scheduledMilestone": "M2", "status": "future_contract_only" },
+    { "contentType": "boss", "scheduledMilestone": "M2", "status": "future_contract_only" },
+    { "contentType": "support", "scheduledMilestone": "M3", "status": "future_contract_only" },
+    { "contentType": "equipment", "scheduledMilestone": "M5", "status": "future_contract_only" }
+  ]
+}

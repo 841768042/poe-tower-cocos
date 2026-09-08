@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 2,
+  "measurementKind": "swamp_m1_real_battle_runtime_distribution",
+  "measurementStatus": "deferred_m8",
+  "requestedSampleCount": 200,
+  "actualSampleCount": 0,
+  "scope": "The 200-seed distribution is chapter-level M8 work and was not run for focused M1.",
+  "artifactHash": "015676282fb267443feb69930bf2cbdc56020ff2caa009559f54c0acf237faaa"
+}

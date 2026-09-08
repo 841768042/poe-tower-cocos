@@ -1,0 +1,22 @@
+{
+    "WavePreview":  {
+                        "key":  "WavePreview",
+                        "value":  "波次预览"
+                    },
+    "Combat":  {
+                   "key":  "Combat",
+                   "value":  "战斗中"
+               },
+    "Intermission":  {
+                         "key":  "Intermission",
+                         "value":  "波间调整"
+                     },
+    "Victory":  {
+                    "key":  "Victory",
+                    "value":  "胜利"
+                },
+    "Defeat":  {
+                   "key":  "Defeat",
+                   "value":  "失败"
+               }
+}

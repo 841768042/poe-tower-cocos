@@ -1,0 +1,27 @@
+{
+    "default":  {
+                    "id":  "default",
+                    "startingGold":  300,
+                    "startingWallHealth":  100,
+                    "sellRefundRate":  0.7,
+                    "powerUpgradeCosts":  [
+                                              80,
+                                              140,
+                                              220,
+                                              320
+                                          ],
+                    "supportInstallCosts":  [
+                                                40,
+                                                60,
+                                                90,
+                                                130,
+                                                180
+                                            ],
+                    "supportUpgradeCosts":  [
+                                                90,
+                                                160
+                                            ],
+                    "powerDamagePerLevel":  0.2,
+                    "minimumCostMultiplier":  0.5
+                }
+}

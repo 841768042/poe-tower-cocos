@@ -1,0 +1,501 @@
+{
+  "schemaVersion": 2,
+  "measurementKind": "swamp_m1_focused_runtime_acceptance",
+  "measurementStatus": "measured_runtime_focused_m1",
+  "matrixArtifact": "artifacts/validation/swamp_m1_runtime_matrix_v1.json",
+  "distributionArtifact": "artifacts/validation/swamp_m1_runtime_distribution_v1.json",
+  "performanceArtifact": "artifacts/validation/swamp_m1_runtime_performance_v1.json",
+  "counterplay": [
+    {
+      "criterion": {
+        "enemyId": "enemy_swamp_larva",
+        "profileId": "target",
+        "fasterBuildId": "arc",
+        "comparisonBuildId": "storm",
+        "evaluationMode": "both_clear_ratio",
+        "maximumClearTimeRatio": 0.85,
+        "runtimeResultStatus": "pending_m1_runtime_measurement"
+      },
+      "seed": 52001,
+      "faster": {
+        "phase": "victory",
+        "terminalTick": 388,
+        "clearSeconds": 6.45,
+        "defeated": 1,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 62,
+        "goldEarned": 2,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_swamp_larva": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 6.45,
+            "primaryAttackEvents": 2,
+            "postShieldHealthDamage": 15,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 2,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "fasterSummaryHash": "92a71fc8df54d7b20300678ba843992f6de42e00e340a6b4203d4c1d810d054f",
+      "comparison": {
+        "phase": "victory",
+        "terminalTick": 461,
+        "clearSeconds": 7.666666666666667,
+        "defeated": 1,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 22,
+        "goldEarned": 2,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_swamp_larva": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 7.666666666666667,
+            "primaryAttackEvents": 2,
+            "postShieldHealthDamage": 15,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 2,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "comparisonSummaryHash": "f3936120e98a46d1c202cae27eda20f8a7fa6b16c1209e0aac2c24208f575ad7",
+      "ratio": 0.841304347826087,
+      "passed": true,
+      "replayMatched": true
+    },
+    {
+      "criterion": {
+        "enemyId": "enemy_bile_corpse",
+        "profileId": "target",
+        "fasterBuildId": "arc",
+        "comparisonBuildId": "shock",
+        "evaluationMode": "both_clear_ratio",
+        "maximumClearTimeRatio": 0.85,
+        "runtimeResultStatus": "pending_m1_runtime_measurement"
+      },
+      "seed": 52001,
+      "faster": {
+        "phase": "victory",
+        "terminalTick": 680,
+        "clearSeconds": 11.316666666666666,
+        "defeated": 3,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 65,
+        "goldEarned": 5,
+        "activeEnemyPeak": 2,
+        "liveChildPeak": 2,
+        "childResolved": 2,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_bile_corpse": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 10.116666666666667,
+            "primaryAttackEvents": 6,
+            "postShieldHealthDamage": 50,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 6,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_bile_spore": {
+            "spawned": 2,
+            "defeated": 2,
+            "breached": 0,
+            "maximumLifetimeSeconds": 1.2,
+            "primaryAttackEvents": 2,
+            "postShieldHealthDamage": 20,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 4,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "fasterSummaryHash": "a90cf2a73c3732568c7d71c384a6fe7a4b8baddbeb82ce2636df8607f4495ef9",
+      "comparison": {
+        "phase": "victory",
+        "terminalTick": 851,
+        "clearSeconds": 14.166666666666666,
+        "defeated": 3,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 25,
+        "goldEarned": 5,
+        "activeEnemyPeak": 2,
+        "liveChildPeak": 2,
+        "childResolved": 2,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_bile_corpse": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 12.3,
+            "primaryAttackEvents": 21,
+            "postShieldHealthDamage": 50.000000000000014,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 21,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_bile_spore": {
+            "spawned": 2,
+            "defeated": 2,
+            "breached": 0,
+            "maximumLifetimeSeconds": 1.8666666666666667,
+            "primaryAttackEvents": 10,
+            "postShieldHealthDamage": 20,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 10,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "comparisonSummaryHash": "7239a77d10164d3ecd1e161c8b5e0bfcb59726c2b8715aa7140cb7cf66dcecf5",
+      "ratio": 0.7988235294117647,
+      "passed": true,
+      "replayMatched": true
+    },
+    {
+      "criterion": {
+        "enemyId": "enemy_mud_armored_guard",
+        "profileId": "target",
+        "fasterBuildId": "storm",
+        "comparisonBuildId": "shock",
+        "evaluationMode": "faster_clear_comparison_breach_or_ratio",
+        "maximumClearTimeRatio": 0.75,
+        "runtimeResultStatus": "pending_m1_runtime_measurement"
+      },
+      "seed": 52001,
+      "faster": {
+        "phase": "victory",
+        "terminalTick": 749,
+        "clearSeconds": 12.466666666666667,
+        "defeated": 1,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 30,
+        "goldEarned": 10,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_mud_armored_guard": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 12.466666666666667,
+            "primaryAttackEvents": 15,
+            "postShieldHealthDamage": 80,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 22.5,
+            "healthDamageEvents": 15,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 15
+          }
+        }
+      },
+      "fasterSummaryHash": "573f5377edaf578830e78e3e4b74ae0b78bc4af87d685637dc810da816806a0f",
+      "comparison": {
+        "phase": "victory",
+        "terminalTick": 840,
+        "clearSeconds": 13.983333333333333,
+        "defeated": 0,
+        "breaches": 1,
+        "wallEnd": 92,
+        "goldEnd": 20,
+        "goldEarned": 0,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_mud_armored_guard": {
+            "spawned": 1,
+            "defeated": 0,
+            "breached": 1,
+            "maximumLifetimeSeconds": 13.983333333333333,
+            "primaryAttackEvents": 33,
+            "postShieldHealthDamage": 32.08080000000005,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 49.5,
+            "healthDamageEvents": 33,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 33
+          }
+        }
+      },
+      "comparisonSummaryHash": "fa185333b79cf0fe763bff4e6345eea1a936b33f0c9fce2192598a2766d440fa",
+      "ratio": null,
+      "passed": true,
+      "replayMatched": true
+    },
+    {
+      "criterion": {
+        "enemyId": "enemy_waterveil_acolyte",
+        "profileId": "target",
+        "fasterBuildId": "shock",
+        "comparisonBuildId": "storm",
+        "evaluationMode": "both_clear_ratio",
+        "maximumClearTimeRatio": 0.8,
+        "runtimeResultStatus": "pending_m1_runtime_measurement"
+      },
+      "seed": 52001,
+      "faster": {
+        "phase": "victory",
+        "terminalTick": 840,
+        "clearSeconds": 13.983333333333333,
+        "defeated": 0,
+        "breaches": 1,
+        "wallEnd": 94,
+        "goldEnd": 20,
+        "goldEarned": 0,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_waterveil_acolyte": {
+            "spawned": 1,
+            "defeated": 0,
+            "breached": 1,
+            "maximumLifetimeSeconds": 13.983333333333333,
+            "primaryAttackEvents": 33,
+            "postShieldHealthDamage": 46.58080000000004,
+            "shieldAbsorbedDamage": 35,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 22,
+            "shieldDamageEvents": 15,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "fasterSummaryHash": "f14996bc023ccaeaf4b78b36092d841392320157b0284cc62b6cc895a60dce55",
+      "comparison": {
+        "phase": "victory",
+        "terminalTick": 749,
+        "clearSeconds": 12.466666666666667,
+        "defeated": 1,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 27,
+        "goldEarned": 7,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_waterveil_acolyte": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 12.466666666666667,
+            "primaryAttackEvents": 15,
+            "postShieldHealthDamage": 55,
+            "shieldAbsorbedDamage": 35,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 11,
+            "shieldDamageEvents": 5,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "comparisonSummaryHash": "e601b1e17e00a64629b0488be1a2ba261d8f3e46a1b80c2053906009c5dff755",
+      "ratio": 1.1216577540106951,
+      "passed": false,
+      "replayMatched": true
+    }
+  ],
+  "sensitivity": [
+    {
+      "axis": "bile.child_health",
+      "point": 10,
+      "continuous": true,
+      "summaryHash": "657022e582a9ce26bd96eb62719e61a16db4feb69440b1fdafa85b1f358582c7",
+      "result": {
+        "phase": "victory",
+        "terminalTick": 677,
+        "clearSeconds": 11.266666666666667,
+        "defeated": 3,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 5,
+        "goldEarned": 5,
+        "activeEnemyPeak": 2,
+        "liveChildPeak": 2,
+        "childResolved": 2,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_bile_corpse": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 9.716666666666667,
+            "primaryAttackEvents": 5,
+            "postShieldHealthDamage": 50,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 5,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_bile_spore": {
+            "spawned": 2,
+            "defeated": 2,
+            "breached": 0,
+            "maximumLifetimeSeconds": 1.55,
+            "primaryAttackEvents": 4,
+            "postShieldHealthDamage": 22,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 5,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "overrides": [
+        {
+          "scope": "spawn_context",
+          "target": "enemy_bile_spore.maxHealth",
+          "oldValue": "10",
+          "newValue": "11",
+          "boundary": "fresh-process verification override; source resources and generated config remain unchanged"
+        }
+      ]
+    },
+    {
+      "axis": "armor.reduction",
+      "point": 10,
+      "continuous": true,
+      "summaryHash": "51cfc7c560f4576f1b62c97514994f4ccaf7aaa5192bf9d1049f565b4b843da3",
+      "result": {
+        "phase": "victory",
+        "terminalTick": 749,
+        "clearSeconds": 12.466666666666667,
+        "defeated": 1,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 10,
+        "goldEarned": 10,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_mud_armored_guard": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 12.466666666666667,
+            "primaryAttackEvents": 13,
+            "postShieldHealthDamage": 80,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 21.449999999999996,
+            "healthDamageEvents": 13,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 13
+          }
+        }
+      },
+      "overrides": [
+        {
+          "scope": "spawn_context",
+          "target": "enemy_mud_armored_guard.flatReduction",
+          "oldValue": "1.5",
+          "newValue": "1.6500000000000001",
+          "boundary": "fresh-process verification override; source resources and generated config remain unchanged"
+        }
+      ]
+    },
+    {
+      "axis": "waterveil.shield",
+      "point": 10,
+      "continuous": true,
+      "summaryHash": "2d5b8e081fe6ef2304d06b22871a28e57e8809f7bc0cde7754596cd322f36a63",
+      "result": {
+        "phase": "victory",
+        "terminalTick": 749,
+        "clearSeconds": 12.466666666666667,
+        "defeated": 1,
+        "breaches": 0,
+        "wallEnd": 100,
+        "goldEnd": 7,
+        "goldEarned": 7,
+        "activeEnemyPeak": 1,
+        "liveChildPeak": 0,
+        "childResolved": 0,
+        "dropFeedbackEvents": 1,
+        "dropFeedbackItems": 0,
+        "byEnemy": {
+          "enemy_waterveil_acolyte": {
+            "spawned": 1,
+            "defeated": 1,
+            "breached": 0,
+            "maximumLifetimeSeconds": 12.466666666666667,
+            "primaryAttackEvents": 13,
+            "postShieldHealthDamage": 55,
+            "shieldAbsorbedDamage": 38.5,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 10,
+            "shieldDamageEvents": 4,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "overrides": [
+        {
+          "scope": "spawn_context",
+          "target": "enemy_waterveil_acolyte.shieldMax",
+          "oldValue": "35",
+          "newValue": "38.5",
+          "boundary": "fresh-process verification override; source resources and generated config remain unchanged"
+        }
+      ]
+    }
+  ],
+  "distributionSampleCount": 0,
+  "scope": "Focused M1 exit: four isolated real-runtime enemy mechanism cases, three direct sensitivity boundary points, and one 100-active-enemy smoke. Full matrix, 22 axes, 200 seeds and chapter adjudication are M8.",
+  "warnings": [
+    "A runtime measurement PASS means the production-path case executed; balance acceptance remains explicit in each result.",
+    "Only -Full may produce the required 200-seed distribution artifact."
+  ],
+  "artifactHash": "d6039fb64fc30662a425e8dca39c30d7f15fbb8cf1ccbfb787734b824d9b7e83"
+}

@@ -1,0 +1,3 @@
+﻿"id:string:key","shockThreshold:int","shockDurationSeconds:int","shockDamageTakenMultiplier:float","shockGroundDamageTakenMultiplier:float","shockGroundBuildupMultiplier:float","freezeThreshold:int","normalFreezeSeconds:float","eliteFreezeSeconds:float","bossFreezeSeconds:float","stunThreshold:int","normalStunSeconds:int","eliteStunSeconds:float","bossStunSeconds:float","minimumMoveSpeedMultiplier:float","bossTauntDurationSeconds:float"
+"","触发感电所需积累值","感电持续时间（秒）","感电状态承伤倍率","处于感电地面时的承伤倍率","感电地面上的感电积累倍率","触发冻结所需积累值","普通敌人冻结时长（秒）","精英敌人冻结时长（秒）","首领冻结时长（秒）","触发眩晕所需积累值","普通敌人眩晕时长（秒）","精英敌人眩晕时长（秒）","首领眩晕时长（秒）","减速后的最低移动速度倍率","首领单次嘲讽的最大持续时间（秒）"
+"default","100","6","1.2","1.1","1.25","100","1.5","0.75","0.3","100","1","0.5","0.2","0.4","0.5"

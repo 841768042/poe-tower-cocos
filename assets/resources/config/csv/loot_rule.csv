@@ -1,0 +1,3 @@
+"id:string:key","lootTableId:string","baseEquipmentDropRate:float","playerIirQualityScale:float","monsterRarityQuantityWeight:float","monsterAffixQuantityWeight:float","monsterRarityQualityWeight:float","monsterAffixQualityWeight:float","enabledInSlice:bool"
+"","掉落表标识","基础装备掉率","玩家品质缩放","怪物稀有度数量权重","怪物词条数量权重","怪物稀有度品质权重","怪物词条品质权重","本切片启用"
+"default","loot_default_equipment","0.02","1","1","1","1","1","true"

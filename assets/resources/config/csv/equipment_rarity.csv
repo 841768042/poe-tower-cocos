@@ -1,0 +1,6 @@
+"rarity:string:key","prefixMax:int","suffixMax:int","itemAffixTotalMin:int","itemAffixTotalMax:int","qualityUpgradeWeight:float","enabledInSlice:bool"
+"品质标识","前缀上限","后缀上限","词缀总数下限","词缀总数上限","品质权重","本切片启用"
+"Normal","0","0","0","0","70","true"
+"Magic","1","1","1","2","30","true"
+"Rare","3","3","1","6","0","false"
+"Unique","0","0","0","0","0","false"

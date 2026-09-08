@@ -1,0 +1,74 @@
+{
+    "talent_build_gold":  {
+                              "id":  "talent_build_gold",
+                              "displayName":  "战争储备",
+                              "prerequisiteId":  "",
+                              "effectText":  "开局金币 +25"
+                          },
+    "talent_build_cost":  {
+                              "id":  "talent_build_cost",
+                              "displayName":  "精打细算",
+                              "prerequisiteId":  "talent_build_gold",
+                              "effectText":  "建造成本 -5%"
+                          },
+    "talent_sell":  {
+                        "id":  "talent_sell",
+                        "displayName":  "回收工艺",
+                        "prerequisiteId":  "talent_build_cost",
+                        "effectText":  "出售返还 +5 个百分点"
+                    },
+    "talent_wall":  {
+                        "id":  "talent_wall",
+                        "displayName":  "加固城墙",
+                        "prerequisiteId":  "talent_sell",
+                        "effectText":  "城墙生命 +15%"
+                    },
+    "talent_lightning_damage":  {
+                                    "id":  "talent_lightning_damage",
+                                    "displayName":  "驭雷",
+                                    "prerequisiteId":  "",
+                                    "effectText":  "闪电伤害 +12%"
+                                },
+    "talent_shock_buildup":  {
+                                 "id":  "talent_shock_buildup",
+                                 "displayName":  "感电专精",
+                                 "prerequisiteId":  "talent_lightning_damage",
+                                 "effectText":  "感电积累 +15%"
+                             },
+    "talent_arc":  {
+                       "id":  "talent_arc",
+                       "displayName":  "电弧共鸣",
+                       "prerequisiteId":  "talent_shock_buildup",
+                       "effectText":  "电弧对感电目标伤害 +15%"
+                   },
+    "talent_storm_ground":  {
+                                "id":  "talent_storm_ground",
+                                "displayName":  "雷暴余波",
+                                "prerequisiteId":  "talent_arc",
+                                "effectText":  "感电地面持续 +20%"
+                            },
+    "talent_shallow_water":  {
+                                 "id":  "talent_shallow_water",
+                                 "displayName":  "湿地导体",
+                                 "prerequisiteId":  "",
+                                 "effectText":  "潮湿目标感电积累额外 +10%"
+                             },
+    "talent_icewall":  {
+                           "id":  "talent_icewall",
+                           "displayName":  "永冻屏障",
+                           "prerequisiteId":  "talent_shallow_water",
+                           "effectText":  "冰墙持续 +15%"
+                       },
+    "talent_taunt":  {
+                         "id":  "talent_taunt",
+                         "displayName":  "回声诱饵",
+                         "prerequisiteId":  "talent_icewall",
+                         "effectText":  "嘲讽半径 +12%"
+                     },
+    "talent_chilled_ground":  {
+                                  "id":  "talent_chilled_ground",
+                                  "displayName":  "刺骨冻土",
+                                  "prerequisiteId":  "talent_taunt",
+                                  "effectText":  "冰缓强度 +5 个百分点"
+                              }
+}

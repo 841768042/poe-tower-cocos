@@ -1,0 +1,361 @@
+{
+  "schemaVersion": 2,
+  "measurementKind": "swamp_m1_real_battle_runtime_performance",
+  "measurementStatus": "measured_runtime_focused_m1",
+  "requiredActiveEnemies": 100,
+  "p95BudgetMilliseconds": 4,
+  "p99BudgetMilliseconds": 8,
+  "allocationTargetBytes": 0,
+  "cases": [
+    {
+      "schemaVersion": 1,
+      "measurementKind": "swamp_m1_real_battle_runtime_case",
+      "measurementStatus": "measured_runtime",
+      "scenario": {
+        "kind": "performance",
+        "fixture": "standard",
+        "profileId": "target",
+        "buildId": "balanced",
+        "seed": 54001,
+        "enemyId": "enemy_swamp_larva",
+        "affixId": "",
+        "sensitivityAxis": "none",
+        "sensitivityDeltaPercent": 0,
+        "childCount": 1
+      },
+      "runtime": {
+        "productionPath": "BattleRuntime+EntityWorld+Enemy.tscn+BuildGridController+TowerAttackComponent+EnemyDeathSpawnSystem+RunLootCoordinator",
+        "seedApplication": "NamedRandomStreams:monster.affix; one fresh Godot process per fixed seed",
+        "namedRandomDrawIndices": {
+          "loot.affix_roll": 0,
+          "loot.affix_select": 0,
+          "loot.base": 0,
+          "loot.quality": 0,
+          "loot.quantity": 0,
+          "monster.affix": 100
+        },
+        "contentHash": "79c0e26e247106a204688bcad04023cf09a5f79203bcce92ed110b7d7dd52e39",
+        "runtimeOverrides": []
+      },
+      "build": {
+        "investment": 300,
+        "commands": [
+          {
+            "kind": "Build",
+            "towerDefinitionId": "tower_static_needle",
+            "supportId": "",
+            "cellX": 2,
+            "cellY": 0
+          },
+          {
+            "kind": "Build",
+            "towerDefinitionId": "tower_arc",
+            "supportId": "",
+            "cellX": 3,
+            "cellY": 0
+          },
+          {
+            "kind": "Build",
+            "towerDefinitionId": "tower_thunderstorm",
+            "supportId": "",
+            "cellX": 4,
+            "cellY": 0
+          }
+        ],
+        "towers": [
+          {
+            "definitionId": "tower_static_needle",
+            "cellX": 2,
+            "cellY": 0,
+            "powerLevel": 1,
+            "investment": 80,
+            "supports": {}
+          },
+          {
+            "definitionId": "tower_arc",
+            "cellX": 3,
+            "cellY": 0,
+            "powerLevel": 1,
+            "investment": 100,
+            "supports": {}
+          },
+          {
+            "definitionId": "tower_thunderstorm",
+            "cellX": 4,
+            "cellY": 0,
+            "powerLevel": 1,
+            "investment": 120,
+            "supports": {}
+          }
+        ]
+      },
+      "result": {
+        "phase": "defeat",
+        "terminalTick": 973,
+        "clearSeconds": 16.2,
+        "defeated": 68,
+        "breaches": 19,
+        "wallEnd": 0,
+        "goldEnd": 259,
+        "goldEarned": 259,
+        "activeEnemyPeak": 100,
+        "liveChildPeak": 16,
+        "childResolved": 16,
+        "dropFeedbackEvents": 2,
+        "dropFeedbackItems": 2,
+        "byEnemy": {
+          "enemy_bile_corpse": {
+            "spawned": 25,
+            "defeated": 8,
+            "breached": 17,
+            "maximumLifetimeSeconds": 15.75,
+            "primaryAttackEvents": 1,
+            "postShieldHealthDamage": 925.8399999999995,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 34,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_bile_spore": {
+            "spawned": 16,
+            "defeated": 16,
+            "breached": 0,
+            "maximumLifetimeSeconds": 3.0166666666666666,
+            "primaryAttackEvents": 0,
+            "postShieldHealthDamage": 160,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 16,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_mud_armored_guard": {
+            "spawned": 13,
+            "defeated": 12,
+            "breached": 1,
+            "maximumLifetimeSeconds": 16.2,
+            "primaryAttackEvents": 0,
+            "postShieldHealthDamage": 960,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 54,
+            "healthDamageEvents": 36,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 36
+          },
+          "enemy_swamp_larva": {
+            "spawned": 25,
+            "defeated": 25,
+            "breached": 0,
+            "maximumLifetimeSeconds": 10.683333333333334,
+            "primaryAttackEvents": 6,
+            "postShieldHealthDamage": 375,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 29,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_waterveil_acolyte": {
+            "spawned": 8,
+            "defeated": 7,
+            "breached": 1,
+            "maximumLifetimeSeconds": 13.983333333333333,
+            "primaryAttackEvents": 13,
+            "postShieldHealthDamage": 434.8291733333335,
+            "shieldAbsorbedDamage": 312.6666666666663,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 44,
+            "shieldDamageEvents": 21,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "performance": {
+        "sampleCount": 852,
+        "logicP95Milliseconds": 0.1991,
+        "logicP99Milliseconds": 1.2474,
+        "allocationP95Bytes": 1264,
+        "allocationMeasurementBoundary": "GC.GetAllocatedBytesForCurrentThread includes the harness signal callback and managed Godot wrappers; a nonzero result is reported as measured, never represented as production-only allocation."
+      },
+      "summaryHash": "960ce490d1f0d2e8be7628b9854464f3fbbd7468336da4a73ac21bc2e0230780"
+    },
+    {
+      "schemaVersion": 1,
+      "measurementKind": "swamp_m1_real_battle_runtime_case",
+      "measurementStatus": "measured_runtime",
+      "scenario": {
+        "kind": "performance",
+        "fixture": "standard",
+        "profileId": "target",
+        "buildId": "balanced",
+        "seed": 54001,
+        "enemyId": "enemy_swamp_larva",
+        "affixId": "",
+        "sensitivityAxis": "none",
+        "sensitivityDeltaPercent": 0,
+        "childCount": 1
+      },
+      "runtime": {
+        "productionPath": "BattleRuntime+EntityWorld+Enemy.tscn+BuildGridController+TowerAttackComponent+EnemyDeathSpawnSystem+RunLootCoordinator",
+        "seedApplication": "NamedRandomStreams:monster.affix; one fresh Godot process per fixed seed",
+        "namedRandomDrawIndices": {
+          "loot.affix_roll": 0,
+          "loot.affix_select": 0,
+          "loot.base": 0,
+          "loot.quality": 0,
+          "loot.quantity": 0,
+          "monster.affix": 100
+        },
+        "contentHash": "79c0e26e247106a204688bcad04023cf09a5f79203bcce92ed110b7d7dd52e39",
+        "runtimeOverrides": []
+      },
+      "build": {
+        "investment": 300,
+        "commands": [
+          {
+            "kind": "Build",
+            "towerDefinitionId": "tower_static_needle",
+            "supportId": "",
+            "cellX": 2,
+            "cellY": 0
+          },
+          {
+            "kind": "Build",
+            "towerDefinitionId": "tower_arc",
+            "supportId": "",
+            "cellX": 3,
+            "cellY": 0
+          },
+          {
+            "kind": "Build",
+            "towerDefinitionId": "tower_thunderstorm",
+            "supportId": "",
+            "cellX": 4,
+            "cellY": 0
+          }
+        ],
+        "towers": [
+          {
+            "definitionId": "tower_static_needle",
+            "cellX": 2,
+            "cellY": 0,
+            "powerLevel": 1,
+            "investment": 80,
+            "supports": {}
+          },
+          {
+            "definitionId": "tower_arc",
+            "cellX": 3,
+            "cellY": 0,
+            "powerLevel": 1,
+            "investment": 100,
+            "supports": {}
+          },
+          {
+            "definitionId": "tower_thunderstorm",
+            "cellX": 4,
+            "cellY": 0,
+            "powerLevel": 1,
+            "investment": 120,
+            "supports": {}
+          }
+        ]
+      },
+      "result": {
+        "phase": "defeat",
+        "terminalTick": 973,
+        "clearSeconds": 16.2,
+        "defeated": 68,
+        "breaches": 19,
+        "wallEnd": 0,
+        "goldEnd": 259,
+        "goldEarned": 259,
+        "activeEnemyPeak": 100,
+        "liveChildPeak": 16,
+        "childResolved": 16,
+        "dropFeedbackEvents": 2,
+        "dropFeedbackItems": 2,
+        "byEnemy": {
+          "enemy_bile_corpse": {
+            "spawned": 25,
+            "defeated": 8,
+            "breached": 17,
+            "maximumLifetimeSeconds": 15.75,
+            "primaryAttackEvents": 1,
+            "postShieldHealthDamage": 925.8399999999995,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 34,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_bile_spore": {
+            "spawned": 16,
+            "defeated": 16,
+            "breached": 0,
+            "maximumLifetimeSeconds": 3.0166666666666666,
+            "primaryAttackEvents": 0,
+            "postShieldHealthDamage": 160,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 16,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_mud_armored_guard": {
+            "spawned": 13,
+            "defeated": 12,
+            "breached": 1,
+            "maximumLifetimeSeconds": 16.2,
+            "primaryAttackEvents": 0,
+            "postShieldHealthDamage": 960,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 54,
+            "healthDamageEvents": 36,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 36
+          },
+          "enemy_swamp_larva": {
+            "spawned": 25,
+            "defeated": 25,
+            "breached": 0,
+            "maximumLifetimeSeconds": 10.683333333333334,
+            "primaryAttackEvents": 6,
+            "postShieldHealthDamage": 375,
+            "shieldAbsorbedDamage": 0,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 29,
+            "shieldDamageEvents": 0,
+            "armorMitigationEvents": 0
+          },
+          "enemy_waterveil_acolyte": {
+            "spawned": 8,
+            "defeated": 7,
+            "breached": 1,
+            "maximumLifetimeSeconds": 13.983333333333333,
+            "primaryAttackEvents": 13,
+            "postShieldHealthDamage": 434.8291733333335,
+            "shieldAbsorbedDamage": 312.6666666666663,
+            "armorMitigatedDamage": 0,
+            "healthDamageEvents": 44,
+            "shieldDamageEvents": 21,
+            "armorMitigationEvents": 0
+          }
+        }
+      },
+      "performance": {
+        "sampleCount": 852,
+        "logicP95Milliseconds": 0.1405,
+        "logicP99Milliseconds": 1.3314,
+        "allocationP95Bytes": 1264,
+        "allocationMeasurementBoundary": "GC.GetAllocatedBytesForCurrentThread includes the harness signal callback and managed Godot wrappers; a nonzero result is reported as measured, never represented as production-only allocation."
+      },
+      "summaryHash": "960ce490d1f0d2e8be7628b9854464f3fbbd7468336da4a73ac21bc2e0230780"
+    }
+  ],
+  "replayMatched": true,
+  "logicBudgetPass": true,
+  "allocationBoundary": "nonzero managed allocation is reported as a harness-inclusive measurement; it is not claimed to satisfy the 0B production target",
+  "artifactHash": "9bcd82054d9476038ec473b7a349db37824890f4bc564e3b3026d0025060fce0"
+}

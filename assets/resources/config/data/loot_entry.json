@@ -1,0 +1,14 @@
+{
+  "loot_default_equipment": {
+    "entry_copper_conductor_rod": {
+      "lootTableId": "loot_default_equipment",
+      "entryId": "entry_copper_conductor_rod",
+      "rewardKind": "ItemBase",
+      "rewardId": "item_copper_conductor_rod",
+      "weight": 2.0,
+      "quantityMin": 1,
+      "quantityMax": 1,
+      "enabledInSlice": true
+    }
+  }
+}

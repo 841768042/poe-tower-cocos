@@ -1,0 +1,17 @@
+{
+    "currency_reroll_values":  {
+                                   "id":  "currency_reroll_values",
+                                   "effectText":  "重随机现有词条数值",
+                                   "initialAmount":  2
+                               },
+    "currency_replace_affix":  {
+                                   "id":  "currency_replace_affix",
+                                   "effectText":  "事务性替换一条合法词条",
+                                   "initialAmount":  1
+                               },
+    "currency_respec_talent":  {
+                                   "id":  "currency_respec_talent",
+                                   "effectText":  "退还一个不破坏连通性的天赋",
+                                   "initialAmount":  1
+                               }
+}

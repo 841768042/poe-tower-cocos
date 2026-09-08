@@ -1,0 +1,8 @@
+{
+  "loot_default_equipment": {
+    "id": "loot_default_equipment",
+    "rollsMin": 1,
+    "rollsMax": 1,
+    "noDropWeight": 0
+  }
+}

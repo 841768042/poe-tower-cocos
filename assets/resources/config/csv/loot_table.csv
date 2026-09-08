@@ -1,0 +1,3 @@
+"id:string:key","rollsMin:int","rollsMax:int","noDropWeight:float"
+"","最少掉落次数","最多掉落次数","无掉落权重"
+"loot_default_equipment","1","1","0"

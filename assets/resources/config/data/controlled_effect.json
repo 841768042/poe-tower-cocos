@@ -1,0 +1,56 @@
+{
+  "lightning_damage": {
+    "id": "lightning_damage",
+    "operation": "Increased",
+    "handlerId": "increased_lightning_damage",
+    "targetTagId": "skill.lightning",
+    "value": 0,
+    "active": true,
+    "domain": "equipment"
+  },
+  "monster_max_health": {
+    "id": "monster_max_health",
+    "operation": "Increased",
+    "handlerId": "monster_max_health",
+    "targetTagId": "monster.max_health",
+    "value": 0.6,
+    "active": true,
+    "domain": "monster"
+  },
+  "monster_move_speed": {
+    "id": "monster_move_speed",
+    "operation": "Increased",
+    "handlerId": "monster_move_speed",
+    "targetTagId": "monster.move_speed",
+    "value": -0.1,
+    "active": true,
+    "domain": "monster"
+  },
+  "monster_swift_max_health": {
+    "id": "monster_swift_max_health",
+    "operation": "Increased",
+    "handlerId": "monster_max_health",
+    "targetTagId": "monster.max_health",
+    "value": -0.1,
+    "active": true,
+    "domain": "monster"
+  },
+  "monster_swift_move_speed": {
+    "id": "monster_swift_move_speed",
+    "operation": "Increased",
+    "handlerId": "monster_move_speed",
+    "targetTagId": "monster.move_speed",
+    "value": 0.25,
+    "active": true,
+    "domain": "monster"
+  },
+  "monster_shock_buildup": {
+    "id": "monster_shock_buildup",
+    "operation": "More",
+    "handlerId": "monster_shock_buildup",
+    "targetTagId": "status.shock_buildup",
+    "value": -0.4,
+    "active": false,
+    "domain": "monster"
+  }
+}

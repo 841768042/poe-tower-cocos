@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 1,
+  "measurementKind": "swamp_m0_battle_runtime_baseline",
+  "scenario": {
+    "scenarioId": "swamp_m0_low_balanced",
+    "profileId": "low",
+    "buildId": "balanced",
+    "manifestMeasurementStatus": "measured_runtime"
+  },
+  "battleContentHash": "14874089246a1f60d08ef8f66041d56e9c47855fc0417098a78bc976a0480901",
+  "manifestHash": "0534eb5c601cc7f02248b03f7719d0f891a6ee5c06a3404a340d956b2a6fa4f8",
+  "profileSnapshot": {
+    "fixtureProfileId": "low",
+    "source": "BattleRuntime.ProfileSnapshot with ApplyProfileSnapshot=false",
+    "architectLevel": 4,
+    "talentIds": [],
+    "equipmentBySlot": [],
+    "towerLoadoutIds": [],
+    "contentHash": "79c0e26e247106a204688bcad04023cf09a5f79203bcce92ed110b7d7dd52e39",
+    "normalizedSha256": "26b635bfaadc7fb8cedaef8362d6a5ab15599e242181016a448f3afc77cd5936"
+  },
+  "fixedRun": {
+    "runId": "swamp_m0_low_balanced_r1",
+    "runSeed": 41001,
+    "seedApplication": "not_observable:no_public_run_seed_injection_on_current_deterministic_wave_runtime",
+    "commands": [
+      {
+        "sequence": 1,
+        "command": "build_tower",
+        "argument": "tower_static_needle"
+      },
+      {
+        "sequence": 2,
+        "command": "build_tower",
+        "argument": "tower_arc"
+      },
+      {
+        "sequence": 3,
+        "command": "build_tower",
+        "argument": "tower_thunderstorm"
+      },
+      {
+        "sequence": 4,
+        "command": "start_wave",
+        "argument": "wave_set_demo"
+      }
+    ],
+    "executedCommands": [
+      {
+        "sequence": 1,
+        "command": "build_tower",
+        "argument": "tower_static_needle",
+        "accepted": true,
+        "tick": 0
+      },
+      {
+        "sequence": 2,
+        "command": "build_tower",
+        "argument": "tower_arc",
+        "accepted": true,
+        "tick": 0
+      },
+      {
+        "sequence": 3,
+        "command": "build_tower",
+        "argument": "tower_thunderstorm",
+        "accepted": true,
+        "tick": 0
+      },
+      {
+        "sequence": 4,
+        "command": "start_wave",
+        "argument": "wave_set_demo",
+        "accepted": true,
+        "tick": 0
+      }
+    ]
+  },
+  "observationApi": [
+    "WaveSystem.WaveStarted/WaveCompleted/CurrentWaveIndex",
+    "EntityWorld.EntityRegistered",
+    "BattleRuntime.EnemyResolved/KillRewardGranted/GoldChanged/WallHealthChanged",
+    "GameSession.CurrentTick/PhaseChanged",
+    "BuildGridController.TryBuild/RunCommandCompleted/CaptureCheckpointTowers"
+  ],
+  "waves": [
+    {
+      "waveIndex": 1,
+      "spawned": 16,
+      "defeated": 16,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": 0,
+      "lastSpawnTick": 165,
+      "lastResolutionTick": 628,
+      "completeTick": 629,
+      "spawnedByDefinition": {
+        "enemy_shambler": 16
+      }
+    },
+    {
+      "waveIndex": 2,
+      "spawned": 37,
+      "defeated": 31,
+      "breached": 6,
+      "unresolved": 0,
+      "startTick": 629,
+      "lastSpawnTick": 779,
+      "lastResolutionTick": 1232,
+      "completeTick": 1233,
+      "spawnedByDefinition": {
+        "enemy_shambler": 12,
+        "enemy_swarm": 25
+      }
+    },
+    {
+      "waveIndex": 3,
+      "spawned": 32,
+      "defeated": 15,
+      "breached": 14,
+      "unresolved": 3,
+      "startTick": 1233,
+      "lastSpawnTick": 1410,
+      "lastResolutionTick": 1781,
+      "completeTick": null,
+      "spawnedByDefinition": {
+        "enemy_rusher": 20,
+        "enemy_shambler": 12
+      }
+    },
+    {
+      "waveIndex": 4,
+      "spawned": 0,
+      "defeated": 0,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": null,
+      "lastSpawnTick": null,
+      "lastResolutionTick": null,
+      "completeTick": null,
+      "spawnedByDefinition": {}
+    },
+    {
+      "waveIndex": 5,
+      "spawned": 0,
+      "defeated": 0,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": null,
+      "lastSpawnTick": null,
+      "lastResolutionTick": null,
+      "completeTick": null,
+      "spawnedByDefinition": {}
+    },
+    {
+      "waveIndex": 6,
+      "spawned": 0,
+      "defeated": 0,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": null,
+      "lastSpawnTick": null,
+      "lastResolutionTick": null,
+      "completeTick": null,
+      "spawnedByDefinition": {}
+    },
+    {
+      "waveIndex": 7,
+      "spawned": 0,
+      "defeated": 0,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": null,
+      "lastSpawnTick": null,
+      "lastResolutionTick": null,
+      "completeTick": null,
+      "spawnedByDefinition": {}
+    },
+    {
+      "waveIndex": 8,
+      "spawned": 0,
+      "defeated": 0,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": null,
+      "lastSpawnTick": null,
+      "lastResolutionTick": null,
+      "completeTick": null,
+      "spawnedByDefinition": {}
+    },
+    {
+      "waveIndex": 9,
+      "spawned": 0,
+      "defeated": 0,
+      "breached": 0,
+      "unresolved": 0,
+      "startTick": null,
+      "lastSpawnTick": null,
+      "lastResolutionTick": null,
+      "completeTick": null,
+      "spawnedByDefinition": {}
+    }
+  ],
+  "economy": {
+    "goldStart": 300,
+    "goldEarned": 220,
+    "goldSpent": 300,
+    "goldRefunded": 0,
+    "goldEnd": 220
+  },
+  "wall": {
+    "wallStart": 100,
+    "wallDamage": 100,
+    "wallEnd": 0
+  },
+  "towers": [
+    {
+      "cellX": 2,
+      "cellY": 0,
+      "definitionId": "tower_static_needle",
+      "tags": [
+        "skill.lightning"
+      ],
+      "powerLevel": 1,
+      "supports": [],
+      "totalInvestment": 80
+    },
+    {
+      "cellX": 3,
+      "cellY": 0,
+      "definitionId": "tower_arc",
+      "tags": [
+        "skill.lightning"
+      ],
+      "powerLevel": 1,
+      "supports": [],
+      "totalInvestment": 100
+    },
+    {
+      "cellX": 4,
+      "cellY": 0,
+      "definitionId": "tower_thunderstorm",
+      "tags": [
+        "skill.lightning"
+      ],
+      "powerLevel": 1,
+      "supports": [],
+      "totalInvestment": 120
+    }
+  ],
+  "final": {
+    "phase": "defeat",
+    "terminalTick": 1793,
+    "activeEnemies": 2,
+    "totalSpawned": 85,
+    "totalDefeated": 62,
+    "totalBreached": 20,
+    "goldEnd": 220,
+    "wallEnd": 0,
+    "totalInvestment": 300,
+    "firstFailureWave": 3
+  },
+  "matrix": [
+    {
+      "scenarioId": "swamp_m0_high_arc",
+      "profileId": "high",
+      "buildId": "arc",
+      "runId": "swamp_m0_high_arc_r1",
+      "runSeed": 43003,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_high_balanced",
+      "profileId": "high",
+      "buildId": "balanced",
+      "runId": "swamp_m0_high_balanced_r1",
+      "runSeed": 43001,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_high_control_low",
+      "profileId": "high",
+      "buildId": "control_low",
+      "runId": "swamp_m0_high_control_low_r1",
+      "runSeed": 43005,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_high_shock",
+      "profileId": "high",
+      "buildId": "shock",
+      "runId": "swamp_m0_high_shock_r1",
+      "runSeed": 43002,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_high_storm",
+      "profileId": "high",
+      "buildId": "storm",
+      "runId": "swamp_m0_high_storm_r1",
+      "runSeed": 43004,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_low_arc",
+      "profileId": "low",
+      "buildId": "arc",
+      "runId": "swamp_m0_low_arc_r1",
+      "runSeed": 41003,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_low_balanced",
+      "profileId": "low",
+      "buildId": "balanced",
+      "runId": "swamp_m0_low_balanced_r1",
+      "runSeed": 41001,
+      "legal": true,
+      "executionStatus": "executed_runtime_this_invocation"
+    },
+    {
+      "scenarioId": "swamp_m0_low_control_low",
+      "profileId": "low",
+      "buildId": "control_low",
+      "runId": "swamp_m0_low_control_low_r1",
+      "runSeed": 41005,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_low_shock",
+      "profileId": "low",
+      "buildId": "shock",
+      "runId": "swamp_m0_low_shock_r1",
+      "runSeed": 41002,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_low_storm",
+      "profileId": "low",
+      "buildId": "storm",
+      "runId": "swamp_m0_low_storm_r1",
+      "runSeed": 41004,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_target_arc",
+      "profileId": "target",
+      "buildId": "arc",
+      "runId": "swamp_m0_target_arc_r1",
+      "runSeed": 42003,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_target_balanced",
+      "profileId": "target",
+      "buildId": "balanced",
+      "runId": "swamp_m0_target_balanced_r1",
+      "runSeed": 42001,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_target_control_low",
+      "profileId": "target",
+      "buildId": "control_low",
+      "runId": "swamp_m0_target_control_low_r1",
+      "runSeed": 42005,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_target_shock",
+      "profileId": "target",
+      "buildId": "shock",
+      "runId": "swamp_m0_target_shock_r1",
+      "runSeed": 42002,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    },
+    {
+      "scenarioId": "swamp_m0_target_storm",
+      "profileId": "target",
+      "buildId": "storm",
+      "runId": "swamp_m0_target_storm_r1",
+      "runSeed": 42004,
+      "legal": true,
+      "executionStatus": "pending_runtime_execution"
+    }
+  ],
+  "sensitivityEvidence": "superseded_by_swamp_m0_runtime_matrix_v1",
+  "legacyExpectedFullEvidenceHash": "bd358fbc09bb970ec359fad4a6d9af7aa6fd24f5de08fed581f89741e24b26a6",
+  "fullEvidenceHashScope": "diagnostic_full_report_includes_ProfileSnapshot.ContentHash; M0 acceptance is BattleContentHash plus protected field-by-field battle projection",
+  "summaryHash": "de95842c82c785b319a71e820e6d13f782b1eeaab8198dfcafa3ea09a7575173"
+}

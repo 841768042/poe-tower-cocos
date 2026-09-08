@@ -1,0 +1,76 @@
+{
+  "affix_lightning_damage": {
+    "T9": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T9",
+      "minItemLevel": 1,
+      "rollMin": 8,
+      "rollMax": 12,
+      "weightMultiplier": 1
+    },
+    "T8": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T8",
+      "minItemLevel": 2,
+      "rollMin": 9,
+      "rollMax": 13,
+      "weightMultiplier": 1
+    },
+    "T7": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T7",
+      "minItemLevel": 3,
+      "rollMin": 10,
+      "rollMax": 14,
+      "weightMultiplier": 1
+    },
+    "T6": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T6",
+      "minItemLevel": 4,
+      "rollMin": 11,
+      "rollMax": 15,
+      "weightMultiplier": 1
+    },
+    "T5": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T5",
+      "minItemLevel": 5,
+      "rollMin": 12,
+      "rollMax": 16,
+      "weightMultiplier": 1
+    },
+    "T4": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T4",
+      "minItemLevel": 6,
+      "rollMin": 13,
+      "rollMax": 17,
+      "weightMultiplier": 1
+    },
+    "T3": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T3",
+      "minItemLevel": 7,
+      "rollMin": 14,
+      "rollMax": 18,
+      "weightMultiplier": 1
+    },
+    "T2": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T2",
+      "minItemLevel": 8,
+      "rollMin": 15,
+      "rollMax": 19,
+      "weightMultiplier": 1
+    },
+    "T1": {
+      "affixId": "affix_lightning_damage",
+      "tierId": "T1",
+      "minItemLevel": 9,
+      "rollMin": 16,
+      "rollMax": 20,
+      "weightMultiplier": 1
+    }
+  }
+}

@@ -1,0 +1,3 @@
+"id:string:key","waveIndex:int","conditionKind:string","itemBaseId:string","rarity:string","affixId:string","tierId:string","fixedRoll:float","enabledInSlice:bool"
+"","波次索引","触发条件","物品基底","品质","词缀标识","词缀层级","固定数值","本切片启用"
+"tutorial_wave_3_copper_rod","3","NoEquipmentCollectedBeforeWave","item_copper_conductor_rod","Magic","affix_lightning_damage","T9","12","true"

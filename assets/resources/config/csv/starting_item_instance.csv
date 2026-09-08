@@ -1,0 +1,8 @@
+"profileId:string:key","slot:string:key","itemBaseId:string","rarity:string","itemLevel:int","identified:bool"
+"档案模板标识","装备槽位","物品基底","品质","物品等级","已鉴定"
+"demo_default","Head","item_marsh_surveyor_hood","Normal","1","true"
+"demo_default","Body","item_reinforced_field_coat","Normal","1","true"
+"demo_default","Hands","item_architect_work_gloves","Normal","1","true"
+"demo_default","Feet","item_waders_of_haste","Normal","1","true"
+"demo_default","MainTool","item_copper_conductor_rod","Normal","1","true"
+"demo_default","Amulet","item_marsh_charm","Normal","1","true"

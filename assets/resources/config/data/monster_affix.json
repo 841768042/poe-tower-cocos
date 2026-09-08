@@ -1,0 +1,67 @@
+{
+  "elite_hardened": {
+    "id": "elite_hardened",
+    "eligibleRarity": "Magic",
+    "authoredRareEligible": true,
+    "weight": 1,
+    "incompatibleGroupId": "elite_defense",
+    "effectIds": "monster_max_health|monster_move_speed",
+    "mechanicIds": "",
+    "eligibleEnemyIds": "enemy_shambler|enemy_swamp_larva|enemy_bile_corpse|enemy_mud_armored_guard|enemy_waterveil_acolyte",
+    "enabledInSlice": true,
+    "displayName": "坚韧",
+    "iconGlyph": "盾"
+  },
+  "elite_grounded": {
+    "id": "elite_grounded",
+    "eligibleRarity": "Magic",
+    "authoredRareEligible": false,
+    "weight": 1,
+    "incompatibleGroupId": "elite_defense",
+    "effectIds": "monster_shock_buildup",
+    "mechanicIds": "",
+    "eligibleEnemyIds": "enemy_shambler",
+    "enabledInSlice": false,
+    "displayName": "接地",
+    "iconGlyph": "地"
+  },
+  "elite_swift": {
+    "id": "elite_swift",
+    "eligibleRarity": "Magic",
+    "authoredRareEligible": true,
+    "weight": 1,
+    "incompatibleGroupId": "elite_movement",
+    "effectIds": "monster_swift_max_health|monster_swift_move_speed",
+    "mechanicIds": "",
+    "eligibleEnemyIds": "enemy_swamp_larva|enemy_bile_corpse|enemy_mud_armored_guard|enemy_waterveil_acolyte",
+    "enabledInSlice": true,
+    "displayName": "迅捷",
+    "iconGlyph": "风"
+  },
+  "elite_waterveil": {
+    "id": "elite_waterveil",
+    "eligibleRarity": "Magic",
+    "authoredRareEligible": false,
+    "weight": 1,
+    "incompatibleGroupId": "elite_defense",
+    "effectIds": "",
+    "mechanicIds": "mechanic_elite_waterveil",
+    "eligibleEnemyIds": "enemy_swamp_larva|enemy_bile_corpse|enemy_mud_armored_guard",
+    "enabledInSlice": true,
+    "displayName": "水幕",
+    "iconGlyph": "水"
+  },
+  "elite_sporebrood": {
+    "id": "elite_sporebrood",
+    "eligibleRarity": "Magic",
+    "authoredRareEligible": false,
+    "weight": 1,
+    "incompatibleGroupId": "elite_death",
+    "effectIds": "",
+    "mechanicIds": "mechanic_elite_sporebrood",
+    "eligibleEnemyIds": "enemy_swamp_larva|enemy_mud_armored_guard|enemy_waterveil_acolyte",
+    "enabledInSlice": true,
+    "displayName": "孢群",
+    "iconGlyph": "孢"
+  }
+}

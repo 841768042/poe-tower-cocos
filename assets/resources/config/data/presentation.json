@@ -1,0 +1,22 @@
+{
+    "default":  {
+                    "id":  "default",
+                    "spriteAtlasPath":  "res://assets/art/sprites/poe_tower_pixel_atlas.svg",
+                    "hitFlashSeconds":  0.14,
+                    "hitFlashColor":  "#ff291fff",
+                    "deathSeconds":  0.5,
+                    "deathDropPixels":  "18",
+                    "deathRotationRadians":  1.25,
+                    "deathEndScale":  0.25,
+                    "walkFrequency":  "11",
+                    "walkBobPixels":  "3",
+                    "walkRotationRadians":  0.045,
+                    "walkScaleAmplitude":  0.035,
+                    "attackFrequency":  "10",
+                    "attackLungePixels":  "10",
+                    "attackRotationRadians":  0.07,
+                    "attackSquashX":  0.08,
+                    "attackStretchY":  0.12,
+                    "breachWindupSeconds":  0.45
+                }
+}

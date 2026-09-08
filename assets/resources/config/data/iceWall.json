@@ -1,0 +1,8 @@
+{
+    "default":  {
+                    "id":  "default",
+                    "cooldownSeconds":  18,
+                    "durationSeconds":  6,
+                    "globalLimit":  2
+                }
+}
