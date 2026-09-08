@@ -110,6 +110,8 @@ interface RunCheckpoint {
     wallHp: number;
     escrow: ItemInstance[];
     towers: { kind: TowerKind; cell: string; level: number; invested: number; supports: Record<string, number> }[];
+    rngIndices?: Record<string, number>;
+    dropSequence?: number;
 }
 
 const TOWERS: TowerDef[] = [
@@ -221,13 +223,15 @@ export class POETowerApp extends Component {
     private supportConfigs: Record<string, { id: string; towerId: string; effectText: string }> = {};
     private supportEffects: Record<string, Record<string, Record<string, { value: number }>>> = {};
     private iceWalls: { node: Node; endAt: number; cell: string }[] = [];
-    private groundEffects: { node: Node; kind: 'Shocked' | 'Chilled'; endAt: number; position: Vec3; radius: number }[] = [];
+    private groundEffects: { node: Node; kind: 'Shocked' | 'Chilled'; endAt: number; position: Vec3; radius: number; cell: string }[] = [];
     private navigation = new NavigationFlowField(6, 8, { x: 3, y: 7 });
     private activeGroups: { definition: WaveGroup; spawned: number; nextAt: number }[] = [];
     private readonly content = new ContentRegistry();
     private readonly feedback = new FeedbackAudio();
     private contentStatus = '配置载入中';
     private contentLabel: Label | null = null;
+    private rngIndices: Record<string, number> = {};
+    private dropSequence = 0;
 
     onLoad() {
         profiler.hideStats();
@@ -304,7 +308,7 @@ export class POETowerApp extends Component {
             const pending = JSON.parse(raw) as { runId: string; items: ItemInstance[]; mapId: string };
             if (this.profile.processedRewardRunIds.indexOf(pending.runId) < 0) {
                 this.profile.inventoryItems.push(...pending.items); this.profile.processedRewardRunIds.push(pending.runId);
-                if (this.profile.completedMapIds.indexOf(pending.mapId) < 0) this.profile.completedMapIds.push(pending.mapId);
+                if (pending.mapId && this.profile.completedMapIds.indexOf(pending.mapId) < 0) this.profile.completedMapIds.push(pending.mapId);
                 this.saveProfile();
             }
             sys.localStorage.removeItem('poe_tower_pending_reward_v1');
@@ -312,12 +316,19 @@ export class POETowerApp extends Component {
     }
 
     private commitVictoryReward() {
-        const pending = { runId: this.runId, items: this.escrow, mapId: 'map_swamp_village' };
+        const mapId = this.mapMode === 'village' ? 'map_swamp_village' : '';
+        if (mapId && this.profile.completedMapIds.indexOf(mapId) < 0) {
+            this.dropSequence++;
+            const firstClear = this.createCopperRod(true, this.waves().length, 12);
+            firstClear.itemInstanceId = `itm_m2_first_${this.runId}`;
+            this.escrow.push(firstClear);
+        }
+        const pending = { runId: this.runId, items: this.escrow, mapId };
         sys.localStorage.setItem('poe_tower_pending_reward_v1', JSON.stringify(pending));
         if (this.profile.processedRewardRunIds.indexOf(this.runId) < 0) {
             this.profile.inventoryItems.push(...this.escrow); this.profile.processedRewardRunIds.push(this.runId);
         }
-        if (this.profile.completedMapIds.indexOf('map_swamp_village') < 0) this.profile.completedMapIds.push('map_swamp_village');
+        if (mapId && this.profile.completedMapIds.indexOf(mapId) < 0) this.profile.completedMapIds.push(mapId);
         this.saveProfile(); sys.localStorage.removeItem('poe_tower_pending_reward_v1'); this.feedback.play('LootCollect');
     }
 
@@ -464,14 +475,35 @@ export class POETowerApp extends Component {
 
     private rollLoot(enemy: EnemyRuntime) {
         if (enemy.enemyId === 'enemy_rot_tide_cyst') return;
-        const seed = this.kills * 1103515245 + (this.waveIndex + 1) * 12345;
-        const roll = ((seed >>> 8) & 0xffff) / 0xffff;
-        const dropRate = .02 * (enemy.rarity === 'Magic' ? 1.25 : enemy.rarity === 'Rare' ? 1.5 : enemy.rarity === 'Boss' ? 1.75 : 1);
-        if (roll >= dropRate) return;
-        const magic = (((seed >>> 3) & 0xff) / 255) < (enemy.rarity === 'Normal' ? .3 : .45);
-        this.escrow.push(this.createCopperRod(magic, this.waveIndex + 1, magic ? 8 + ((seed >>> 16) % 5) : 0));
-        this.feedback.play('LootDrop'); this.showLootFly(enemy.node.worldPosition, magic);
+        this.dropSequence++;
+        if (this.nextRandom('loot.quantity') >= .02) return;
+        const affixCount = enemy.affix.split('|').filter(Boolean).length;
+        const rarityBonus = enemy.rarity === 'Magic' ? .25 : enemy.rarity === 'Rare' ? .5 : 0;
+        const quantity = Math.ceil(1 + rarityBonus + affixCount);
+        const quality = 1 + rarityBonus + affixCount;
+        let lastMagic = false;
+        for (let i = 0; i < quantity; i++) {
+            this.nextRandom('loot.base');
+            const magic = this.nextRandom('loot.quality') < (30 * quality) / (70 + 30 * quality);
+            let affixRoll = 0;
+            if (magic) {
+                this.nextRandom('loot.affix_select'); this.nextRandom('loot.affix_select');
+                affixRoll = 8 + this.nextRandom('loot.affix_roll') * 4;
+            }
+            this.escrow.push(this.createCopperRod(magic, this.waveIndex + 1, affixRoll));
+            lastMagic = magic;
+        }
+        this.feedback.play('LootDrop'); this.showLootFly(enemy.node.worldPosition, lastMagic);
         this.hint.string = `◆ 战利品飞入临时托管（${this.escrow.length}）`;
+    }
+
+    private nextRandom(stream: string): number {
+        const index = this.rngIndices[stream] || 0; this.rngIndices[stream] = index + 1;
+        const input = `${this.runId}|${stream}|${index}`;
+        let hash = 0x811c9dc5;
+        for (let i = 0; i < input.length; i++) { hash ^= input.charCodeAt(i); hash = Math.imul(hash, 0x01000193); }
+        hash ^= hash >>> 16; hash = Math.imul(hash, 0x7feb352d); hash ^= hash >>> 15; hash = Math.imul(hash, 0x846ca68b); hash ^= hash >>> 16;
+        return (hash >>> 0) / 0x100000000;
     }
 
     private showLootFly(worldPosition: Vec3, magic: boolean) {
@@ -483,7 +515,7 @@ export class POETowerApp extends Component {
     }
 
     private createCopperRod(magic: boolean, wave: number, roll: number): ItemInstance {
-        return { itemInstanceId: `itm_${this.runId}_${wave}_${this.escrow.length}`, itemBaseId: 'item_copper_conductor_rod', rarity: magic ? 'Magic' : 'Normal', itemLevel: Math.max(1, wave), identified: true,
+        return { itemInstanceId: `itm_${this.runId}_${wave}_${this.dropSequence}_${this.escrow.length}`, itemBaseId: 'item_copper_conductor_rod', rarity: magic ? 'Magic' : 'Normal', itemLevel: 1, identified: true,
             affixes: magic ? [{ affixId: 'affix_lightning_damage', tierId: 'T9', rolledValue: roll || 12 }] : [], acquiredRunId: this.runId, acquiredWaveIndex: wave };
     }
 
@@ -499,6 +531,7 @@ export class POETowerApp extends Component {
             mapMode: this.mapMode, runId: this.runId, waveIndex: this.waveIndex, gold: this.gold, wallHp: this.wallHp,
             escrow: this.escrow.map(i => JSON.parse(JSON.stringify(i))),
             towers: this.towers.map(t => ({ kind: t.kind, cell: t.node.parent?.name || '', level: t.level, invested: t.invested, supports: { ...t.supports } })),
+            rngIndices: { ...this.rngIndices }, dropSequence: this.dropSequence,
         };
         sys.localStorage.setItem('poe_tower_run_checkpoint_v1', JSON.stringify(checkpoint));
     }
@@ -531,6 +564,8 @@ export class POETowerApp extends Component {
         this.paused = false; this.speed = 1; this.kills = 0; this.battleTime = 0;
         this.simulationAccumulator = 0;
         this.escrow = checkpoint?.escrow || []; this.iceWalls = []; this.groundEffects = []; this.navigation = new NavigationFlowField(6, 8, { x: 3, y: 7 }); this.runId = checkpoint?.runId || `run_${Date.now().toString(36)}`;
+        this.rngIndices = checkpoint?.rngIndices ? { ...checkpoint.rngIndices } : {};
+        this.dropSequence = checkpoint?.dropSequence || 0;
         this.gold = 300 + (this.profile.talents.indexOf('talent_build_gold') >= 0 ? 25 : 0);
         this.wallMax = this.profile.talents.indexOf('talent_wall') >= 0 ? 115 : 100; this.wallHp = this.wallMax;
         this.equipmentLightningMultiplier = 1 + this.equippedAffixValue('affix_lightning_damage') / 100;
@@ -768,12 +803,35 @@ export class POETowerApp extends Component {
     }
 
     private createGroundEffect(kind: 'Shocked' | 'Chilled', worldPosition: Vec3, duration: number, radius = 100) {
+        const localPosition = this.page.getComponent(UITransform)!.convertToNodeSpaceAR(worldPosition);
+        const [col, row] = this.battleCell(localPosition);
+        const shallow = this.isShallowWater(col, row);
+        this.createGroundCell(kind, col, row, kind === 'Chilled' && shallow ? duration * 1.5 : duration, radius);
+        if (kind === 'Shocked' && shallow) {
+            let spread = 0;
+            for (const [dx, dy] of [[0, -1], [-1, 0], [1, 0], [0, 1]]) {
+                if (spread >= 2 || !this.isShallowWater(col + dx, row + dy)) continue;
+                this.createGroundCell(kind, col + dx, row + dy, duration, radius); spread++;
+            }
+        }
+    }
+
+    private createGroundCell(kind: 'Shocked' | 'Chilled', col: number, row: number, duration: number, radius: number) {
+        const cell = `${col},${row}`;
+        const existing = this.groundEffects.find(effect => effect.kind === kind && effect.cell === cell);
+        if (existing) { existing.endAt = Math.max(existing.endAt, this.battleTime + duration); return; }
         if (this.groundEffects.length >= 48) { const first = this.groundEffects.shift(); first?.node.destroy(); }
         const node = this.makeNode(`${kind}Ground`); node.addComponent(UITransform).setContentSize(radius * 2, radius * 2); this.page.addChild(node);
-        const local = this.page.getComponent(UITransform)!.convertToNodeSpaceAR(worldPosition); node.setPosition(local);
+        const local = gridRoute([[col, row]])[0]; node.setPosition(local);
         const g = node.addComponent(Graphics); g.fillColor = kind === 'Shocked' ? new Color(184, 97, 255, 62) : new Color(77, 191, 255, 62); g.circle(0, 0, radius); g.fill();
         node.setSiblingIndex(Math.max(1, this.page.children.length - 3));
-        this.groundEffects.push({ node, kind, endAt: this.battleTime + duration, position: local.clone(), radius });
+        this.groundEffects.push({ node, kind, endAt: this.battleTime + duration, position: local.clone(), radius, cell });
+    }
+
+    private battleCell(position: Vec3): [number, number] { return [Math.round((position.x + 375) / 150), Math.round((775 - position.y) / 110)]; }
+    private isShallowWater(col: number, row: number): boolean { return (col === 0 && row === 1) || (col === 1 && (row === 1 || row === 2)); }
+    private isOnGround(kind: 'Shocked' | 'Chilled', position: Vec3): boolean {
+        const cell = this.battleCell(position).join(','); return this.groundEffects.some(effect => effect.kind === kind && effect.cell === cell);
     }
 
     private beginWave() {
@@ -868,7 +926,7 @@ export class POETowerApp extends Component {
             if (e.disabledUntil > this.battleTime) { e.freezeBuildup = Math.max(0, e.freezeBuildup - dt * 8); continue; }
             const target = e.path[e.pathIndex]; const p = e.node.position;
             const dx = target.x - p.x, dy = target.y - p.y; const dist = Math.hypot(dx, dy);
-            const onChilledGround = this.groundEffects.some(effect => effect.kind === 'Chilled' && Vec3.distance(effect.position, e.node.position) <= effect.radius);
+            const onChilledGround = this.isOnGround('Chilled', e.node.position);
             let slow = e.tauntedUntil > this.battleTime ? 0 : onChilledGround || e.chilledUntil > this.battleTime ? .8 : 1;
             const blockingWall = this.iceWalls.find(wall => Vec3.distance(wall.node.position, e.node.position) <= 85);
             if (blockingWall) {
@@ -957,7 +1015,7 @@ export class POETowerApp extends Component {
             }
 
             let buildup = 12 * (this.profile.talents.indexOf('talent_shock_buildup') >= 0 ? 1.15 : 1) * (auraBoost ? 1.15 : 1) * Math.max(.2, 1 + this.supportEffect(tower, 'support_deep_conduction', 'shock'));
-            if (this.groundEffects.some(effect => effect.kind === 'Shocked' && Vec3.distance(effect.position, primary.node.position) <= effect.radius)) buildup *= 1.25;
+            if (this.isOnGround('Shocked', primary.node.position)) buildup *= 1.25;
             primary.shock += buildup;
             if (primary.shock >= 100) { primary.shock = 0; primary.shockUntil = this.battleTime + 6; }
             this.addStunBuildup(primary, this.supportValue(tower, 'stun'));
@@ -967,7 +1025,7 @@ export class POETowerApp extends Component {
 
     private hitEnemy(enemy: EnemyRuntime, damage: number, color: Color, from: Vec3, source: TowerRuntime) {
         const lightning = ['needle', 'arc', 'storm'].indexOf(source.kind) >= 0;
-        if (lightning && enemy.shockUntil <= this.battleTime && this.groundEffects.some(effect => effect.kind === 'Shocked' && Vec3.distance(effect.position, enemy.node.position) <= effect.radius)) damage *= 1.1;
+        if (lightning && enemy.shockUntil <= this.battleTime && this.isOnGround('Shocked', enemy.node.position)) damage *= 1.1;
         if (lightning && enemy.shockUntil > this.battleTime) damage *= 1.2;
         if (lightning) damage *= 1 - Math.min(.75, enemy.lightningResistance + (enemy.miasmaResistUntil > this.battleTime ? .15 : 0));
         enemy.lastHitAt = this.battleTime;
@@ -1009,7 +1067,8 @@ export class POETowerApp extends Component {
     private finishWave() {
         this.waveActive = false;
         const cleared = this.waveIndex + 1; this.waveIndex++;
-        if (cleared === 3 && this.escrow.length === 0) {
+        if (this.mapMode === 'demo' && cleared === 3 && this.escrow.length === 0) {
+            this.dropSequence++;
             this.escrow.push(this.createCopperRod(true, 3, 12));
             this.feedback.play('LootDrop');
             this.hint.string = '第 3 波保底：魔法 T9 铜制导能杖（闪电 +12%）';
