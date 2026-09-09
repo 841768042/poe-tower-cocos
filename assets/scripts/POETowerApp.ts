@@ -74,6 +74,13 @@ interface EnemyRuntime {
     chilledUntil: number;
     targetPriority: number;
     lightningResistance: number;
+    navCell: { x: number; y: number };
+    nextNavCell: { x: number; y: number } | null;
+    breaching: boolean;
+    breachWindup: number;
+    wallAttackClock: number;
+    continuousWallAttack: boolean;
+    wallAttackInterval: number;
 }
 
 interface AffixInstance { affixId: string; tierId: string; rolledValue: number; }
@@ -112,6 +119,17 @@ interface RunCheckpoint {
     towers: { kind: TowerKind; cell: string; level: number; invested: number; supports: Record<string, number> }[];
     rngIndices?: Record<string, number>;
     dropSequence?: number;
+    commands?: RunCommandData[];
+}
+
+type RunCommandKind = 'Build' | 'UpgradePower' | 'InstallSupport' | 'UpgradeSupport' | 'Sell';
+interface RunCommandData {
+    sequence: number;
+    relativeTick: number;
+    kind: RunCommandKind;
+    cell: string;
+    towerKind?: TowerKind;
+    supportId?: string;
 }
 
 const TOWERS: TowerDef[] = [
@@ -222,7 +240,7 @@ export class POETowerApp extends Component {
     private simulationAccumulator = 0;
     private supportConfigs: Record<string, { id: string; towerId: string; effectText: string }> = {};
     private supportEffects: Record<string, Record<string, Record<string, { value: number }>>> = {};
-    private iceWalls: { node: Node; endAt: number; cell: string }[] = [];
+    private iceWalls: { node: Node; endAt: number; cell: string; source: TowerRuntime }[] = [];
     private groundEffects: { node: Node; kind: 'Shocked' | 'Chilled'; endAt: number; position: Vec3; radius: number; cell: string }[] = [];
     private navigation = new NavigationFlowField(6, 8, { x: 3, y: 7 });
     private activeGroups: { definition: WaveGroup; spawned: number; nextAt: number }[] = [];
@@ -232,6 +250,12 @@ export class POETowerApp extends Component {
     private contentLabel: Label | null = null;
     private rngIndices: Record<string, number> = {};
     private dropSequence = 0;
+    private waveStartCheckpoint: RunCheckpoint | null = null;
+    private waveStartTick = 0;
+    private replayCommands: RunCommandData[] = [];
+    private nextReplayCommand = 0;
+    private replayingCommands = false;
+    private restoringCheckpoint = false;
 
     onLoad() {
         profiler.hideStats();
@@ -252,12 +276,15 @@ export class POETowerApp extends Component {
         const fixedStep = 1 / 30;
         while (this.simulationAccumulator >= fixedStep) {
             this.simulationAccumulator -= fixedStep; this.battleTime += fixedStep;
+            this.replayDueCommands();
             this.updateIceWalls(); this.updateWave(fixedStep); this.updateEnemies(fixedStep); this.updateTowers(fixedStep);
             if (this.waveActive && this.spawned >= this.waveEnemyCount(this.waves()[this.waveIndex]) && this.enemies.every(e => !e.alive)) { this.finishWave(); break; }
         }
     }
 
     private loadProfile() {
+        const defaults = this.createDefaultProfile();
+        this.profile = defaults;
         const primaryKey = 'poe_tower_profile_v3'; const backupKey = 'poe_tower_profile_v3_backup';
         let raw = sys.localStorage.getItem(primaryKey) || sys.localStorage.getItem('poe_tower_cocos_profile_v1');
         let old: any = null;
@@ -275,11 +302,12 @@ export class POETowerApp extends Component {
                 if (!migrated.inventoryItems || !migrated.inventoryItems.length) {
                     const fresh = this.createDefaultProfile(); migrated.inventoryItems = fresh.inventoryItems; migrated.equippedItemIds = fresh.equippedItemIds;
                 }
+                if (!this.validateProfile(migrated)) throw new Error('E_PROFILE_MIGRATION_VALIDATION');
                 this.profile = migrated;
                 this.saveProfile();
                 sys.localStorage.removeItem('poe_tower_cocos_profile_v1');
-            }
-        } catch { /* keep deterministic defaults */ }
+            } else this.saveProfile();
+        } catch { this.profile = defaults; try { this.saveProfile(); } catch { /* storage unavailable */ } }
         this.recoverPendingReward();
     }
 
@@ -377,7 +405,7 @@ export class POETowerApp extends Component {
         this.text(this.page, '敌人将沿水道前往城墙。\n守住防线，让电光照亮沼泽。', 0, -205, 26, new Color(136, 181, 171), 800, 40);
         this.button(this.page, '重置档案', 0, -610, 420, 66, () => {
             this.profile = this.createDefaultProfile();
-            sys.localStorage.removeItem('poe_tower_run_checkpoint_v1'); sys.localStorage.removeItem('poe_tower_pending_reward_v1');
+            this.clearCheckpoint(); sys.localStorage.removeItem('poe_tower_pending_reward_v1');
             sys.localStorage.removeItem('poe_tower_profile_v3'); sys.localStorage.removeItem('poe_tower_profile_v3_backup'); sys.localStorage.removeItem('poe_tower_profile_v3_tmp');
             sys.localStorage.removeItem('poe_tower_cocos_profile_v1');
             this.saveProfile(); this.showMenu();
@@ -520,20 +548,48 @@ export class POETowerApp extends Component {
     }
 
     private readCheckpoint(): RunCheckpoint | null {
-        try {
-            const raw = sys.localStorage.getItem('poe_tower_run_checkpoint_v1');
-            return raw ? JSON.parse(raw) as RunCheckpoint : null;
-        } catch { return null; }
+        for (const key of ['poe_tower_run_checkpoint_v1', 'poe_tower_run_checkpoint_v1_backup']) try {
+            const raw = sys.localStorage.getItem(key); if (!raw) continue;
+            const checkpoint = JSON.parse(raw) as RunCheckpoint;
+            if (this.validateCheckpoint(checkpoint)) return checkpoint;
+        } catch { /* try backup */ }
+        return null;
     }
 
-    private writeCheckpoint() {
-        const checkpoint: RunCheckpoint = {
+    private captureCheckpoint(commands: RunCommandData[] = []): RunCheckpoint {
+        return {
             mapMode: this.mapMode, runId: this.runId, waveIndex: this.waveIndex, gold: this.gold, wallHp: this.wallHp,
             escrow: this.escrow.map(i => JSON.parse(JSON.stringify(i))),
             towers: this.towers.map(t => ({ kind: t.kind, cell: t.node.parent?.name || '', level: t.level, invested: t.invested, supports: { ...t.supports } })),
-            rngIndices: { ...this.rngIndices }, dropSequence: this.dropSequence,
+            rngIndices: { ...this.rngIndices }, dropSequence: this.dropSequence, commands: commands.map(command => ({ ...command })),
         };
-        sys.localStorage.setItem('poe_tower_run_checkpoint_v1', JSON.stringify(checkpoint));
+    }
+
+    private persistCheckpoint(checkpoint: RunCheckpoint) {
+        if (!this.validateCheckpoint(checkpoint)) throw new Error('E_RUN_CHECKPOINT_VALIDATION');
+        const primary = 'poe_tower_run_checkpoint_v1', backup = `${primary}_backup`, temp = `${primary}_tmp`;
+        sys.localStorage.setItem(temp, JSON.stringify(checkpoint));
+        const readback = sys.localStorage.getItem(temp);
+        if (!readback || !this.validateCheckpoint(JSON.parse(readback))) throw new Error('E_RUN_CHECKPOINT_READBACK');
+        const previous = sys.localStorage.getItem(primary); if (previous) sys.localStorage.setItem(backup, previous);
+        sys.localStorage.setItem(primary, readback); sys.localStorage.removeItem(temp);
+    }
+
+    private validateCheckpoint(checkpoint: RunCheckpoint): boolean {
+        if (!checkpoint || (checkpoint.mapMode !== 'demo' && checkpoint.mapMode !== 'village') || !checkpoint.runId) return false;
+        if (!Number.isInteger(checkpoint.waveIndex) || checkpoint.waveIndex < 0 || checkpoint.waveIndex >= (checkpoint.mapMode === 'village' ? VILLAGE_WAVES.length : WAVES.length)) return false;
+        if (!Number.isFinite(checkpoint.gold) || !Number.isFinite(checkpoint.wallHp) || !Array.isArray(checkpoint.towers) || !Array.isArray(checkpoint.escrow)) return false;
+        const cells = new Set<string>();
+        for (const tower of checkpoint.towers) {
+            if (!TOWERS.some(def => def.id === tower.kind) || !/^Cell_[0-5]_[0-3]$/.test(tower.cell) || cells.has(tower.cell)) return false;
+            cells.add(tower.cell);
+        }
+        const commands = checkpoint.commands || [];
+        return Array.isArray(commands) && commands.length <= 4096 && commands.every((command, index) => command.sequence === index && Number.isInteger(command.relativeTick) && command.relativeTick >= 0 && /^Cell_[0-5]_[0-3]$/.test(command.cell));
+    }
+
+    private clearCheckpoint() {
+        ['poe_tower_run_checkpoint_v1', 'poe_tower_run_checkpoint_v1_backup', 'poe_tower_run_checkpoint_v1_tmp'].forEach(key => sys.localStorage.removeItem(key));
     }
 
     private showLoadout(mode: 'demo' | 'village' = 'demo') {
@@ -564,12 +620,19 @@ export class POETowerApp extends Component {
         this.paused = false; this.speed = 1; this.kills = 0; this.battleTime = 0;
         this.simulationAccumulator = 0;
         this.escrow = checkpoint?.escrow || []; this.iceWalls = []; this.groundEffects = []; this.navigation = new NavigationFlowField(6, 8, { x: 3, y: 7 }); this.runId = checkpoint?.runId || `run_${Date.now().toString(36)}`;
+        const roadCells: { x: number; y: number }[] = [];
+        this.paths().forEach(route => route.forEach(position => { const [x, y] = this.battleCell(position); roadCells.push({ x, y }); }));
+        this.navigation.configureRoads(roadCells);
         this.rngIndices = checkpoint?.rngIndices ? { ...checkpoint.rngIndices } : {};
         this.dropSequence = checkpoint?.dropSequence || 0;
         this.gold = 300 + (this.profile.talents.indexOf('talent_build_gold') >= 0 ? 25 : 0);
         this.wallMax = this.profile.talents.indexOf('talent_wall') >= 0 ? 115 : 100; this.wallHp = this.wallMax;
         this.equipmentLightningMultiplier = 1 + this.equippedAffixValue('affix_lightning_damage') / 100;
         if (checkpoint) { this.waveIndex = checkpoint.waveIndex; this.gold = checkpoint.gold; this.wallHp = checkpoint.wallHp; }
+        this.waveStartCheckpoint = checkpoint ? JSON.parse(JSON.stringify(checkpoint)) as RunCheckpoint : null;
+        this.replayCommands = checkpoint?.commands?.map(command => ({ ...command })) || [];
+        this.nextReplayCommand = 0; this.restoringCheckpoint = !!checkpoint && this.replayCommands.length > 0;
+        this.replayingCommands = this.restoringCheckpoint;
         this.addBackdrop(false);
         this.drawPath();
         this.createBuildGrid();
@@ -617,9 +680,10 @@ export class POETowerApp extends Component {
         }
     }
 
-    private buildTower(cell: Node, saved?: RunCheckpoint['towers'][number]) {
+    private buildTower(cell: Node, saved?: RunCheckpoint['towers'][number], replaying = false, commandKind?: TowerKind) {
         if (cell.getChildByName('Tower')) { this.selectTowerAt(cell); return; }
-        const def = this.def(saved?.kind || this.selectedKind);
+        if (this.replayingCommands && !replaying) { this.hint.string = '正在恢复本波操作，请稍候'; return; }
+        const def = this.def(saved?.kind || commandKind || this.selectedKind);
         const buildCost = this.getBuildCost(def);
         if (!saved) {
             if (this.gold < buildCost) { this.hint.string = `金币不足，还差 ${buildCost - this.gold}`; return; }
@@ -633,8 +697,47 @@ export class POETowerApp extends Component {
         if (!saved) {
             tween(node).set({ scale: new Vec3(.2, .2, 1) }).to(.18, { scale: Vec3.ONE }, { easing: 'backOut' }).start();
             this.hint.string = `${def.name}已建造，点击塔可升级/出售`;
+            if (!replaying) this.recordRunCommand('Build', cell.name, def.id);
         }
         this.refreshHud();
+    }
+
+    private upgradeTower(tower: TowerRuntime, replaying = false): boolean {
+        if (this.replayingCommands && !replaying) { this.hint.string = '正在恢复本波操作，请稍候'; return false; }
+        const cost = [80, 140, 220, 320][tower.level - 1] || 0;
+        if (tower.level >= 5) { this.hint.string = '已达最高等级'; return false; }
+        if (this.gold < cost) { this.hint.string = '金币不足'; return false; }
+        const cell = tower.node.parent?.name || '';
+        this.gold -= cost; tower.invested += cost; tower.level++; this.refreshHud();
+        if (!replaying) { this.recordRunCommand('UpgradePower', cell); this.showTowerActions(tower); }
+        return true;
+    }
+
+    private sellTower(tower: TowerRuntime, replaying = false): boolean {
+        if (this.replayingCommands && !replaying) { this.hint.string = '正在恢复本波操作，请稍候'; return false; }
+        const index = this.towers.indexOf(tower); if (index < 0) return false;
+        const cell = tower.node.parent?.name || '';
+        const rate = this.profile.talents.indexOf('talent_sell') >= 0 ? .75 : .7;
+        this.gold += Math.round(tower.invested * rate); this.towers.splice(index, 1); tower.node.destroy();
+        const panel = this.overlay.getChildByName('TowerActions'); if (panel) panel.destroy();
+        if (this.selectedTower === tower) this.selectedTower = null;
+        this.refreshHud(); if (!replaying) this.recordRunCommand('Sell', cell);
+        return true;
+    }
+
+    private installOrUpgradeSupport(tower: TowerRuntime, supportId: string, replaying = false): boolean {
+        if (this.replayingCommands && !replaying) { this.hint.string = '正在恢复本波操作，请稍候'; return false; }
+        if (!WIRED_SUPPORT_EFFECTS[supportId]) return false;
+        const level = tower.supports[supportId] || 0;
+        const full = Object.keys(tower.supports).length >= 5 && level === 0;
+        const cost = level === 0 ? [40, 60, 90, 130, 180][Object.keys(tower.supports).length] : [90, 160][level - 1] || 0;
+        if (level >= 3 || full || !cost || this.gold < cost) return false;
+        this.gold -= cost; tower.invested += cost; tower.supports[supportId] = level + 1; this.refreshHud();
+        if (!replaying) {
+            this.recordRunCommand(level === 0 ? 'InstallSupport' : 'UpgradeSupport', tower.node.parent?.name || '', undefined, supportId);
+            this.showSupportPanel(tower);
+        }
+        return true;
     }
 
     private selectTowerAt(cell: Node) {
@@ -650,15 +753,8 @@ export class POETowerApp extends Component {
         this.panel(panel, 0, 0, 900, 165, new Color(10, 30, 31, 248));
         this.text(panel, `${def.name} Lv.${tower.level}  伤害 ${(def.damage * (1 + .2 * (tower.level - 1))).toFixed(1)}`, -120, 38, 22, def.color, 500);
         const cost = [80, 140, 220, 320][tower.level - 1] || 0;
-        this.button(panel, `升级 ${cost}`, 300, -38, 180, 55, () => {
-            if (tower.level >= 5) { this.hint.string = '已达最高等级'; return; }
-            if (this.gold < cost) { this.hint.string = '金币不足'; return; }
-            this.gold -= cost; tower.invested += cost; tower.level++; this.refreshHud(); this.showTowerActions(tower);
-        }, new Color(52, 100, 77), 19);
-        this.button(panel, `出售 +${Math.floor(tower.invested * (this.profile.talents.indexOf('talent_sell') >= 0 ? .75 : .7))}`, -300, -38, 190, 55, () => {
-            const rate = this.profile.talents.indexOf('talent_sell') >= 0 ? .75 : .7;
-            this.gold += Math.floor(tower.invested * rate); this.towers.splice(this.towers.indexOf(tower), 1); tower.node.destroy(); panel.destroy(); this.selectedTower = null; this.refreshHud();
-        }, new Color(98, 65, 49), 19);
+        this.button(panel, `升级 ${cost}`, 300, -38, 180, 55, () => this.upgradeTower(tower), new Color(52, 100, 77), 19);
+        this.button(panel, `出售 +${Math.round(tower.invested * (this.profile.talents.indexOf('talent_sell') >= 0 ? .75 : .7))}`, -300, -38, 190, 55, () => this.sellTower(tower), new Color(98, 65, 49), 19);
         this.button(panel, `辅助 ${Object.keys(tower.supports).length}/5`, 0, -38, 200, 55, () => this.showSupportPanel(tower), new Color(64, 67, 112), 19);
         if (tower.kind === 'frost') this.button(panel, '部署冰墙', 0, 35, 190, 48, () => this.enterIceWallMode(tower), new Color(57, 119, 145), 18);
     }
@@ -676,19 +772,29 @@ export class POETowerApp extends Component {
             const col = i % 2, row = Math.floor(i / 2); const x = col ? 235 : -235, y = 365 - row * 175;
             const level = tower.supports[support.id] || 0; const full = Object.keys(tower.supports).length >= 5 && level === 0;
             const cost = level === 0 ? [40, 60, 90, 130, 180][Object.keys(tower.supports).length] : [90, 160][level - 1] || 0;
-            this.button(panel, `${level ? '◆ ' : ''}${this.supportName(support.id)} ${level ? `Lv.${level}` : ''}\n${this.supportEffectText(support)}\n${level >= 3 ? '已满级' : full ? '槽位已满' : `${cost} 金币`}`, x, y, 430, 145, () => {
-                if (level >= 3 || full || this.gold < cost) return;
-                this.gold -= cost; tower.invested += cost; tower.supports[support.id] = level + 1; this.refreshHud(); this.showSupportPanel(tower);
-            }, level ? new Color(54, 70, 130) : full ? new Color(40, 43, 46) : new Color(43, 61, 75), 18);
+            const wired = !!WIRED_SUPPORT_EFFECTS[support.id];
+            this.button(panel, `${level ? '◆ ' : ''}${this.supportName(support.id)} ${level ? `Lv.${level}` : ''}\n${this.supportEffectText(support)}\n${!wired ? '当前版本不可安装' : level >= 3 ? '已满级' : full ? '槽位已满' : `${cost} 金币`}`, x, y, 430, 145, () => {
+                if (!wired) { this.hint.string = '该辅助效果尚未接线，当前版本不可安装'; return; }
+                this.installOrUpgradeSupport(tower, support.id);
+            }, !wired ? new Color(40, 43, 46) : level ? new Color(54, 70, 130) : full ? new Color(40, 43, 46) : new Color(43, 61, 75), 18);
         });
         const copyCost = this.supportCopyCost(tower);
         this.button(panel, copyCost < 0 ? '复制到同类塔 · 槽位冲突' : `复制到同类塔${copyCost ? ` · ${copyCost} 金币` : ''}`, 0, -465, 460, 52, () => {
+            if (this.replayingCommands) { this.hint.string = '正在恢复本波操作，请稍候'; return; }
             if (copyCost < 0) { this.hint.string = '复制失败：目标塔已有其他辅助且没有足够槽位，未做任何修改'; return; }
             if (!copyCost) { this.hint.string = '没有需要同步的同类塔'; return; }
             if (this.gold < copyCost) { this.hint.string = `复制失败：还差 ${copyCost - this.gold} 金币，未做任何修改`; return; }
             const targets = this.towers.filter(other => other !== tower && other.kind === tower.kind);
-            this.gold -= copyCost;
-            for (const target of targets) for (const id of Object.keys(tower.supports)) target.supports[id] = Math.max(target.supports[id] || 0, tower.supports[id]);
+            const commandBatch: { kind: RunCommandKind; cell: string; supportId: string }[] = [];
+            for (const target of targets) for (const id of Object.keys(tower.supports)) {
+                let level = target.supports[id] || 0;
+                while (level < tower.supports[id]) { commandBatch.push({ kind: level++ === 0 ? 'InstallSupport' : 'UpgradeSupport', cell: target.node.parent?.name || '', supportId: id }); }
+            }
+            for (const command of commandBatch) {
+                const target = targets.find(candidate => candidate.node.parent?.name === command.cell);
+                if (!target || !this.installOrUpgradeSupport(target, command.supportId, true)) { this.hint.string = '复制失败：配置发生变化，请重试'; return; }
+            }
+            commandBatch.forEach(command => this.recordRunCommand(command.kind, command.cell, undefined, command.supportId));
             this.refreshHud(); this.hint.string = `已原子复制辅助配置到 ${targets.length} 座同类塔`; this.showSupportPanel(tower);
         }, new Color(54, 81, 95), 18);
         this.button(panel, '返回塔信息', 0, -535, 400, 52, () => { panel.destroy(); this.showTowerActions(tower); }, new Color(68, 74, 65), 19);
@@ -768,18 +874,23 @@ export class POETowerApp extends Component {
         for (let row = 0; row < 8; row++) for (let col = 0; col < 6; col++) {
             const x = -310 + col * 124, y = 330 - row * 92; const cellId = `${col},${row}`;
             const b = this.button(picker, '', x, y, 108, 76, () => {
+                if (!this.waveActive) { this.hint.string = '冰墙只能在波次战斗中部署'; return; }
                 if (this.battleTime < tower.iceWallReadyAt) { this.hint.string = `冰墙冷却中 ${Math.ceil(tower.iceWallReadyAt - this.battleTime)}s`; return; }
                 if (this.iceWalls.length >= 2) { this.hint.string = '全场最多同时 2 段冰墙'; return; }
-                if (!this.navigation.canPlaceWall({ x: col, y: row }, [{ x: 0, y: 0 }, { x: 5, y: 0 }])) { this.hint.string = '放置失败：不能封死最后通路'; return; }
-                this.navigation.setWall({ x: col, y: row }, true); this.placeIceWall(tower, cellId, x, y + 170); picker.destroy();
+                if (this.iceWalls.some(wall => wall.source === tower)) { this.hint.string = '每座冰障塔同时只能维持 1 段冰墙'; return; }
+                if (this.enemies.some(enemy => enemy.alive && this.battleCell(enemy.node.position).join(',') === cellId)) { this.hint.string = '放置失败：该格已有敌人'; return; }
+                const entrances = this.paths().map(route => { const [px, py] = this.battleCell(route[0]); return { x: px, y: py }; });
+                if (!this.navigation.canPlaceWall({ x: col, y: row }, entrances)) { this.hint.string = '放置失败：不能占据入口/终点或封死最后通路'; return; }
+                this.navigation.setWall({ x: col, y: row }, true); this.placeIceWall(tower, cellId); picker.destroy();
             }, new Color(40, 89, 105, 115), 12);
             b.name = `IceCell_${cellId}`;
         }
         this.button(picker, '取消', 0, -440, 260, 55, () => { picker.destroy(); this.showTowerActions(tower); }, new Color(80, 59, 54), 19);
     }
 
-    private placeIceWall(tower: TowerRuntime, cell: string, x: number, y: number) {
-        const wall = this.makeNode('IceWall'); wall.addComponent(UITransform).setContentSize(110, 32); this.page.addChild(wall); wall.setPosition(x, y);
+    private placeIceWall(tower: TowerRuntime, cell: string) {
+        const [col, row] = cell.split(',').map(Number);
+        const wall = this.makeNode('IceWall'); wall.addComponent(UITransform).setContentSize(110, 32); this.page.addChild(wall); wall.setPosition(gridRoute([[col, row]])[0]);
         const g = wall.addComponent(Graphics); g.fillColor = new Color(115, 215, 255, 220); g.strokeColor = new Color(223, 251, 255); g.lineWidth = 3; g.roundRect(-52, -14, 104, 28, 7); g.fill(); g.stroke();
         this.overlay.setSiblingIndex(this.page.children.length - 1);
         const duration = 6 * (this.profile.talents.indexOf('talent_icewall') >= 0 ? 1.15 : 1)
@@ -788,7 +899,7 @@ export class POETowerApp extends Component {
             * (1 + this.supportEffect(tower, 'support_short_wall', 'duration_more'));
         const cooldownRecovery = this.supportEffect(tower, 'support_wall_cooldown', 'cooldown_recovery') + this.supportEffect(tower, 'support_short_wall', 'cooldown_recovery');
         tower.iceWallReadyAt = this.battleTime + 18 / Math.max(.2, 1 + cooldownRecovery);
-        this.iceWalls.push({ node: wall, endAt: this.battleTime + duration, cell });
+        this.iceWalls.push({ node: wall, endAt: this.battleTime + duration, cell, source: tower });
         this.hint.string = `冰墙已部署，持续 ${duration.toFixed(1)}s，导航场已重算`;
     }
 
@@ -838,9 +949,54 @@ export class POETowerApp extends Component {
         if (this.waveActive || this.waveIndex >= this.waves().length) return;
         this.waveActive = true; this.spawned = 0; this.spawnClock = -.25;
         this.activeGroups = this.waves()[this.waveIndex].groups.map(definition => ({ definition, spawned: 0, nextAt: this.battleTime + (definition.start || 0) }));
-        this.writeCheckpoint();
+        this.waveStartTick = Math.round(this.battleTime * 30);
+        if (this.restoringCheckpoint) {
+            this.restoringCheckpoint = false; this.nextReplayCommand = 0;
+            this.replayingCommands = this.replayCommands.length > 0;
+        } else {
+            this.replayCommands = []; this.nextReplayCommand = 0; this.replayingCommands = false;
+            this.waveStartCheckpoint = this.captureCheckpoint([]); this.persistCheckpoint(this.waveStartCheckpoint);
+        }
         this.waveButton.string = `第 ${this.waveIndex + 1} 波进行中`;
         this.hint.string = `${this.waves()[this.waveIndex].name} 正在接近`;
+    }
+
+    private recordRunCommand(kind: RunCommandKind, cell: string, towerKind?: TowerKind, supportId?: string) {
+        if (!this.waveActive || this.replayingCommands || !this.waveStartCheckpoint) return;
+        const commands = this.waveStartCheckpoint.commands || (this.waveStartCheckpoint.commands = []);
+        commands.push({ sequence: commands.length, relativeTick: Math.max(0, Math.round(this.battleTime * 30) - this.waveStartTick), kind, cell, towerKind, supportId });
+        this.persistCheckpoint(this.waveStartCheckpoint);
+    }
+
+    private replayDueCommands() {
+        if (!this.waveActive || !this.replayingCommands) return;
+        const relativeTick = Math.max(0, Math.round(this.battleTime * 30) - this.waveStartTick);
+        while (this.nextReplayCommand < this.replayCommands.length && this.replayCommands[this.nextReplayCommand].relativeTick <= relativeTick) {
+            const command = this.replayCommands[this.nextReplayCommand++];
+            if (!this.replayRunCommand(command)) {
+                this.hint.string = `恢复失败：命令 ${command.sequence}/${command.kind}`;
+                this.endBattle(false); return;
+            }
+        }
+        if (this.nextReplayCommand >= this.replayCommands.length) {
+            this.replayingCommands = false;
+            this.hint.string = '本波操作恢复完成';
+        }
+    }
+
+    private replayRunCommand(command: RunCommandData): boolean {
+        const cell = this.buildGrid.getChildByName(command.cell);
+        if (!cell) return false;
+        const tower = this.towers.find(candidate => candidate.node.parent?.name === command.cell);
+        if (command.kind === 'Build') {
+            if (!command.towerKind || cell.getChildByName('Tower')) return false;
+            const before = this.towers.length; this.buildTower(cell, undefined, true, command.towerKind); return this.towers.length === before + 1;
+        }
+        if (!tower) return false;
+        if (command.kind === 'UpgradePower') return this.upgradeTower(tower, true);
+        if (command.kind === 'Sell') return this.sellTower(tower, true);
+        if (!command.supportId) return false;
+        return this.installOrUpgradeSupport(tower, command.supportId, true);
     }
 
     private updateWave(dt: number) {
@@ -856,6 +1012,7 @@ export class POETowerApp extends Component {
     private spawnEnemy(group: WaveGroup) {
         this.spawned++;
         const routes = this.paths(); const route = group.path === 1 ? routes[1] : routes[0];
+        const [navX, navY] = this.battleCell(route[0]); const navCell = { x: navX, y: navY };
         const node = this.makeNode('Enemy'); node.addComponent(UITransform).setContentSize(54, 62); this.page.addChild(node); node.setPosition(route[0]);
         this.overlay.setSiblingIndex(this.page.children.length - 1);
         const enemyId = group.enemyId;
@@ -878,7 +1035,9 @@ export class POETowerApp extends Component {
             shield: shieldMax, shieldMax, shieldRechargeDelay, shieldRechargeRate, lastHitAt: -999,
             enemyId, phase: 1, mechanicClock: enemyId === 'enemy_rot_tide_matriarch' ? 8 : enemyId === 'enemy_miasma_priest' ? .9 : 0, path: route, lastWallCell: '', disabledUntil: 0, freezeBuildup: 0, tauntedUntil: 0,
             cystsCreated: 0, wasTaunted: false, miasmaSpeedUntil: 0, miasmaResistUntil: 0, shockUntil: 0, stunBuildup: 0, chilledUntil: 0,
-            targetPriority: Number(configured.targetPriority) || 0, lightningResistance: Number(configured.lightningResistance) || 0, ...bars });
+            targetPriority: Number(configured.targetPriority) || 0, lightningResistance: Number(configured.lightningResistance) || 0,
+            navCell, nextNavCell: this.navigation.nextCell(navCell), breaching: false, breachWindup: 0, wallAttackClock: 0,
+            continuousWallAttack: !!configured.attacksWallContinuously, wallAttackInterval: Number(configured.wallAttackIntervalSeconds) || 1, ...bars });
         const created = this.enemies[this.enemies.length - 1];
         if (boss || magic || enemyId === 'enemy_miasma_priest' || enemyId === 'enemy_waterveil_acolyte') this.feedback.play('SpecialMonster');
         node.on(Node.EventType.TOUCH_END, () => { this.hint.string = this.enemyDetails(created); });
@@ -923,21 +1082,27 @@ export class POETowerApp extends Component {
                     e.shieldMax = 100; e.shield = 100; e.mechanicClock += 7;
                 }
             }
+            if (e.breaching) {
+                if (e.continuousWallAttack) {
+                    e.wallAttackClock -= dt;
+                    while (e.wallAttackClock <= .000001 && this.wallHp > 0) { this.applyWallDamage(e.damage); e.wallAttackClock += e.wallAttackInterval; }
+                } else {
+                    e.breachWindup -= dt; if (e.breachWindup <= 0) this.resolveBreach(e);
+                }
+                continue;
+            }
             if (e.disabledUntil > this.battleTime) { e.freezeBuildup = Math.max(0, e.freezeBuildup - dt * 8); continue; }
-            const target = e.path[e.pathIndex]; const p = e.node.position;
+            if (e.nextNavCell && this.navigation.isBlocked(e.nextNavCell)) e.nextNavCell = this.navigation.nextCell(e.navCell);
+            if (!e.nextNavCell) { e.breaching = true; e.breachWindup = .45; e.wallAttackClock = e.wallAttackInterval; continue; }
+            const target = gridRoute([[e.nextNavCell.x, e.nextNavCell.y]])[0]; const p = e.node.position;
             const dx = target.x - p.x, dy = target.y - p.y; const dist = Math.hypot(dx, dy);
             const onChilledGround = this.isOnGround('Chilled', e.node.position);
-            let slow = e.tauntedUntil > this.battleTime ? 0 : onChilledGround || e.chilledUntil > this.battleTime ? .8 : 1;
-            const blockingWall = this.iceWalls.find(wall => Vec3.distance(wall.node.position, e.node.position) <= 85);
-            if (blockingWall) {
-                slow *= .35;
-                if (e.pathIndex < 7 && e.lastWallCell !== blockingWall.cell) { const routes = this.paths(); e.path = e.path === routes[0] ? routes[1] : routes[0]; e.lastWallCell = blockingWall.cell; }
-            }
+            const slow = !e.boss && e.tauntedUntil > this.battleTime ? 0 : onChilledGround || e.chilledUntil > this.battleTime ? .8 : 1;
             const priestBoost = e.miasmaSpeedUntil > this.battleTime ? 1.15 : 1;
             const move = e.speed * priestBoost * dt * slow;
             if (dist <= move) {
-                e.node.setPosition(target); e.pathIndex++;
-                if (e.pathIndex >= e.path.length) { this.breach(e); }
+                e.node.setPosition(target); e.pathIndex++; e.navCell = e.nextNavCell; e.nextNavCell = this.navigation.nextCell(e.navCell);
+                if (!e.nextNavCell && e.navCell.x === 3 && e.navCell.y === 7) { e.breaching = true; e.breachWindup = .45; e.wallAttackClock = e.wallAttackInterval; }
             } else e.node.setPosition(p.x + dx / dist * move, p.y + dy / dist * move);
         }
     }
@@ -1055,17 +1220,22 @@ export class POETowerApp extends Component {
         this.enemies.push({ node, hp, maxHp: hp, speed, reward, damage, pathIndex: Math.min(parent.pathIndex, parent.path.length - 1), shock: 0, boss: false, alive: true,
             stableId: `${parent.stableId}_child_${this.enemies.length}`, rarity: 'Normal', affix: '', shield: 0, shieldMax: 0, shieldRechargeDelay: 0, shieldRechargeRate: 0, lastHitAt: -999, enemyId, phase: 1, mechanicClock: enemyId === 'enemy_rot_tide_cyst' ? 8 : 0, path: parent.path, lastWallCell: '', disabledUntil: 0, freezeBuildup: 0, tauntedUntil: 0,
             cystsCreated: 0, wasTaunted: false, miasmaSpeedUntil: 0, miasmaResistUntil: 0, shockUntil: 0, stunBuildup: 0, chilledUntil: 0,
-            targetPriority: 0, lightningResistance: 0, ...bars });
+            targetPriority: 0, lightningResistance: 0, navCell: { ...parent.navCell }, nextNavCell: parent.nextNavCell ? { ...parent.nextNavCell } : null,
+            breaching: false, breachWindup: 0, wallAttackClock: 0, continuousWallAttack: false, wallAttackInterval: 1, ...bars });
     }
 
-    private breach(enemy: EnemyRuntime) {
-        enemy.alive = false; enemy.node.destroy(); this.wallHp = Math.max(0, this.wallHp - enemy.damage); this.refreshHud();
-        this.hint.string = `敌人突破！城墙 -${enemy.damage}`;
+    private resolveBreach(enemy: EnemyRuntime) {
+        enemy.alive = false; enemy.node.destroy(); this.applyWallDamage(enemy.damage);
+    }
+
+    private applyWallDamage(damage: number) {
+        this.wallHp = Math.max(0, this.wallHp - damage); this.refreshHud();
+        this.hint.string = `敌人攻城！城墙 -${damage}`;
         if (this.wallHp <= 0) this.endBattle(false);
     }
 
     private finishWave() {
-        this.waveActive = false;
+        this.waveActive = false; this.replayingCommands = false; this.replayCommands = []; this.nextReplayCommand = 0;
         const cleared = this.waveIndex + 1; this.waveIndex++;
         if (this.mapMode === 'demo' && cleared === 3 && this.escrow.length === 0) {
             this.dropSequence++;
@@ -1074,6 +1244,7 @@ export class POETowerApp extends Component {
             this.hint.string = '第 3 波保底：魔法 T9 铜制导能杖（闪电 +12%）';
         }
         if (this.waveIndex >= this.waves().length) { this.endBattle(true); return; }
+        this.waveStartCheckpoint = this.captureCheckpoint([]); this.persistCheckpoint(this.waveStartCheckpoint);
         this.feedback.play('WaveLootSummary');
         this.waveButton.string = `开始第 ${this.waveIndex + 1} 波`;
         if (cleared !== 3 || this.escrow.length !== 1) this.hint.string = `第 ${cleared} 波完成 · 临时托管 ${this.escrow.length} 件`;
@@ -1087,7 +1258,7 @@ export class POETowerApp extends Component {
             this.commitVictoryReward();
         }
         this.screen = 'result'; this.paused = true;
-        sys.localStorage.removeItem('poe_tower_run_checkpoint_v1');
+        this.clearCheckpoint();
         const shade = this.makeNode('ResultShade'); shade.addComponent(UITransform).setContentSize(1080, 1920); this.overlay.addChild(shade);
         this.panel(shade, 0, 0, 1080, 1920, new Color(2, 8, 10, 225));
         this.panel(shade, 0, 0, 860, 900, new Color(9, 30, 31, 252));
@@ -1106,7 +1277,7 @@ export class POETowerApp extends Component {
         this.panel(box, 0, 0, 800, 400, new Color(10, 29, 30, 255));
         this.text(box, '退出会丢失本局临时战利品', 0, 95, 27, new Color(239, 190, 123), 700);
         this.button(box, '继续战斗', -175, -80, 300, 70, () => { box.destroy(); this.paused = false; }, new Color(53, 108, 82));
-        this.button(box, '确认退出', 175, -80, 300, 70, () => { sys.localStorage.removeItem('poe_tower_run_checkpoint_v1'); this.showMenu(); }, new Color(108, 55, 49));
+        this.button(box, '确认退出', 175, -80, 300, 70, () => { this.clearCheckpoint(); this.showMenu(); }, new Color(108, 55, 49));
     }
 
     private showWavePreview() {
@@ -1196,10 +1367,14 @@ export class POETowerApp extends Component {
     private waveEnemyCount(wave: WaveConfig): number { return wave.groups.reduce((sum, group) => sum + group.count, 0); }
     private enemyFallback(id: string): any {
         const fallback: Record<string, any> = {
-            enemy_shambler: [34, 72, 5, 5], enemy_rusher: [27, 108, 4, 4], enemy_swarm: [14, 86, 2, 2], enemy_shellback: [85, 58, 8, 9], enemy_bog_colossus: [1550, 38, 28, 120],
-            enemy_swamp_larva: [18, 88, 2, 2], enemy_bile_corpse: [50, 70, 5, 5], enemy_mud_armored_guard: [90, 58, 8, 10], enemy_miasma_priest: [115, 62, 8, 12], enemy_rot_tide_matriarch: [2400, 38, 14, 120],
+            enemy_shambler: [50, 70, 5, 5, 0, false], enemy_rusher: [30, 125, 4, 4, 0, false], enemy_swarm: [15, 85, 2, 2, 0, false],
+            enemy_shellback: [120, 75, 8, 10, .2, false], enemy_bog_colossus: [3000, 45, 12, 0, 0, true], enemy_swamp_larva: [15, 85, 2, 2, 0, false],
+            enemy_bile_corpse: [50, 70, 5, 5, 0, false], enemy_bile_spore: [10, 95, 2, 0, 0, false], enemy_sporebrood_child: [8, 90, 1, 0, 0, false],
+            enemy_mud_armored_guard: [80, 68, 8, 10, 0, false], enemy_waterveil_acolyte: [55, 68, 6, 7, 0, false], enemy_miasma_priest: [70, 62, 6, 10, 0, false],
+            enemy_rot_tide_matriarch: [2400, 38, 14, 120, 0, true], enemy_rot_tide_cyst: [120, 1, 0, 0, 0, false],
         };
-        const row = fallback[id] || [30, 70, 4, 4]; return { maxHealth: row[0], moveSpeedPixelsPerSecond: row[1], wallDamage: row[2], goldReward: row[3] };
+        const row = fallback[id] || [30, 70, 4, 4, 0, false];
+        return { maxHealth: row[0], moveSpeedPixelsPerSecond: row[1], wallDamage: row[2], goldReward: row[3], lightningResistance: row[4], attacksWallContinuously: row[5], wallAttackIntervalSeconds: 1, targetPriority: 0 };
     }
 
     private text(parent: Node, value: string, x: number, y: number, size: number, color: Color, width = 500, lineHeight = 0): Label {

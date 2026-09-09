@@ -22,12 +22,12 @@
 | Godot 子系统 | Cocos 实现 |
 |---|---|
 | EntityWorld / StateMachine / fixed simulation | `assets/scripts/core/EntityRuntime.ts` |
-| NavigationFlowField / IceWallSystem | `assets/scripts/core/Navigation.ts` 与战斗接入 |
+| NavigationFlowField / IceWallSystem | `assets/scripts/core/Navigation.ts` 的道路/离路加权流场与战斗接入；入口、终点、占用及最后通路校验 |
 | ConfigManager / GameContentRegistry / content hash | `assets/scripts/core/ContentRegistry.ts` |
 | FeedbackAudioPlayer | `assets/scripts/core/FeedbackAudio.ts` |
 | BattleRuntime / WaveSystem / tower & enemy components | `assets/scripts/POETowerApp.ts` 固定步长运行时 |
 | ProfileService / migration / atomic persistence | v3 localStorage 主档、临时档、备份、回读校验 |
-| RunLootCoordinator / RewardCommitService | 临时托管、pending reward、runId 幂等提交 |
+| RunLootCoordinator / RewardCommitService | 临时托管、pending reward、runId 幂等提交；波次基线检查点和建造命令定时重放 |
 | Backpack / talent / loadout controllers | 对应页面控制器逻辑 |
 
 ## 数据与资料
@@ -44,5 +44,6 @@
 - Cocos Creator 3.8.6 Web Mobile 构建：通过，产物包含新运行时与内容表。
 - 浏览器烟雾测试：主菜单 → M2 编队 → 正式战斗 → 建塔 → 第一波生成通过。
 - 浏览器控制台：无 warning/error。
+- 运行检查点：临时档回读、主/备份轮换、损坏回退与本波命令日志恢复已接入。
 
 按用户要求，名称或用途属于 Sandbox 的 Godot 场景、脚本和测试驱动没有迁移到目标项目。
